@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include "hidato_solver.h"
 
 int main(void)
 {

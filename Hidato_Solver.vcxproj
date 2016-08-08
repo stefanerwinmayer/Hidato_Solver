@@ -158,6 +158,9 @@
   <ItemGroup>
     <ClCompile Include="hidato_solver.c" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="hidato_solver.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
