@@ -19,7 +19,7 @@ static void test_file_length()
 
 static void test_file_to_string()
 {
-	
+
 	char string[] = "I'm wrong!";
 
 	file_to_string("test_empty_file.txt", 0L, string);
@@ -36,8 +36,12 @@ static void test_file_to_string()
 	sput_fail_unless(
 		strcmp(string, "xx") == 0,
 		"File with characters 'xx' should should produce a string 'xx'");
-}
 
+	file_to_string("test_four_characters_two_lines_file.txt", 6L, string);
+	sput_fail_unless(
+		strcmp(string, "xx\nxx") == 0,
+		"File with characters 'xx' on two lines should should produce a string 'xx\nxx'");
+}
 
 int run_file_reader_tests(void)
 {
