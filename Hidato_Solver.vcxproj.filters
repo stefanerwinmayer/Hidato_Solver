@@ -21,9 +21,15 @@
     <ClCompile Include="hidato_solver.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="file_reader.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="hidato_solver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="file_reader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

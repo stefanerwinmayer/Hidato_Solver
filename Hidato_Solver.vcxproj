@@ -156,9 +156,11 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="file_reader.c" />
     <ClCompile Include="hidato_solver.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="file_reader.h" />
     <ClInclude Include="hidato_solver.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
