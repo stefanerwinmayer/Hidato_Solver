@@ -27,6 +27,11 @@ static void test_file_to_string()
 	sput_fail_unless(
 		strcmp(string, "") == 0,
 		"Empty file should produce an empty string");
+
+	file_to_string("test_one_character_file.txt", 1L, string);
+	sput_fail_unless(
+		strcmp(string, "x") == 0,
+		"File with character 'x' should should produce a string 'x'");
 }
 
 
