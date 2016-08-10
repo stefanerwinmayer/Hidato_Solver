@@ -149,6 +149,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="framework_tests.c" />
     <ClCompile Include="test_runner.c" />
   </ItemGroup>
   <ItemGroup>

@@ -21,6 +21,9 @@
     <ClCompile Include="test_runner.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="framework_tests.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="sput.h">
