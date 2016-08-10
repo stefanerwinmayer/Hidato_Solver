@@ -17,12 +17,21 @@ static void test_file_length()
 		"File length of file with 4 characters on 2 lines should be 6 including '\n'");
 }
 
+static void test_file_to_string()
+{
+
+}
+
+
 int run_file_reader_tests(void)
 {
 	sput_start_testing();
 
 	sput_enter_suite("test_file_length()");
 	sput_run_test(test_file_length);
+
+	sput_enter_suite("test_file_to_string()");
+	sput_run_test(test_file_to_string);
 
 	sput_finish_testing();
 
