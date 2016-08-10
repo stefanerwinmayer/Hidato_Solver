@@ -4,5 +4,6 @@
 #include <stdio.h>
 
 int run_framework_tests(void);
+int run_file_reader_tests(void);
 
 #endif

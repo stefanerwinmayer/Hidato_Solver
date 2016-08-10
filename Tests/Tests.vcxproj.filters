@@ -27,12 +27,18 @@
     <ClCompile Include="file_reader_tests.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\file_reader.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="sput.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="test_runner.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\file_reader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
