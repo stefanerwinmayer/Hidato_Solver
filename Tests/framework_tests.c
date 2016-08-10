@@ -11,7 +11,7 @@ static void test_fail_if()
 
 }
 
-int rund_framework_tests(int argc, char *argv[])
+int run_framework_tests(int argc, char *argv[])
 {
 	sput_start_testing();
 
