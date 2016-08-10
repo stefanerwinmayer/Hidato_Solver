@@ -1,10 +1,19 @@
+#include <stdlib.h>
 #include "test_runner.h"
 
 int main(void)
 {
-	run_framework_tests();
-	run_file_reader_tests();
+	if (!run_framework_tests() &&
+		!run_file_reader_tests())
+	{
+		printf("ALL TESTS SUCCEEDED!");
+		getchar();
+		return 0;
 
-	getchar();
-	return 0;
+	}
+	else
+	{
+		getchar();
+		exit(EXIT_FAILURE);
+	}
 }
