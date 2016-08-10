@@ -3,4 +3,6 @@
 
 #include <stdio.h>
 
+int run_framework_tests(void);
+
 #endif
