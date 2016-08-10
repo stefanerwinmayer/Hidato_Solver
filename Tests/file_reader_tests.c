@@ -23,7 +23,6 @@ static void test_file_to_string()
 	char string[] = "I'm wrong!";
 
 	file_to_string("test_empty_file.txt", 0L, string);
-
 	sput_fail_unless(
 		strcmp(string, "") == 0,
 		"Empty file should produce an empty string");
