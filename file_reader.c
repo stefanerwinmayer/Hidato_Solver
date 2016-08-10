@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "file_reader.h"
 
 long file_length(const char *filename)
@@ -23,8 +24,19 @@ long file_length(const char *filename)
 
 void file_to_string(
 	const char *filename,
-	const int file_length,
+	const long file_length,
 	char *string)
 {
-	;
+	FILE *fp;
+
+	if ((fp = fopen(filename, "r")) == NULL)
+	{
+		printf("Cannot open file %s\n", filename);
+		exit(EXIT_FAILURE);
+	}
+
+	strcpy(string, "");
+	fgets(string, sizeof(string), fp);
+
+	fclose(fp);
 }
