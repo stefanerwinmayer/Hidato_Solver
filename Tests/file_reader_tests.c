@@ -31,6 +31,11 @@ static void test_file_to_string()
 	sput_fail_unless(
 		strcmp(string, "x") == 0,
 		"File with character 'x' should should produce a string 'x'");
+
+	file_to_string("test_two_characters_one_line_file.txt", 2L, string);
+	sput_fail_unless(
+		strcmp(string, "xx") == 0,
+		"File with characters 'xx' should should produce a string 'xx'");
 }
 
 
