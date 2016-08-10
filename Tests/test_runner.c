@@ -9,7 +9,6 @@ int main(void)
 		printf("ALL TESTS SUCCEEDED!");
 		getchar();
 		return 0;
-
 	}
 	else
 	{
