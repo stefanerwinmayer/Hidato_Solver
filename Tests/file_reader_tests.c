@@ -40,7 +40,7 @@ static void test_file_to_string()
 	file_to_string("test_four_characters_two_lines_file.txt", 6L, string);
 	sput_fail_unless(
 		strcmp(string, "xx\nxx") == 0,
-		"File with characters 'xx' on two lines should should produce a string 'xx\nxx'");
+		"File with characters 'xx' on two lines should should produce a string 'xx\\nxx'");
 }
 
 int run_file_reader_tests(void)
