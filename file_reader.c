@@ -1,6 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #include "file_reader.h"
 
 long file_length(const char *filename)
