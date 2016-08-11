@@ -150,12 +150,17 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\file_reader.c" />
+    <ClCompile Include="..\init_state.c" />
     <ClCompile Include="file_reader_tests.c" />
     <ClCompile Include="framework_tests.c" />
+    <ClCompile Include="init_state_tests.c" />
     <ClCompile Include="test_runner.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\coordinate_struct.h" />
     <ClInclude Include="..\file_reader.h" />
+    <ClInclude Include="..\init_state.h" />
+    <ClInclude Include="..\state_struct.h" />
     <ClInclude Include="sput.h" />
     <ClInclude Include="test_runner.h" />
   </ItemGroup>
