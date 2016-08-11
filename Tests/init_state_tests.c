@@ -5,7 +5,6 @@
 #include "../coordinate_struct.h"
 
 #define N 99
-#define UNKNOWN -1
 
 struct State state_1;
 struct State state_2;
