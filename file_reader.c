@@ -33,6 +33,7 @@ void file_to_string(
 	if ((fp = fopen(filename, "r")) == NULL)
 	{
 		printf("Cannot open file %s\n", filename);
+		getchar();
 		exit(EXIT_FAILURE);
 	}
 
