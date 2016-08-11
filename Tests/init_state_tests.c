@@ -20,6 +20,19 @@ static void allocate_memory(struct State *state)
 	}
 }
 
+static void deallocate_memory(struct State *state)
+{
+	int i;
+
+	free(state->hamiltonian);
+
+	for (i = 0; i < N; i++)
+	{
+		free(state->board[i]);
+	}
+	free(state->board);
+}
+
 static void setup(void)
 {
 	allocate_memory(&state_1);
