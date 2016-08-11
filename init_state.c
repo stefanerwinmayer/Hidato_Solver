@@ -25,5 +25,10 @@ void initialise_state(char *input, struct State *state)
 			state->hamiltonian[number - 1].col = col;
 			number = PROCESSED;
 		}
+		else if (*p == '?')
+		{
+			state->board[row][col] = '?';
+			(state->board_cols)++;
+		}
 	}
 }

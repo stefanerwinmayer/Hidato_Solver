@@ -67,7 +67,7 @@ static void test_initialise_state_board()
 		"[11]");
 
 	sput_fail_unless(
-		state_3.board[0][0] == 'G',
+		state_3.board[0][0] == '?',
 		"[?]");
 }
 
@@ -110,10 +110,6 @@ static void test_initialise_state_hamiltonian_rows()
 	sput_fail_unless(
 		state_2.hamiltonian[10].row == 0,
 		"[11]");
-
-	sput_fail_unless(
-		state_3.hamiltonian[10].row == UNKNOWN,
-		"[?]");
 }
 
 static void test_initialise_state_hamiltonian_cols()
@@ -125,10 +121,6 @@ static void test_initialise_state_hamiltonian_cols()
 	sput_fail_unless(
 		state_2.hamiltonian[10].col == 0,
 		"[11]");
-
-	sput_fail_unless(
-		state_3.hamiltonian[10].col == UNKNOWN,
-		"[?]");
 }
 
 int run_init_state_tests(void)
