@@ -34,7 +34,7 @@ void file_to_string(
 		exit(EXIT_FAILURE);
 	}
 
-	buffer = malloc(file_length * sizeof(char));
+	buffer = malloc((file_length + 1) * sizeof(char));
 	strcpy(buffer, "");
 	strcpy(string, "");
 
@@ -44,5 +44,6 @@ void file_to_string(
 		strcat(string, buffer);
 	}
 
+	free(buffer);
 	fclose(fp);
 }
