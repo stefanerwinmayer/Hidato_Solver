@@ -48,35 +48,35 @@ static void test_initialise_state_board()
 {
 	sput_fail_unless(
 		state_1.board[0][0] == 'F',
-		"");
+		"[1]");
 }
 
 static void test_initialise_state_board_rows()
 {
 	sput_fail_unless(
 		state_1.board_rows == 1,
-		"");
+		"[1]");
 }
 
 static void test_initialise_state_board_cols()
 {
 	sput_fail_unless(
 		state_1.board_cols == 1,
-		"");
+		"[1]");
 }
 
 static void test_initialise_state_hamiltonian_rows()
 {
 	sput_fail_unless(
 		state_1.hamiltonian[0].row == 0,
-		"");
+		"[1]");
 }
 
 static void test_initialise_state_hamiltonian_cols()
 {
 	sput_fail_unless(
 		state_1.hamiltonian[0].col == 0,
-		"");
+		"[1]");
 }
 
 int run_init_state_tests(void)
