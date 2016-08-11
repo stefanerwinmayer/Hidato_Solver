@@ -1,3 +1,4 @@
+#include <stdlib.h>
 #include "sput.h"
 #include "../state_struct.h"
 #include "../init_state.h"
@@ -56,7 +57,7 @@ static void test_initialise_state_board()
 		"[1]");
 
 	sput_fail_unless(
-		state_1.board[0][0] == 'F',
+		state_2.board[0][0] == 'F',
 		"[11]");
 }
 
@@ -67,7 +68,7 @@ static void test_initialise_state_board_rows()
 		"[1]");
 
 	sput_fail_unless(
-		state_1.board_rows == 1,
+		state_2.board_rows == 1,
 		"[11]");
 }
 
@@ -78,7 +79,7 @@ static void test_initialise_state_board_cols()
 		"[1]");
 
 	sput_fail_unless(
-		state_1.board_cols == 1,
+		state_2.board_cols == 1,
 		"[11]");
 }
 
@@ -89,7 +90,7 @@ static void test_initialise_state_hamiltonian_rows()
 		"[1]");
 
 	sput_fail_unless(
-		state_1.hamiltonian[10].row == 0,
+		state_2.hamiltonian[10].row == 0,
 		"[11]");
 }
 
@@ -100,7 +101,7 @@ static void test_initialise_state_hamiltonian_cols()
 		"[1]");
 
 	sput_fail_unless(
-		state_1.hamiltonian[10].col == 0,
+		state_2.hamiltonian[10].col == 0,
 		"[11]");
 }
 
