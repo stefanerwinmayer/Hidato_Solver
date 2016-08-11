@@ -3,10 +3,26 @@
 #include "../init_state.h"
 #include "../coordinate_struct.h"
 
+#define N 9
+
 struct State state_1;
+
+static void allocate_memory(struct State *state)
+{
+	int i;
+
+	state->hamiltonian = malloc(N * sizeof(struct Coordinate));
+
+	state->board = malloc(N * sizeof(char));
+	for (i = 0; i < N; i++)
+	{
+		state->board[i] = malloc(N * sizeof(char));
+	}
+}
 
 static void setup(void)
 {
+	allocate_memory(&state_1);
 	initialise_state("[1]", &state_1);
 }
 
