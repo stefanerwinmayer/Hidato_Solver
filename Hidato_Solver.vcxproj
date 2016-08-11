@@ -160,6 +160,7 @@
     <ClCompile Include="hidato_solver.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="coordinate_struct.h" />
     <ClInclude Include="file_reader.h" />
     <ClInclude Include="hidato_solver.h" />
   </ItemGroup>

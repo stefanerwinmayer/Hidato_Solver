@@ -32,5 +32,8 @@
     <ClInclude Include="file_reader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="coordinate_struct.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
