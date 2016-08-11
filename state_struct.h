@@ -5,7 +5,7 @@ struct State {
 	struct Coordinate *hamiltonian;
 	int ham_length;
 
-	int **board;
+	char **board;
 	int board_rows;
 	int board_cols;
 };
