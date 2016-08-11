@@ -13,7 +13,7 @@ static void allocate_memory(struct State *state)
 
 	state->hamiltonian = malloc(N * sizeof(struct Coordinate));
 
-	state->board = malloc(N * sizeof(char));
+	state->board = malloc(N * sizeof(char *));
 	for (i = 0; i < N; i++)
 	{
 		state->board[i] = malloc(N * sizeof(char));
@@ -101,6 +101,8 @@ int run_init_state_tests(void)
 	sput_run_test(test_initialise_state_hamiltonian_cols);
 
 	sput_finish_testing();
+
+	teardown();
 
 	return sput_get_return_value();
 }
