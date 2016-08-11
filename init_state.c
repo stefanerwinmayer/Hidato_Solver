@@ -1,7 +1,5 @@
 #include "init_state.h"
 
-#include <stdio.h>
-
 void initialise_state(char *input, struct State *state)
 {
 	
