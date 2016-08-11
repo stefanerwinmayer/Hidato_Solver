@@ -41,14 +41,10 @@ void file_to_string(
 	strcpy(buffer, "");
 	strcpy(string, "");
 
-	int x = ftell(fp);
-
 	while (ftell(fp) < file_length)
 	{
-		x = ftell(fp);
 		fgets(buffer, sizeof(string), fp);
 		strcat(string, buffer);
-		x = ftell(fp);
 	}
 
 	fclose(fp);
