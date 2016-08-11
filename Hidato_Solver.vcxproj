@@ -158,11 +158,13 @@
   <ItemGroup>
     <ClCompile Include="file_reader.c" />
     <ClCompile Include="hidato_solver.c" />
+    <ClCompile Include="init_state.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="coordinate_struct.h" />
     <ClInclude Include="file_reader.h" />
     <ClInclude Include="hidato_solver.h" />
+    <ClInclude Include="init_state.h" />
     <ClInclude Include="state_struct.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
