@@ -2,7 +2,6 @@
 
 void initialise_state(char *input, struct State *state)
 {
-	
 	int row, col, number;
 	char *p;
 
@@ -22,6 +21,5 @@ void initialise_state(char *input, struct State *state)
 			state->hamiltonian[number].row = row;
 			state->hamiltonian[number].col = col;
 		}
-		
 	}
 }
