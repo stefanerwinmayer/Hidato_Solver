@@ -35,5 +35,8 @@
     <ClInclude Include="coordinate_struct.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="state_struct.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -163,6 +163,7 @@
     <ClInclude Include="coordinate_struct.h" />
     <ClInclude Include="file_reader.h" />
     <ClInclude Include="hidato_solver.h" />
+    <ClInclude Include="state_struct.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
