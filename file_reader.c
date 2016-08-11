@@ -28,6 +28,7 @@ void file_to_string(
 	char *string)
 {
 	FILE *fp;
+	char *buffer;
 
 	if ((fp = fopen(filename, "r")) == NULL)
 	{
@@ -35,8 +36,19 @@ void file_to_string(
 		exit(EXIT_FAILURE);
 	}
 
+	buffer = malloc(file_length * sizeof(char));
+	strcpy(buffer, "");
 	strcpy(string, "");
-	fgets(string, sizeof(string), fp);
+
+	int x = ftell(fp);
+
+	while (ftell(fp) < file_length)
+	{
+		x = ftell(fp);
+		fgets(buffer, sizeof(string), fp);
+		strcat(string, buffer);
+		x = ftell(fp);
+	}
 
 	fclose(fp);
 }
