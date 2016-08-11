@@ -39,6 +39,11 @@ static void setup(void)
 	initialise_state("[1]", &state_1);
 }
 
+static void teardown(void)
+{
+	deallocate_memory(&state_1);
+}
+
 static void test_initialise_state_board()
 {
 	sput_fail_unless(
