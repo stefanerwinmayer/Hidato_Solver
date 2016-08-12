@@ -161,6 +161,7 @@
     <ClCompile Include="init_state.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="boolean.h" />
     <ClInclude Include="coordinate_struct.h" />
     <ClInclude Include="file_reader.h" />
     <ClInclude Include="hidato_solver.h" />

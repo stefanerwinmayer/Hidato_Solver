@@ -44,5 +44,8 @@
     <ClInclude Include="init_state.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="boolean.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

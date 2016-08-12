@@ -56,5 +56,8 @@
     <ClInclude Include="..\coordinate_struct.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\boolean.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
