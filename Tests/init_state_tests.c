@@ -22,10 +22,16 @@ static void allocate_memory(struct State *state)
 
 	state->hamiltonian = malloc(N * sizeof(struct Coordinate));
 
-	state->board = malloc(N * sizeof(char *));
-	for (i = 0; i < N; i++)
+	if (state->hamiltonian)
 	{
-		state->board[i] = malloc(N * sizeof(char));
+		state->board = malloc(N * sizeof(char *));
+		if (state->board)
+		{
+			for (i = 0; i < N; i++)
+			{
+				state->board[i] = malloc(N * sizeof(char));
+			}
+		}
 	}
 }
 
