@@ -14,6 +14,7 @@ struct State state_5;
 struct State state_6;
 struct State state_7;
 struct State state_8;
+struct State state_9;
 
 static void allocate_memory(struct State *state)
 {
@@ -66,6 +67,9 @@ static void setup(void)
 
 	allocate_memory(&state_8);
 	initialise_state("[01][??]", &state_8);
+
+	allocate_memory(&state_9);
+	initialise_state("[01][??]\n[XX][02]", &state_9);
 }
 
 static void teardown(void)
@@ -78,6 +82,7 @@ static void teardown(void)
 	deallocate_memory(&state_6);
 	deallocate_memory(&state_7);
 	deallocate_memory(&state_8);
+	deallocate_memory(&state_9);
 }
 
 static void test_initialise_state_board()
@@ -114,6 +119,13 @@ static void test_initialise_state_board()
 		state_8.board[0][0] == 'F' &&
 		state_8.board[0][1] == '?',
 		"[01][??]");
+
+	sput_fail_unless(
+		state_9.board[0][0] == 'F' &&
+		state_9.board[0][1] == '?' &&
+		state_9.board[1][0] == 'X' &&
+		state_9.board[1][1] == 'F',
+		"[01][??]\\n[XX][02]");
 }
 
 static void test_initialise_state_board_rows()
@@ -149,6 +161,10 @@ static void test_initialise_state_board_rows()
 	sput_fail_unless(
 		state_8.board_rows == 1,
 		"[01][??]");
+
+	sput_fail_unless(
+		state_9.board_rows == 2,
+		"[01][??]\\n[XX][02]");
 }
 
 static void test_initialise_state_board_cols()
@@ -184,6 +200,10 @@ static void test_initialise_state_board_cols()
 	sput_fail_unless(
 		state_8.board_cols == 2,
 		"[01][??]");
+
+	sput_fail_unless(
+		state_9.board_cols == 2,
+		"[01][??]\\n[XX][02]");
 }
 
 static void test_initialise_state_hamiltonian_rows()
@@ -203,6 +223,11 @@ static void test_initialise_state_hamiltonian_rows()
 	sput_fail_unless(
 		state_8.hamiltonian[0].row == 0,
 		"[01][??]");
+
+	sput_fail_unless(
+		state_9.hamiltonian[0].row == 0 &&
+		state_9.hamiltonian[1].row == 1,
+		"[01][??]\\n[XX][02]");
 }
 
 static void test_initialise_state_hamiltonian_cols()
@@ -222,6 +247,11 @@ static void test_initialise_state_hamiltonian_cols()
 	sput_fail_unless(
 		state_8.hamiltonian[0].col == 0,
 		"[01][??]");
+
+	sput_fail_unless(
+		state_9.hamiltonian[0].col == 0 &&
+		state_9.hamiltonian[1].col == 1,
+		"[01][??]\\n[XX][02]");
 }
 
 int run_init_state_tests(void)
