@@ -39,6 +39,7 @@ void initialise_state(char *input, struct State *state)
 				(state->board_cols)++;
 				state->hamiltonian[number - 1].row = row;
 				state->hamiltonian[number - 1].col = col;
+				col++;
 
 				processing[NUMBER] = FALSE;
 			}
@@ -46,6 +47,7 @@ void initialise_state(char *input, struct State *state)
 			{
 				state->board[row][col] = '?';
 				(state->board_cols)++;
+				col++;
 
 				processing[QUESTION_MARK] = FALSE;
 
@@ -54,6 +56,7 @@ void initialise_state(char *input, struct State *state)
 			{
 				state->board[row][col] = 'X';
 				(state->board_cols)++;
+				col++;
 
 				processing[X] = FALSE;
 			}
