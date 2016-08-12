@@ -30,5 +30,10 @@ void initialise_state(char *input, struct State *state)
 			state->board[row][col] = '?';
 			(state->board_cols)++;
 		}
+		else if (toupper(*p) == 'X')
+		{
+			state->board[row][col] = 'X';
+			(state->board_cols)++;
+		}
 	}
 }
