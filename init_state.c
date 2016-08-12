@@ -4,12 +4,15 @@ void initialise_state(char *input, struct State *state)
 {
 	int row, col, number;
 	char *p;
+	BOOL processing[POSSIBILIES];
 
 	state->board_rows = state->board_cols = 0;
-
 	row = col = number = 0;
 
-	BOOL processing[3] = { FALSE };
+	for (p = processing; p < processing + POSSIBILIES; p++)
+	{
+		*p = FALSE;
+	}
 
 
 	(state->board_rows)++;

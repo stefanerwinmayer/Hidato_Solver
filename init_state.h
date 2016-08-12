@@ -13,6 +13,8 @@
 #define TRUE 1
 #define FALSE 0
 
+#define POSSIBILIES 3
+
 typedef int BOOL;
 
 void initialise_state(char *input, struct State *state);
