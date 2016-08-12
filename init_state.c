@@ -9,10 +9,9 @@ void initialise_state(char *input, struct State *state)
 	state->board_rows = state->board_cols = 0;
 	row = col = number = 0;
 
-	for (p = processing; p < processing + POSSIBILIES; p++)
-	{
-		*p = FALSE;
-	}
+	processing[NUMBER] = FALSE;
+	processing[QUESTION_MARK] = FALSE;
+	processing[X] = FALSE;
 
 	(state->board_rows)++;
 	for (p = input; p < input + strlen(input); p++)
