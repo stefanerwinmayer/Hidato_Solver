@@ -14,7 +14,6 @@ void initialise_state(char *input, struct State *state)
 		*p = FALSE;
 	}
 
-
 	(state->board_rows)++;
 	for (p = input; p < input + strlen(input); p++)
 	{
@@ -39,7 +38,12 @@ void initialise_state(char *input, struct State *state)
 				(state->board_cols)++;
 				state->hamiltonian[number - 1].row = row;
 				state->hamiltonian[number - 1].col = col;
-				col++;
+				number = 0;
+
+				if (*p != '\n')
+				{
+					col++;
+				}
 
 				processing[NUMBER] = FALSE;
 			}
@@ -47,7 +51,11 @@ void initialise_state(char *input, struct State *state)
 			{
 				state->board[row][col] = '?';
 				(state->board_cols)++;
-				col++;
+
+				if (*p != '\n')
+				{
+					col++;
+				}
 
 				processing[QUESTION_MARK] = FALSE;
 
@@ -56,9 +64,21 @@ void initialise_state(char *input, struct State *state)
 			{
 				state->board[row][col] = 'X';
 				(state->board_cols)++;
-				col++;
+
+				if (*p != '\n')
+				{
+					col++;
+				}
 
 				processing[X] = FALSE;
+			}
+			
+			if (*p == '\n')
+			{
+				col = 0;
+				(state->board_cols) = 0;
+				(state->board_rows)++;
+				row++;
 			}
 		}
 	}
