@@ -38,9 +38,8 @@ void file_to_string(
 	strcpy(buffer, "");
 	strcpy(string, "");
 
-	while (ftell(fp) < file_length)
+	while (fgets(buffer, sizeof(string), fp) != NULL)
 	{
-		fgets(buffer, sizeof(string), fp);
 		strcat(string, buffer);
 	}
 
