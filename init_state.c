@@ -7,8 +7,10 @@ void initialise_state(char *input, struct State *state)
 
 	state->board_rows = state->board_cols = 0;
 
-	row = col = 0;
-	number = PROCESSED;
+	row = col = number = 0;
+
+	BOOL processing[3] = { FALSE };
+
 
 	(state->board_rows)++;
 	for (p = input; p < input + strlen(input); p++)
@@ -16,24 +18,42 @@ void initialise_state(char *input, struct State *state)
 		if (isdigit(*p))
 		{
 			number = (number * 10) + (*p - '0');
-		}
-		else if (number != PROCESSED)
-		{
-			state->board[row][col] = 'F';
-			(state->board_cols)++;
-			state->hamiltonian[number - 1].row = row;
-			state->hamiltonian[number - 1].col = col;
-			number = PROCESSED;
+			processing[NUMBER] = TRUE;
 		}
 		else if (*p == '?')
 		{
-			state->board[row][col] = '?';
-			(state->board_cols)++;
+			processing[QUESTION_MARK] = TRUE;
 		}
 		else if (toupper(*p) == 'X')
 		{
-			state->board[row][col] = 'X';
-			(state->board_cols)++;
+			processing[X] = TRUE;
+		}
+		else
+		{
+			if (processing[NUMBER])
+			{
+				state->board[row][col] = 'F';
+				(state->board_cols)++;
+				state->hamiltonian[number - 1].row = row;
+				state->hamiltonian[number - 1].col = col;
+
+				processing[NUMBER] = FALSE;
+			}
+			else if (processing[QUESTION_MARK])
+			{
+				state->board[row][col] = '?';
+				(state->board_cols)++;
+
+				processing[QUESTION_MARK] = FALSE;
+
+			}
+			else if (processing[X])
+			{
+				state->board[row][col] = 'X';
+				(state->board_cols)++;
+
+				processing[X] = FALSE;
+			}
 		}
 	}
 }
