@@ -57,6 +57,7 @@ static void teardown(void)
 	deallocate_memory(&state_1);
 	deallocate_memory(&state_2);
 	deallocate_memory(&state_3);
+	deallocate_memory(&state_4);
 }
 
 static void test_initialise_state_board()
