@@ -8,12 +8,12 @@ int main(void)
 		!run_init_state_tests())
 	{
 		printf("\nALL TESTS SUCCEEDED!");
-		getchar();
+		(void)getchar();
 		return 0;
 	}
 	else
 	{
-		getchar();
+		(void)getchar();
 		exit(EXIT_FAILURE);
 	}
 }

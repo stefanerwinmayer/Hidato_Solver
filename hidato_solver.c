@@ -4,6 +4,6 @@ int main(void)
 {
 	printf("Welcome to Hidato!");
 
-	getchar();
+	(void)getchar();
 	return 0;
 }
