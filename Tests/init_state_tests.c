@@ -12,6 +12,7 @@ struct State state_3;
 struct State state_4;
 struct State state_5;
 struct State state_6;
+struct State state_7;
 
 static void allocate_memory(struct State *state)
 {
@@ -58,6 +59,9 @@ static void setup(void)
 
 	allocate_memory(&state_6);
 	initialise_state("[??]", &state_6);
+
+	allocate_memory(&state_7);
+	initialise_state("[XX]", &state_7);
 }
 
 static void teardown(void)
@@ -68,6 +72,7 @@ static void teardown(void)
 	deallocate_memory(&state_4);
 	deallocate_memory(&state_5);
 	deallocate_memory(&state_6);
+	deallocate_memory(&state_7);
 }
 
 static void test_initialise_state_board()
@@ -95,6 +100,10 @@ static void test_initialise_state_board()
 	sput_fail_unless(
 		state_6.board[0][0] == '?',
 		"[??]");
+
+	sput_fail_unless(
+		state_7.board[0][0] == 'X',
+		"[XX]");
 }
 
 static void test_initialise_state_board_rows()
@@ -122,6 +131,10 @@ static void test_initialise_state_board_rows()
 	sput_fail_unless(
 		state_6.board_rows == 1,
 		"[??]");
+
+	sput_fail_unless(
+		state_7.board_rows == 1,
+		"[XX]");
 }
 
 static void test_initialise_state_board_cols()
@@ -149,6 +162,10 @@ static void test_initialise_state_board_cols()
 	sput_fail_unless(
 		state_6.board_cols == 1,
 		"[??]");
+
+	sput_fail_unless(
+		state_7.board_cols == 1,
+		"[XX]");
 }
 
 static void test_initialise_state_hamiltonian_rows()
