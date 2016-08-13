@@ -5,7 +5,7 @@ struct Coordinate current;
 
 struct State state_1;
 struct State state_2;
-
+struct State state_3;
 
 static void setup()
 {
@@ -17,6 +17,8 @@ static void setup()
 	state_1.hamiltonian[1].col = UNKNOWN;
 
 	state_2.board[1][1] = FIXED;
+
+	state_3.board[1][1] = TAKEN;
 }
 
 static void test_update_state_free()
@@ -40,6 +42,14 @@ static void test_update_state_fixed()
 		"Was FIXED, after update should be VISITED_FIXED");
 }
 
+static void test_revert_state_taken()
+{
+	revert_state(&state_3, &current, 1);
+	sput_fail_unless(
+		state_3.board[1][1] == FREE,
+		"Was TAKEN, after revert should be FREE");
+}
+
 int run_backtracker_tests(void)
 {
 	setup();
@@ -51,6 +61,9 @@ int run_backtracker_tests(void)
 
 	sput_enter_suite("test_update_state_fixed()");
 	sput_run_test(test_update_state_fixed);
+
+	sput_enter_suite("test_revert_state_taken()");
+	sput_run_test(test_revert_state_taken);
 
 	sput_finish_testing();
 
