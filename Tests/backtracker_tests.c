@@ -19,6 +19,8 @@ static void setup()
 	state_2.board[1][1] = FIXED;
 
 	state_3.board[1][1] = TAKEN;
+	state_1.hamiltonian[1].row = 1;
+	state_1.hamiltonian[1].col = 1;
 }
 
 static void test_update_state_free()
@@ -48,6 +50,11 @@ static void test_revert_state_taken()
 	sput_fail_unless(
 		state_3.board[1][1] == FREE,
 		"Was TAKEN, after revert should be FREE");
+
+	sput_fail_unless(
+		state_3.hamiltonian[1].row == UNKNOWN &&
+		state_3.hamiltonian[1].col == UNKNOWN,
+		"Coordinates were assigned, after revert they should be UNKNOWN");
 }
 
 int run_backtracker_tests(void)
