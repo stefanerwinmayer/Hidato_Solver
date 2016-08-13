@@ -19,8 +19,8 @@ static void setup()
 	state_2.board[1][1] = FIXED;
 
 	state_3.board[1][1] = TAKEN;
-	state_1.hamiltonian[1].row = 1;
-	state_1.hamiltonian[1].col = 1;
+	state_3.hamiltonian[1].row = 1;
+	state_3.hamiltonian[1].col = 1;
 }
 
 static void test_update_state_free()
