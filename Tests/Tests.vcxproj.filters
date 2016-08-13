@@ -59,5 +59,8 @@
     <ClInclude Include="..\boolean.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\hidato_limits.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

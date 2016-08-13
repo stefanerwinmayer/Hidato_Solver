@@ -160,6 +160,7 @@
     <ClInclude Include="..\boolean.h" />
     <ClInclude Include="..\coordinate_struct.h" />
     <ClInclude Include="..\file_reader.h" />
+    <ClInclude Include="..\hidato_limits.h" />
     <ClInclude Include="..\init_state.h" />
     <ClInclude Include="..\state_struct.h" />
     <ClInclude Include="sput.h" />
