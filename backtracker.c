@@ -29,6 +29,8 @@ void revert_state(struct State *state,
 	{
 	case TAKEN:
 
+		state->hamiltonian[ham_pos].row = UNKNOWN;
+		state->hamiltonian[ham_pos].col = UNKNOWN;
 		state->board[current->row][current->col] = FREE;
 		break;
 	}
