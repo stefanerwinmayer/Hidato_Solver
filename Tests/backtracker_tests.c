@@ -12,23 +12,16 @@ static void setup()
 {
 	current.row = 1;
 	current.col = 1;
-
-	state_1.board[1][1] = FREE;
-	state_1.hamiltonian[1].row = UNKNOWN;
-	state_1.hamiltonian[1].col = UNKNOWN;
-
-	state_2.board[1][1] = FIXED;
-
-	state_3.board[1][1] = TAKEN;
-	state_3.hamiltonian[1].row = 1;
-	state_3.hamiltonian[1].col = 1;
-
-	state_4.board[1][1] = VISITED_FIXED;
 }
 
 static void test_update_state_free()
 {
+	state_1.board[1][1] = FREE;
+	state_1.hamiltonian[1].row = UNKNOWN;
+	state_1.hamiltonian[1].col = UNKNOWN;
+
 	update_state(&state_1, &current, 1);
+
 	sput_fail_unless(
 		state_1.board[1][1] == TAKEN,
 		"Was FREE, after update should be TAKEN.");
@@ -41,7 +34,10 @@ static void test_update_state_free()
 
 static void test_update_state_fixed()
 {
+	state_2.board[1][1] = FIXED;
+
 	update_state(&state_2, &current, 1);
+
 	sput_fail_unless(
 		state_2.board[1][1] == VISITED_FIXED,
 		"Was FIXED, after update should be VISITED_FIXED");
@@ -49,7 +45,12 @@ static void test_update_state_fixed()
 
 static void test_revert_state_taken()
 {
+	state_3.board[1][1] = TAKEN;
+	state_3.hamiltonian[1].row = 1;
+	state_3.hamiltonian[1].col = 1;
+
 	revert_state(&state_3, &current, 1);
+
 	sput_fail_unless(
 		state_3.board[1][1] == FREE,
 		"Was TAKEN, after revert should be FREE");
@@ -62,7 +63,10 @@ static void test_revert_state_taken()
 
 static void test_revert_state_visited_fixed()
 {
+	state_4.board[1][1] = VISITED_FIXED;
+
 	revert_state(&state_4, &current, 1);
+
 	sput_fail_unless(
 		state_4.board[1][1] == FIXED,
 		"Was VISITED_FIXED, after revert should be FIXED");
