@@ -5,6 +5,9 @@
 #include "coordinate_struct.h"
 #include "state_struct.h"
 
+#define FREE '?'
+#define TAKEN 'T'
+
 void update_state(
 	struct State *state,
 	const struct Coordinate *current,

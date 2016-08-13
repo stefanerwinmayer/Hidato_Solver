@@ -39,6 +39,9 @@
     <ClCompile Include="backtracker_tests.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\backtracker.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="sput.h">
