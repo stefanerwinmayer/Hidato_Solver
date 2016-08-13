@@ -1,4 +1,5 @@
 #include "sput.h"
+#include "../hidato_limits.h"
 #include "../file_reader.h"
 
 static void test_file_length()
@@ -20,24 +21,24 @@ static void test_file_length()
 static void test_file_to_string()
 {
 
-	char string[] = "I'm wrong!";
+	char string[MAX_NUMS] = "I'm wrong!";
 
-	file_to_string("test_empty_file.txt", 0L, string);
+	file_to_string("test_empty_file.txt", string);
 	sput_fail_unless(
 		strcmp(string, "") == 0,
 		"Empty file should produce an empty string");
 
-	file_to_string("test_one_character_file.txt", 1L, string);
+	file_to_string("test_one_character_file.txt", string);
 	sput_fail_unless(
 		strcmp(string, "x") == 0,
 		"File with character 'x' should should produce a string 'x'");
 
-	file_to_string("test_two_characters_one_line_file.txt", 2L, string);
+	file_to_string("test_two_characters_one_line_file.txt", string);
 	sput_fail_unless(
 		strcmp(string, "xx") == 0,
 		"File with characters 'xx' should should produce a string 'xx'");
 
-	file_to_string("test_four_characters_two_lines_file.txt", 6L, string);
+	file_to_string("test_four_characters_two_lines_file.txt", string);
 	sput_fail_unless(
 		strcmp(string, "xx\nxx") == 0,
 		"File with characters 'xx' on two lines should should produce a string 'xx\\nxx'");

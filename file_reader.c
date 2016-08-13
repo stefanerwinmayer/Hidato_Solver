@@ -21,11 +21,10 @@ long file_length(const char *filename)
 
 void file_to_string(
 	const char *filename,
-	const long file_length,
 	char *string)
 {
 	FILE *fp;
-	char *buffer;
+	char buffer[MAX_NUMS];
 
 	if ((fp = fopen(filename, "r")) == NULL)
 	{
@@ -34,7 +33,6 @@ void file_to_string(
 		exit(EXIT_FAILURE);
 	}
 
-	buffer = malloc((file_length + 1) * sizeof(char));
 	strcpy(buffer, "");
 	strcpy(string, "");
 
@@ -43,6 +41,5 @@ void file_to_string(
 		strcat(string, buffer);
 	}
 
-	free(buffer);
 	fclose(fp);
 }
