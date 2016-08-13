@@ -10,7 +10,7 @@
 #define NUMBER 0
 #define QUESTION_MARK 1
 #define X 2
-#define POSSIBILIES 3
+#define VALID_INPUTS 3
 
 void initialise_state(char *input, struct State *state);
 
