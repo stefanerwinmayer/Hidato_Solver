@@ -21,7 +21,7 @@ static void test_file_length()
 static void test_file_to_string()
 {
 
-	char string[MAX_NUMS] = "I'm wrong!";
+	char string[MAX_FILE_LENGTH] = "I'm wrong!";
 
 	file_to_string("test_empty_file.txt", string);
 	sput_fail_unless(

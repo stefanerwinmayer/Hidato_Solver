@@ -24,7 +24,7 @@ void file_to_string(
 	char *string)
 {
 	FILE *fp;
-	char buffer[MAX_NUMS];
+	char buffer[MAX_FILE_LENGTH / MAX_ROWS];
 
 	if ((fp = fopen(filename, "r")) == NULL)
 	{
