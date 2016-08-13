@@ -5,6 +5,8 @@
 #include "coordinate_struct.h"
 #include "state_struct.h"
 
+#define FIXED 'F'
+#define VISITED_FIXED 'V'
 #define FREE '?'
 #define TAKEN 'T'
 
