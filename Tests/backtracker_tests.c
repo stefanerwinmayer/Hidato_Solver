@@ -13,7 +13,7 @@ static void setup()
 	state_1.board[1][1] = FREE;
 }
 
-static void test_update_state_board()
+static void test_update_state_free()
 {
 	update_state(&state_1, &current, 0);
 	sput_fail_unless(
