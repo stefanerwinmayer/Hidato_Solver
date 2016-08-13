@@ -21,7 +21,7 @@ void update_state(
 	}
 }
 
-int valid_move(
+BOOL valid_move(
 	const struct State *state,
 	const struct Coordinate *next,
 	const int next_ham_pos)
