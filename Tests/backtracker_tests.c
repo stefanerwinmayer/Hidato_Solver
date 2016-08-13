@@ -23,8 +23,15 @@ static void test_update_state_free()
 {
 	update_state(&state_1, &current, 1);
 	sput_fail_unless(
-		state_1.board[1][1] == TAKEN,
-		"Was FREE, after update should be TAKEN");
+		state_1.board[1][1] == TAKEN &&
+		state_1.hamiltonian[1].row == 1 &&
+		state_1.hamiltonian[1].col == 1,
+		"Was FREE, after update should be TAKEN.");
+
+	sput_fail_unless(
+		state_1.hamiltonian[1].row == 1 &&
+		state_1.hamiltonian[1].col == 1,
+		"Coordinates were UNKNOWN, now they shoule be (1, 1)");
 }
 
 static void test_update_state_fixed()
