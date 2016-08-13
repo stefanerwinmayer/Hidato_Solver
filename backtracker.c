@@ -25,5 +25,11 @@ void revert_state(struct State *state,
 	const struct Coordinate *current,
 	const int ham_pos)
 {
+	switch (state->board[current->row][current->col])
+	{
+	case TAKEN:
 
+		state->board[current->row][current->col] = FREE;
+		break;
+	}
 }
