@@ -26,7 +26,11 @@ BOOL valid_move(
 	const struct Coordinate *next,
 	const int next_ham_pos)
 {
-	return -1;
+	if (0 <= next->row && 0 <= next->col)
+	{
+		return TRUE;
+	}
+	return FALSE;
 }
 
 void revert_state(struct State *state,
