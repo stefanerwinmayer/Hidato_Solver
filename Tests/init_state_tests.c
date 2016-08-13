@@ -16,79 +16,25 @@ struct State state_7;
 struct State state_8;
 struct State state_9;
 
-static void allocate_memory(struct State *state)
-{
-	int i;
-
-	state->hamiltonian = malloc(N * sizeof(struct Coordinate));
-
-	if (state->hamiltonian)
-	{
-		state->board = malloc(N * sizeof(char *));
-		if (state->board)
-		{
-			for (i = 0; i < N; i++)
-			{
-				state->board[i] = malloc(N * sizeof(char));
-			}
-		}
-	}
-}
-
-static void deallocate_memory(struct State *state)
-{
-	int i;
-
-	free(state->hamiltonian);
-
-	for (i = 0; i < N; i++)
-	{
-		free(state->board[i]);
-	}
-	free(state->board);
-}
-
 static void setup(void)
 {
-	allocate_memory(&state_1);
 	initialise_state("[1]", &state_1);
 
-	allocate_memory(&state_2);
 	initialise_state("[11]", &state_2);
 
-	allocate_memory(&state_3);
 	initialise_state("[?]", &state_3);
 
-	allocate_memory(&state_4);
 	initialise_state("[x]", &state_4);
 
-	allocate_memory(&state_5);
 	initialise_state("[09]", &state_5);
 
-	allocate_memory(&state_6);
 	initialise_state("[??]", &state_6);
 
-	allocate_memory(&state_7);
 	initialise_state("[XX]", &state_7);
 
-	allocate_memory(&state_8);
 	initialise_state("[01][??]", &state_8);
 
-	allocate_memory(&state_9);
 	initialise_state("[01][??]\n[XX][02]", &state_9);
-}
-
-static void teardown(void)
-{
-	deallocate_memory(&state_1);
-	deallocate_memory(&state_2);
-	deallocate_memory(&state_3);
-	deallocate_memory(&state_4);
-	deallocate_memory(&state_5);
-	deallocate_memory(&state_6);
-	deallocate_memory(&state_7);
-	deallocate_memory(&state_8);
-	deallocate_memory(&state_9);
 }
 
 static void test_initialise_state_board()
@@ -282,8 +228,6 @@ int run_init_state_tests(void)
 	sput_run_test(test_initialise_state_hamiltonian_cols);
 
 	sput_finish_testing();
-
-	teardown();
 
 	return sput_get_return_value();
 }
