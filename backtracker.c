@@ -9,6 +9,8 @@ void update_state(
 	{
 	case FREE:
 
+		state->hamiltonian[ham_pos].row = current->row;
+		state->hamiltonian[ham_pos].col = current->col;
 		state->board[current->row][current->col] = TAKEN;
 		break;
 	}
