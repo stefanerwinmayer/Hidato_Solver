@@ -1,5 +1,5 @@
-#ifndef STATE_BUILDER
-#define STATE_BUILDER
+#ifndef INIT_STATE
+#define INIT_STATE
 
 #include <string.h>
 #include <ctype.h>
