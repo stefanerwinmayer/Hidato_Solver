@@ -2,6 +2,7 @@
 #include "../backtracker.h"
 
 struct Coordinate current;
+struct State state;
 
 struct State state_1;
 struct State state_2;
@@ -72,6 +73,30 @@ static void test_revert_state_visited_fixed()
 		"Was VISITED_FIXED, after revert should be FIXED");
 }
 
+static void test_valid_move_out_of_lower_bounds()
+{
+	struct Coordinate outside_1 = { -1, -1 };
+	struct Coordinate outside_2 = { -1, 0 };
+	struct Coordinate outside_3 = { 0, -1 };
+	struct Coordinate inside = { 0, 0 };
+
+	sput_fail_if(
+		valid_move(&state, &outside_1, 1),
+		"Negative coordiantes should fail valid move.");
+
+	sput_fail_if(
+		valid_move(&state, &outside_2, 1),
+		"Negative row coordiante should fail valid move.");
+
+	sput_fail_if(
+		valid_move(&state, &outside_3, 1),
+		"Negative col coordiante should fail valid move.");
+
+	sput_fail_unless(
+		valid_move(&state, &inside, 1),
+		"(0, 0) should pass valid move.");
+}
+
 int run_backtracker_tests(void)
 {
 	setup();
@@ -89,6 +114,9 @@ int run_backtracker_tests(void)
 
 	sput_enter_suite("test_revert_state_visited_fixed()");
 	sput_run_test(test_revert_state_visited_fixed);
+
+	sput_enter_suite("test_valid_move_out_of_bounds()");
+	sput_run_test(test_valid_move_out_of_lower_bounds);
 
 	sput_finish_testing();
 
