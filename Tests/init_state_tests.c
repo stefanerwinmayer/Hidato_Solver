@@ -4,8 +4,6 @@
 #include "../init_state.h"
 #include "../coordinate_struct.h"
 
-#define N 99
-
 struct State state_1;
 struct State state_2;
 struct State state_3;
