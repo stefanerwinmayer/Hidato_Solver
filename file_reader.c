@@ -36,7 +36,7 @@ void file_to_string(
 	strcpy(buffer, "");
 	strcpy(string, "");
 
-	while (fgets(buffer, sizeof(string), fp) != NULL)
+	while (fgets(buffer, MAX_FILE_LENGTH / MAX_ROWS, fp) != NULL)
 	{
 		strcat(string, buffer);
 	}
