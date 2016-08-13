@@ -31,7 +31,7 @@ static void test_update_state_fixed()
 {
 	update_state(&state_2, &current, 1);
 	sput_fail_unless(
-		state_1.board[1][1] == VISITED_FIXED,
+		state_2.board[1][1] == VISITED_FIXED,
 		"Was FIXED, after update should be VISITED_FIXED");
 }
 

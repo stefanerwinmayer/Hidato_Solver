@@ -13,5 +13,10 @@ void update_state(
 		state->hamiltonian[ham_pos].col = current->col;
 		state->board[current->row][current->col] = TAKEN;
 		break;
+
+	case FIXED:
+
+		state->board[current->row][current->col] = VISITED_FIXED;
+		break;
 	}
 }
