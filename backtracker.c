@@ -20,3 +20,10 @@ void update_state(
 		break;
 	}
 }
+
+void revert_state(struct State *state,
+	const struct Coordinate *current,
+	const int ham_pos)
+{
+
+}

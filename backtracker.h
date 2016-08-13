@@ -17,4 +17,9 @@ void update_state(
 	const struct Coordinate *current,
 	const int ham_pos);
 
+void revert_state(
+	struct State *state,
+	const struct Coordinate *current,
+	const int ham_pos);
+
 #endif
