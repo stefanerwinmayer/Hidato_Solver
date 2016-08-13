@@ -151,6 +151,7 @@
   <ItemGroup>
     <ClCompile Include="..\file_reader.c" />
     <ClCompile Include="..\init_state.c" />
+    <ClCompile Include="backtracker_tests.c" />
     <ClCompile Include="file_reader_tests.c" />
     <ClCompile Include="framework_tests.c" />
     <ClCompile Include="init_state_tests.c" />
