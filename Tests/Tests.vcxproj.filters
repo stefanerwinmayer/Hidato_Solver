@@ -62,5 +62,8 @@
     <ClInclude Include="..\hidato_limits.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\backtracker.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

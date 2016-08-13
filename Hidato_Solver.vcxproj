@@ -156,11 +156,13 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="backtracker.c" />
     <ClCompile Include="file_reader.c" />
     <ClCompile Include="hidato_solver.c" />
     <ClCompile Include="init_state.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="backtracker.h" />
     <ClInclude Include="boolean.h" />
     <ClInclude Include="coordinate_struct.h" />
     <ClInclude Include="file_reader.h" />
