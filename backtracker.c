@@ -33,5 +33,10 @@ void revert_state(struct State *state,
 		state->hamiltonian[ham_pos].col = UNKNOWN;
 		state->board[current->row][current->col] = FREE;
 		break;
+
+	case VISITED_FIXED:
+
+		state->board[current->row][current->col] = FIXED;
+		break;
 	}
 }
