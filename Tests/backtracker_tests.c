@@ -81,7 +81,6 @@ static void test_valid_move_out_of_lower_bounds()
 	struct Coordinate outside_1 = { -1, -1 };
 	struct Coordinate outside_2 = { -1, 0 };
 	struct Coordinate outside_3 = { 0, -1 };
-	struct Coordinate inside = { 0, 0 };
 
 	sput_fail_if(
 		valid_move(&state, &outside_1, 1),
@@ -94,10 +93,6 @@ static void test_valid_move_out_of_lower_bounds()
 	sput_fail_if(
 		valid_move(&state, &outside_3, 1),
 		"Negative col coordiante should fail valid move.");
-
-	sput_fail_unless(
-		valid_move(&state, &inside, 1),
-		"(0, 0) should pass valid move.");
 }
 
 static void test_valid_move_out_of_upper_bounds()
@@ -109,7 +104,6 @@ static void test_valid_move_out_of_upper_bounds()
 	struct Coordinate outside_1 = { 9, 9 };
 	struct Coordinate outside_2 = { 9, 8 };
 	struct Coordinate outside_3 = { 8, 9 };
-	struct Coordinate inside = { 8, 8 };
 
 	sput_fail_if(
 		valid_move(&state, &outside_1, 1),
@@ -122,10 +116,6 @@ static void test_valid_move_out_of_upper_bounds()
 	sput_fail_if(
 		valid_move(&state, &outside_3, 1),
 		"Col coordiante too large should fail valid move.");
-
-	sput_fail_unless(
-		valid_move(&state, &inside, 1),
-		"(8, 8) should pass valid move.");
 }
 
 static void test_valid_move_free()
