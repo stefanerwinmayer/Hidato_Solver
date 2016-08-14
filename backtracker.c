@@ -29,6 +29,10 @@ BOOL valid_move(
 	if (0 <= next->row && next->row < state->board_rows &&
 		0 <= next->col && next->col < state->board_cols)
 	{
+		if (state->board[next->row][next->col] == FREE)
+		{
+			return TRUE;
+		}
 		return TRUE;
 	}
 	return FALSE;
