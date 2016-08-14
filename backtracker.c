@@ -33,7 +33,12 @@ BOOL valid_move(
 		{
 			return TRUE;
 		}
-		return TRUE;
+		else if (state->board[next->row][next->col] == FIXED &&
+			state->hamiltonian[next_ham_pos].row == next->row &&
+			state->hamiltonian[next_ham_pos].col == next->col)
+		{
+			return TRUE;
+		}
 	}
 	return FALSE;
 }
