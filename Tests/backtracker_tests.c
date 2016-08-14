@@ -143,6 +143,30 @@ static void test_valid_move_free()
 
 }
 
+static void test_valid_move_fixed()
+{
+	struct State state;
+	state.board_rows = 9;
+	state.board_cols = 9;
+	state.board[1][1] = FIXED;
+
+	state.hamiltonian[1].row = 9;
+	state.hamiltonian[1].col = 9;
+
+	struct Coordinate next = { 1, 1 };
+
+	sput_fail_if(
+		valid_move(&state, &next, 1),
+		"Next Coordinate is fixed and visitable but it belongs to the wrong number.");
+
+	state.hamiltonian[1].row = 1;
+	state.hamiltonian[1].col = 1;
+
+	sput_fail_unless(
+		valid_move(&state, &next, 1),
+		"Next Coordinate is fixed and it belongs to the next number.");
+}
+
 int run_backtracker_tests(void)
 {
 	setup();
@@ -169,6 +193,9 @@ int run_backtracker_tests(void)
 
 	sput_enter_suite("test_valid_move_free()");
 	sput_run_test(test_valid_move_free);
+
+	sput_enter_suite("test_valid_move_fixed()");
+	sput_run_test(test_valid_move_fixed);
 
 	sput_finish_testing();
 
