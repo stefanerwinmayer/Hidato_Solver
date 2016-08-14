@@ -97,6 +97,34 @@ static void test_valid_move_out_of_lower_bounds()
 		"(0, 0) should pass valid move.");
 }
 
+static void test_valid_move_out_of_upper_bounds()
+{
+	struct State state;
+	state.board_rows = 9;
+	state.board_cols = 9;
+
+	struct Coordinate outside_1 = { 9, 9 };
+	struct Coordinate outside_2 = { 9, 8 };
+	struct Coordinate outside_3 = { 8, 9 };
+	struct Coordinate inside = { 8, 8 };
+
+	sput_fail_if(
+		valid_move(&state, &outside_1, 1),
+		"Coordiantes too large should fail valid move.");
+
+	sput_fail_if(
+		valid_move(&state, &outside_2, 1),
+		"Row coordiante too large should fail valid move.");
+
+	sput_fail_if(
+		valid_move(&state, &outside_3, 1),
+		"Col coordiante too large should fail valid move.");
+
+	sput_fail_unless(
+		valid_move(&state, &inside, 1),
+		"(8, 8) should pass valid move.");
+}
+
 int run_backtracker_tests(void)
 {
 	setup();
@@ -115,8 +143,11 @@ int run_backtracker_tests(void)
 	sput_enter_suite("test_revert_state_visited_fixed()");
 	sput_run_test(test_revert_state_visited_fixed);
 
-	sput_enter_suite("test_valid_move_out_of_bounds()");
+	sput_enter_suite("test_valid_move_out_of_lower_bounds()");
 	sput_run_test(test_valid_move_out_of_lower_bounds);
+
+	sput_enter_suite("test_valid_move_out_of_upper_bounds()");
+	sput_run_test(test_valid_move_out_of_upper_bounds);
 
 	sput_finish_testing();
 
