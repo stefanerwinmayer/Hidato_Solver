@@ -2,7 +2,6 @@
 #include "../backtracker.h"
 
 struct Coordinate current;
-//struct State state;
 
 struct State state_1;
 struct State state_2;
@@ -76,6 +75,9 @@ static void test_revert_state_visited_fixed()
 static void test_valid_move_out_of_lower_bounds()
 {
 	struct State state;
+	state.board_rows = 9;
+	state.board_cols = 9;
+
 	struct Coordinate outside_1 = { -1, -1 };
 	struct Coordinate outside_2 = { -1, 0 };
 	struct Coordinate outside_3 = { 0, -1 };
