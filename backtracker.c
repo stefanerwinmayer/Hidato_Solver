@@ -1,5 +1,12 @@
 #include "backtracker.h"
 
+BOOL backtrack(struct State *state,
+	const struct Coordinate *current,
+	const int ham_pos)
+{
+	return FALSE;
+}
+
 void update_state(
 	struct State *state,
 	const struct Coordinate *current,
