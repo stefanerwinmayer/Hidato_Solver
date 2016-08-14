@@ -26,7 +26,8 @@ BOOL valid_move(
 	const struct Coordinate *next,
 	const int next_ham_pos)
 {
-	if (0 <= next->row && 0 <= next->col)
+	if (0 <= next->row && next->row < state->board_rows &&
+		0 <= next->col && next->col < state->board_cols)
 	{
 		return TRUE;
 	}
