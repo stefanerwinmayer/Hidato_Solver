@@ -157,6 +157,20 @@ static void test_valid_move_fixed()
 		"Next Coordinate is fixed and it belongs to the next number.");
 }
 
+static void test_valid_move_taken()
+{
+	struct State state;
+	state.board_rows = 9;
+	state.board_cols = 9;
+	state.board[1][1] = TAKEN;
+
+	struct Coordinate next = { 1, 1 };
+
+	sput_fail_if(
+		valid_move(&state, &next, 1),
+		"Next Coordinate was already visited, invalid move.");
+}
+
 static void test_valid_move_visited_fixed()
 {
 	struct State state;
@@ -201,6 +215,9 @@ int run_backtracker_tests(void)
 
 	sput_enter_suite("test_valid_move_fixed()");
 	sput_run_test(test_valid_move_fixed);
+
+	sput_enter_suite("test_valid_move_taken()");
+	sput_run_test(test_valid_move_taken);
 
 	sput_enter_suite("test_valid_move_visited_fixed()");
 	sput_run_test(test_valid_move_visited_fixed);
