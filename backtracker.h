@@ -9,6 +9,7 @@
 #define VISITED_FIXED 'V'
 #define FREE '?'
 #define TAKEN 'T'
+#define BLOCKED 'X'
 
 #define UNKNOWN -1
 
