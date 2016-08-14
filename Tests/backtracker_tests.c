@@ -128,6 +128,21 @@ static void test_valid_move_out_of_upper_bounds()
 		"(8, 8) should pass valid move.");
 }
 
+static void test_valid_move_free()
+{
+	struct State state;
+	state.board_rows = 9;
+	state.board_cols = 9;
+	state.board[1][1] = FREE;
+
+	struct Coordinate next = { 1, 1 };
+
+	sput_fail_unless(
+		valid_move(&state, &next, 1),
+		"Next Coordinate is free, so it should be a valid move.");
+
+}
+
 int run_backtracker_tests(void)
 {
 	setup();
@@ -151,6 +166,9 @@ int run_backtracker_tests(void)
 
 	sput_enter_suite("test_valid_move_out_of_upper_bounds()");
 	sput_run_test(test_valid_move_out_of_upper_bounds);
+
+	sput_enter_suite("test_valid_move_free()");
+	sput_run_test(test_valid_move_free);
 
 	sput_finish_testing();
 
