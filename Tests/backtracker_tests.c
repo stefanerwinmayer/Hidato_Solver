@@ -186,6 +186,20 @@ static void test_valid_move_visited_fixed()
 
 }
 
+static void test_valid_move_blocked()
+{
+	struct State state;
+	state.board_rows = 9;
+	state.board_cols = 9;
+	state.board[1][1] = BLOCKED;
+
+	struct Coordinate next = { 1, 1 };
+
+	sput_fail_if(
+		valid_move(&state, &next, 1),
+		"Next Coordinate is blocked, invalid move.");
+}
+
 int run_backtracker_tests(void)
 {
 	setup();
@@ -221,6 +235,9 @@ int run_backtracker_tests(void)
 
 	sput_enter_suite("test_valid_move_visited_fixed()");
 	sput_run_test(test_valid_move_visited_fixed);
+
+	sput_enter_suite("test_valid_move_blocked()");
+	sput_run_test(test_valid_move_blocked);
 
 	sput_finish_testing();
 
