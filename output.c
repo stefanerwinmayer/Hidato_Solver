@@ -3,7 +3,7 @@
 void print_board(struct State *state)
 {
 	int i, j;
-	char output[MAX_ROWS][MAX_COLS] = { BLOCKED };
+	char output[MAX_ROWS][MAX_COLS] = { {BLOCKED} };
 	
 	for (i = 0; i < state->ham_length; i++)
 	{
@@ -17,9 +17,9 @@ void print_board(struct State *state)
 	{
 		for (j = 0; j < state->board_cols; j++)
 		{
-			if (state->board[i][j] == UNKNOWN)
+			if (state->board[i][j] == FREE)
 			{
-				output[i][j] = UNKNOWN;
+				output[i][j] = FREE;
 			}
 		}
 	}
@@ -28,7 +28,7 @@ void print_board(struct State *state)
 	{
 		for (j = 0; j < state->board_cols; j++)
 		{
-			if (output[i][j] != BLOCKED && output[i][j] != UNKNOWN)
+			if (output[i][j] != BLOCKED && output[i][j] != FREE)
 			{
 				printf("[%2.d]", output[i][j]);
 			}
