@@ -8,8 +8,6 @@ struct State state_2;
 struct State state_3;
 struct State state_4;
 
-BOOL smart;
-
 static void setup()
 {
 	current.row = 1;
