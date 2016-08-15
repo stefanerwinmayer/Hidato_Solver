@@ -14,27 +14,35 @@ struct State state_7;
 struct State state_8;
 struct State state_9;
 
-struct Coordinate start;
+struct Coordinate start_1 = { -1, -1 };
+struct Coordinate start_2 = { -1, -1 };
+struct Coordinate start_3 = { -1, -1 };
+struct Coordinate start_4 = { -1, -1 };
+struct Coordinate start_5 = { -1, -1 };
+struct Coordinate start_6 = { -1, -1 };
+struct Coordinate start_7 = { -1, -1 };
+struct Coordinate start_8 = { -1, -1 };
+struct Coordinate start_9 = { -1, -1 };
 
 static void setup(void)
 {
-	initialise_state("[1]", &state_1, &start);
+	initialise_state("[1]", &state_1, &start_1);
 
-	initialise_state("[11]", &state_2, &start);
+	initialise_state("[11]", &state_2, &start_2);
 
-	initialise_state("[?]", &state_3, &start);
+	initialise_state("[?]", &state_3, &start_3);
 
-	initialise_state("[x]", &state_4, &start);
+	initialise_state("[x]", &state_4, &start_4);
 
-	initialise_state("[09]", &state_5, &start);
+	initialise_state("[09]", &state_5, &start_5);
 
-	initialise_state("[??]", &state_6, &start);
+	initialise_state("[??]", &state_6, &start_6);
 
-	initialise_state("[XX]", &state_7, &start);
+	initialise_state("[XX]", &state_7, &start_7);
 
-	initialise_state("[01][??]", &state_8, &start);
+	initialise_state("[01][??]", &state_8, &start_8);
 
-	initialise_state("[01][??]\n[XX][02]", &state_9, &start);
+	initialise_state("[01][??]\n[XX][02]", &state_9, &start_9);
 }
 
 static void test_initialise_state_board()
@@ -206,6 +214,24 @@ static void test_initialise_state_hamiltonian_cols()
 		"[01][??]\\n[XX][02]");
 }
 
+static void test_initialise_state_start_coordinate()
+{
+	sput_fail_unless(
+		start_1.row == 0 &&
+		start_1.col == 0,
+		"Number 1 is at (0, 0)");
+
+	sput_fail_unless(
+		start_8.row == 0 &&
+		start_8.col == 0,
+		"Number 1 is at (0, 0)");
+
+	sput_fail_unless(
+		start_9.row == 0 &&
+		start_9.col == 0,
+		"Number 1 is at (0, 0)");
+}
+
 int run_init_state_tests(void)
 {
 	setup();
@@ -226,6 +252,9 @@ int run_init_state_tests(void)
 
 	sput_enter_suite("test_initialise_state_hamiltonian_cols()");
 	sput_run_test(test_initialise_state_hamiltonian_cols);
+
+	sput_enter_suite("test_initialise_state_start_coordinate()");
+	sput_run_test(test_initialise_state_start_coordinate);
 
 	sput_finish_testing();
 
