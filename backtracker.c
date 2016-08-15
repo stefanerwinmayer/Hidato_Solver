@@ -109,3 +109,10 @@ void revert_state(struct State *state,
 		break;
 	}
 }
+
+int distance(
+	const struct Coordinate *first,
+	const struct Coordinate *second)
+{
+	return -1;
+}

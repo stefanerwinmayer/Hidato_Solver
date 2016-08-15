@@ -36,4 +36,8 @@ void revert_state(
 	const struct Coordinate *current,
 	const int ham_pos);
 
+int distance(
+	const struct Coordinate *first,
+	const struct Coordinate *second);
+
 #endif
