@@ -208,6 +208,11 @@ static void test_valid_move_blocked()
 		"Next Coordinate is blocked, invalid move.");
 }
 
+static void test_distance()
+{
+
+}
+
 int run_backtracker_tests(void)
 {
 	setup();
@@ -246,6 +251,9 @@ int run_backtracker_tests(void)
 
 	sput_enter_suite("test_valid_move_blocked()");
 	sput_run_test(test_valid_move_blocked);
+
+	sput_enter_suite("test_distance()");
+	sput_run_test(test_distance);
 
 	sput_finish_testing();
 
