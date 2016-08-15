@@ -63,6 +63,8 @@ void initialise_state(
 				state->board[row][col] = '?';
 				(state->board_cols)++;
 
+				state->ham_length++;
+
 				if (*p != '\n')
 				{
 					col++;
