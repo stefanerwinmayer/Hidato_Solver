@@ -74,7 +74,8 @@ BOOL valid_move(
 	if (0 <= next->row && next->row < state->board_rows &&
 		0 <= next->col && next->col < state->board_cols)
 	{
-		if (state->board[next->row][next->col] == FREE)
+		if (state->board[next->row][next->col] == FREE &&
+			state->hamiltonian[next_ham_pos].row == UNKNOWN)
 		{
 			return TRUE;
 		}
