@@ -19,6 +19,12 @@ static void test_backtrack_solvable()
 		backtrack(&state, &start, 0),
 		"Backtracking [?][1] should succeed."
 	);
+
+	initialise_state("[?][1]/n[2][?]", &state, &start);
+	sput_fail_unless(
+		backtrack(&state, &start, 0),
+		"Backtracking [?][1]/n[2][?] should succeed."
+	);
 }
 
 int run_backtracker_algorithm_tests(void)
