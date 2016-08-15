@@ -15,9 +15,11 @@
 
 #define NUMBER_OF_MOVES 8
 
-BOOL backtrack(struct State *state,
+BOOL backtrack(
+	struct State *state,
 	const struct Coordinate *current,
-	const int ham_pos);
+	const int ham_pos,
+	const BOOL smart);
 
 void update_state(
 	struct State *state,

@@ -4,6 +4,7 @@ int main(void)
 {
 	struct State state;
 	struct Coordinate start;
+	BOOL smart = FALSE;
 	char input[MAX_FILE_LENGTH];
 	char filename[] = "sample.txt";
 
@@ -16,7 +17,7 @@ int main(void)
 	printf("Input Hidato:\n\n");
 	print_board(&state);
 
-	backtrack(&state, &start, INITIAL_HAM_POS);
+	backtrack(&state, &start, INITIAL_HAM_POS, smart);
 
 	printf("Hamiltonian Path:\n");
 	print_hamiltonian_path(&state);

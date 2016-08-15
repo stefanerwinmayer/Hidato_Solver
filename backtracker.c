@@ -2,7 +2,8 @@
 
 BOOL backtrack(struct State *state,
 	const struct Coordinate *current,
-	const int ham_pos)
+	const int ham_pos,
+	const BOOL smart)
 {
 	int i;
 	struct Coordinate next;
@@ -23,7 +24,7 @@ BOOL backtrack(struct State *state,
 
 		if (valid_move(state, &next, ham_pos + 1))
 		{
-			if (!backtrack(state, &next, ham_pos + 1))
+			if (!backtrack(state, &next, ham_pos + 1, smart))
 			{
 				continue;
 			}
