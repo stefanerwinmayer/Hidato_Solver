@@ -210,7 +210,12 @@ static void test_valid_move_blocked()
 
 static void test_distance()
 {
+	struct Coordinate first = { 0, 0 };
+	struct Coordinate second = { 2, 2 };
 
+	sput_fail_unless(
+		distance(&first, &second) == 2,
+		"Distance between (0, 0) and (2, 2) should be 2.");
 }
 
 int run_backtracker_tests(void)
