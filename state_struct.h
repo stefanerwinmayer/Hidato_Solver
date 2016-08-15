@@ -7,6 +7,7 @@
 struct State {
 	struct Coordinate hamiltonian[MAX_NUMS];
 	int ham_length;
+	int next_fixed_pos;
 
 	char board[MAX_ROWS][MAX_COLS];
 	int board_rows;
