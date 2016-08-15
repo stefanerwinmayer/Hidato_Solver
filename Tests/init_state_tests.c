@@ -229,7 +229,7 @@ static void test_initialise_state_ham_length()
 		"[11]");
 
 	sput_fail_unless(
-		state_3.ham_length == 0,
+		state_3.ham_length == 1,
 		"[?]");
 
 	sput_fail_unless(
@@ -241,7 +241,7 @@ static void test_initialise_state_ham_length()
 		"[09]");
 
 	sput_fail_unless(
-		state_6.ham_length == 0,
+		state_6.ham_length == 1,
 		"[??]");
 
 	sput_fail_unless(
@@ -249,11 +249,11 @@ static void test_initialise_state_ham_length()
 		"[XX]");
 
 	sput_fail_unless(
-		state_8.ham_length == 1,
+		state_8.ham_length == 2,
 		"[01][??]");
 
 	sput_fail_unless(
-		state_9.ham_length == 2,
+		state_9.ham_length == 3,
 		"[01][??]\\n[XX][02]");
 }
 
