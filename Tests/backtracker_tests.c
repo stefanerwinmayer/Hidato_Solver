@@ -124,13 +124,21 @@ static void test_valid_move_free()
 	state.board_rows = 9;
 	state.board_cols = 9;
 	state.board[1][1] = FREE;
+	state.hamiltonian[1].row = UNKNOWN;
+	state.hamiltonian[1].col = UNKNOWN;
 
 	struct Coordinate next = { 1, 1 };
 
 	sput_fail_unless(
 		valid_move(&state, &next, 1),
-		"Next Coordinate is free, so it should be a valid move.");
+		"Next Coordinate is free and next number unknown, so it should be a valid move.");
 
+	state.hamiltonian[1].row = 2;
+	state.hamiltonian[1].col = 2;
+
+	sput_fail_if(
+		valid_move(&state, &next, 1),
+		"Next Coordinate is free but next number is fixed and not there so it should be an invalid move.");
 }
 
 static void test_valid_move_fixed()
