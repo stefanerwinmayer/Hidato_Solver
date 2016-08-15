@@ -18,6 +18,9 @@ int main(void)
 
 	backtrack(&state, &start, INITIAL_HAM_POS);
 
+	printf("Hamiltonian Path:\n");
+	print_hamiltonian_path(&state);
+
 	printf("Solved Hidato:\n\n");
 	print_board(&state);
 
