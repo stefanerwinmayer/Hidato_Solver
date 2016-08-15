@@ -152,6 +152,7 @@
     <ClCompile Include="..\backtracker.c" />
     <ClCompile Include="..\file_reader.c" />
     <ClCompile Include="..\init_state.c" />
+    <ClCompile Include="..\output.c" />
     <ClCompile Include="backtracker_algorithm_tests.c" />
     <ClCompile Include="backtracker_tests.c" />
     <ClCompile Include="file_reader_tests.c" />
@@ -166,6 +167,7 @@
     <ClInclude Include="..\file_reader.h" />
     <ClInclude Include="..\hidato_limits.h" />
     <ClInclude Include="..\init_state.h" />
+    <ClInclude Include="..\output.h" />
     <ClInclude Include="..\state_struct.h" />
     <ClInclude Include="sput.h" />
     <ClInclude Include="test_runner.h" />

@@ -160,6 +160,7 @@
     <ClCompile Include="file_reader.c" />
     <ClCompile Include="hidato_solver.c" />
     <ClCompile Include="init_state.c" />
+    <ClCompile Include="output.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="backtracker.h" />
@@ -169,6 +170,7 @@
     <ClInclude Include="hidato_limits.h" />
     <ClInclude Include="hidato_solver.h" />
     <ClInclude Include="init_state.h" />
+    <ClInclude Include="output.h" />
     <ClInclude Include="state_struct.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
