@@ -5,7 +5,7 @@
 struct State state;
 struct Coordinate start;
 
-static void test_backtrack_solvable_one_number()
+static void test_backtrack_solvable()
 {
 	initialise_state("[1]", &state, &start);
 	
@@ -25,8 +25,8 @@ int run_backtracker_algorithm_tests(void)
 {
 	sput_start_testing();
 
-	sput_enter_suite("test_backtrack_solvable_one_number()");
-	sput_run_test(test_backtrack_solvable_one_number);
+	sput_enter_suite("test_backtrack_solvable()");
+	sput_run_test(test_backtrack_solvable);
 
 	sput_finish_testing();
 
