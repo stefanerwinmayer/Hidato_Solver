@@ -126,6 +126,17 @@ void revert_state(struct State *state,
 	}
 }
 
+void revert_next_fixed(
+	struct State *state,
+	const struct Coordinate *current,
+	const int ham_pos)
+{
+	if (state->board[current->row][current->col] == FIXED)
+	{
+		state->next_fixed_pos = ham_pos;
+	}
+}
+
 BOOL sensible_move(
 	const struct State *state,
 	const struct Coordinate *next,
