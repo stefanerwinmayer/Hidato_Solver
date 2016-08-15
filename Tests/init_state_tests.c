@@ -218,6 +218,45 @@ static void test_initialise_state_hamiltonian_cols()
 		"[01][??]\\n[XX][02]");
 }
 
+static void test_initialise_state_ham_length()
+{
+	sput_fail_unless(
+		state_1.ham_length == 1,
+		"[1]");
+
+	sput_fail_unless(
+		state_2.ham_length == 1,
+		"[11]");
+
+	sput_fail_unless(
+		state_3.ham_length == 0,
+		"[?]");
+
+	sput_fail_unless(
+		state_4.ham_length == 0,
+		"[x]");
+
+	sput_fail_unless(
+		state_5.ham_length == 1,
+		"[09]");
+
+	sput_fail_unless(
+		state_6.ham_length == 0,
+		"[??]");
+
+	sput_fail_unless(
+		state_7.ham_length == 0,
+		"[XX]");
+
+	sput_fail_unless(
+		state_8.ham_length == 1,
+		"[01][??]");
+
+	sput_fail_unless(
+		state_9.ham_length == 2,
+		"[01][??]\\n[XX][02]");
+}
+
 static void test_initialise_state_start_coordinate()
 {
 	sput_fail_unless(
@@ -261,6 +300,9 @@ int run_init_state_tests(void)
 
 	sput_enter_suite("test_initialise_state_hamiltonian_cols()");
 	sput_run_test(test_initialise_state_hamiltonian_cols);
+
+	sput_enter_suite("test_initialise_state_ham_length()");
+	sput_run_test(test_initialise_state_ham_length);
 
 	sput_enter_suite("test_initialise_state_start_coordinate()");
 	sput_run_test(test_initialise_state_start_coordinate);
