@@ -14,6 +14,7 @@ struct State state_7;
 struct State state_8;
 struct State state_9;
 struct State state_10;
+struct State state_11;
 
 struct Coordinate start_1 = { -1, -1 };
 struct Coordinate start_2 = { -1, -1 };
@@ -25,6 +26,7 @@ struct Coordinate start_7 = { -1, -1 };
 struct Coordinate start_8 = { -1, -1 };
 struct Coordinate start_9 = { -1, -1 };
 struct Coordinate start_10 = { -1, -1 };
+struct Coordinate start_11 = { -1, -1 };
 
 static void setup(void)
 {
@@ -47,6 +49,8 @@ static void setup(void)
 	initialise_state("[01][??]\n[XX][02]", &state_9, &start_9);
 
 	initialise_state("[??][??]\n[01][??]", &state_10, &start_10);
+
+	initialise_state("[?][1]\n[2][?]", &state_11, &start_11);
 }
 
 static void test_initialise_state_board()
@@ -90,6 +94,13 @@ static void test_initialise_state_board()
 		state_9.board[1][0] == 'X' &&
 		state_9.board[1][1] == 'F',
 		"[01][??]\\n[XX][02]");
+
+	sput_fail_unless(
+		state_11.board[0][0] == '?' &&
+		state_11.board[0][1] == 'F' &&
+		state_11.board[1][0] == 'F' &&
+		state_11.board[1][1] == '?',
+		"[?][1]/n[2][?]");
 }
 
 static void test_initialise_state_board_rows()
@@ -129,6 +140,11 @@ static void test_initialise_state_board_rows()
 	sput_fail_unless(
 		state_9.board_rows == 2,
 		"[01][??]\\n[XX][02]");
+
+	sput_fail_unless(
+		state_11.board_rows == 2,
+		"[?][1]/n[2][?]");
+	
 }
 
 static void test_initialise_state_board_cols()
@@ -168,6 +184,10 @@ static void test_initialise_state_board_cols()
 	sput_fail_unless(
 		state_9.board_cols == 2,
 		"[01][??]\\n[XX][02]");
+
+	sput_fail_unless(
+		state_11.board_cols == 2,
+		"[?][1]/n[2][?]");
 }
 
 static void test_initialise_state_hamiltonian_rows()
@@ -192,6 +212,11 @@ static void test_initialise_state_hamiltonian_rows()
 		state_9.hamiltonian[0].row == 0 &&
 		state_9.hamiltonian[1].row == 1,
 		"[01][??]\\n[XX][02]");
+
+	sput_fail_unless(
+		state_11.hamiltonian[0].row == 0 &&
+		state_11.hamiltonian[1].row == 1,
+		"[?][1]/n[2][?]");
 }
 
 static void test_initialise_state_hamiltonian_cols()
@@ -216,6 +241,11 @@ static void test_initialise_state_hamiltonian_cols()
 		state_9.hamiltonian[0].col == 0 &&
 		state_9.hamiltonian[1].col == 1,
 		"[01][??]\\n[XX][02]");
+
+	sput_fail_unless(
+		state_11.hamiltonian[0].col == 1 &&
+		state_11.hamiltonian[1].col == 0,
+		"[?][1]/n[2][?]");
 }
 
 static void test_initialise_state_ham_length()
@@ -255,6 +285,10 @@ static void test_initialise_state_ham_length()
 	sput_fail_unless(
 		state_9.ham_length == 3,
 		"[01][??]\\n[XX][02]");
+
+	sput_fail_unless(
+		state_11.ham_length == 4,
+		"[?][1]/n[2][?]");
 }
 
 static void test_initialise_state_start_coordinate()
@@ -278,6 +312,11 @@ static void test_initialise_state_start_coordinate()
 		start_10.row == 1 &&
 		start_10.col == 0,
 		"Number 1 is at (1, 0)");
+
+	sput_fail_unless(
+		start_11.row == 0 &&
+		start_11.col == 1,
+		"Number 1 is at (0, 1)");
 }
 
 int run_init_state_tests(void)
