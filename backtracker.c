@@ -17,6 +17,11 @@ BOOL backtrack(struct State *state,
 
 	update_state(state, current, ham_pos);
 
+	if (smart)
+	{
+		update_next_fixed(state, current, ham_pos);
+	}
+
 	for (i = 0; i < NUMBER_OF_MOVES; i++)
 	{
 		next.row = current->row + MOVE_SET[i].row;
@@ -38,6 +43,12 @@ BOOL backtrack(struct State *state,
 	if (ham_pos != state->ham_length - 1) /* if not solved yet */
 	{
 		revert_state(state, current, ham_pos);
+
+		if (smart)
+		{
+			revert_next_fixed(state, current, ham_pos);
+		}
+
 		return FALSE;
 	}
 	else
