@@ -1,6 +1,7 @@
 #ifndef BACKTRACKER
 #define BACKTRACKER
 
+#include <math.h>
 #include "boolean.h"
 #include "coordinate_struct.h"
 #include "state_struct.h"
