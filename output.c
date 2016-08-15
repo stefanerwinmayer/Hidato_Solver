@@ -38,7 +38,7 @@ void print_board(struct State *state)
 			}
 			else
 			{
-				printf("[??]");
+				printf("[  ]");
 			}
 		}
 		printf("\n");
