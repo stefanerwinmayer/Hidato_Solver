@@ -8,13 +8,28 @@ void initialise_state(
 	int row, col, number;
 	char *p;
 	BOOL processing[VALID_INPUTS];
-	
+	struct Coordinate unknown = { UNKOWN, UNKOWN };
+
 	state->board_rows = state->board_cols = state->ham_length = 0;
-	row = col = number = 0;
 
 	processing[NUMBER] = FALSE;
 	processing[QUESTION_MARK] = FALSE;
 	processing[X] = FALSE;
+
+	for (row = 0; row < MAX_ROWS; row++)
+	{
+		for (col = 0; col < MAX_COLS; col++)
+		{
+			state->board[row][col] = BLOCKED;
+		}
+	}
+
+	for (number = 0; number < MAX_NUMS; number++)
+	{
+		state->hamiltonian[number] = unknown;
+	}
+
+	row = col = number = 0;
 
 	(state->board_rows)++;
 	for (p = input; p < input + strlen(input); p++)
