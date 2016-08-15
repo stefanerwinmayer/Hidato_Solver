@@ -36,8 +36,16 @@ void print_board(struct State *state)
 		}
 	}
 
+	printf(" ");
+	for (j = 0; j < state->board_cols; j++)
+	{
+		printf("   %d", j);
+	}
+	printf("\n");
+
 	for (i = 0; i < state->board_rows; i++)
 	{
+		printf("%d ", i);
 		for (j = 0; j < state->board_cols; j++)
 		{
 			if (output[i][j] != BLOCKED && output[i][j] != FREE)
