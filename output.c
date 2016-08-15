@@ -1,10 +1,22 @@
 #include "output.h"
 
+void print_hamiltonian_path(struct State *state)
+{
+	int i;
+
+	printf("Hamiltonian Path:\n");
+	printf("(%d, %d)", state->hamiltonian[0].row, state->hamiltonian[0].col);
+	for (i = 1; i < state->ham_length; i++)
+	{
+		printf(" -> (%d, %d)", state->hamiltonian[i].row, state->hamiltonian[i].col);
+	}
+}
+
 void print_board(struct State *state)
 {
 	int i, j;
 	char output[MAX_ROWS][MAX_COLS] = { {BLOCKED} };
-	
+
 	for (i = 0; i < state->ham_length; i++)
 	{
 		if (state->hamiltonian[i].row >= 0 && state->hamiltonian[i].col >= 0)

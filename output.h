@@ -9,6 +9,7 @@
 
 #define UNKNOWN -1
 
+void print_hamiltonian_path(struct State *state);
 void print_board(struct State *state);
 
 #endif
