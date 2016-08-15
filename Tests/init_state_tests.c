@@ -14,25 +14,27 @@ struct State state_7;
 struct State state_8;
 struct State state_9;
 
+struct Coordinate start;
+
 static void setup(void)
 {
-	initialise_state("[1]", &state_1);
+	initialise_state("[1]", &state_1, &start);
 
-	initialise_state("[11]", &state_2);
+	initialise_state("[11]", &state_2, &start);
 
-	initialise_state("[?]", &state_3);
+	initialise_state("[?]", &state_3, &start);
 
-	initialise_state("[x]", &state_4);
+	initialise_state("[x]", &state_4, &start);
 
-	initialise_state("[09]", &state_5);
+	initialise_state("[09]", &state_5, &start);
 
-	initialise_state("[??]", &state_6);
+	initialise_state("[??]", &state_6, &start);
 
-	initialise_state("[XX]", &state_7);
+	initialise_state("[XX]", &state_7, &start);
 
-	initialise_state("[01][??]", &state_8);
+	initialise_state("[01][??]", &state_8, &start);
 
-	initialise_state("[01][??]\n[XX][02]", &state_9);
+	initialise_state("[01][??]\n[XX][02]", &state_9, &start);
 }
 
 static void test_initialise_state_board()
