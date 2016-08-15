@@ -30,7 +30,7 @@ static void test_backtrack_solvable()
 
 static void test_backtrack_unsolvable()
 {
-	initialise_state("[1][?][2]", &state, &start, smart);
+	initialise_state("[1][?][2]", &state, &start);
 
 	sput_fail_if(
 		backtrack(&state, &start, 0, smart),
