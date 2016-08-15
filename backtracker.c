@@ -4,7 +4,45 @@ BOOL backtrack(struct State *state,
 	const struct Coordinate *current,
 	const int ham_pos)
 {
-	return FALSE;
+	int i;
+	struct Coordinate next;
+
+	static const struct Coordinate MOVE_SET[] =
+	{
+		{ -1, -1 },{ -1, 0 },{ -1, 1 },
+		{  0, -1 },          {  0, 1 },
+		{  1, -1 },{  1, 0 },{  1, 1 }
+	};
+
+	update_state(state, current, ham_pos);
+
+	for (i = 0; i < NUMBER_OF_MOVES; i++)
+	{
+		next.row = current->row + MOVE_SET[i].row;
+		next.col = current->col + MOVE_SET[i].col;
+
+		if (valid_move(state, &next, ham_pos + 1))
+		{
+			if (!backtrack(state, &next, ham_pos + 1))
+			{
+				continue;
+			}
+			else
+			{
+				return TRUE;
+			}
+		}
+	}
+
+	if (ham_pos != state->ham_length - 1) /* if not solved yet */
+	{
+		revert_state(state, current, ham_pos);
+		return FALSE;
+	}
+	else
+	{
+		return TRUE;
+	}
 }
 
 void update_state(

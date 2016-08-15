@@ -13,6 +13,8 @@
 
 #define UNKNOWN -1
 
+#define NUMBER_OF_MOVES 8
+
 BOOL backtrack(struct State *state,
 	const struct Coordinate *current,
 	const int ham_pos);
