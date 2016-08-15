@@ -11,7 +11,13 @@ static void test_backtrack_solvable_one_number()
 	
 	sput_fail_unless(
 		backtrack(&state, &start, 0),
-		"Single known node should succeed."
+		"Backtracking [1] should succeed."
+	);
+
+	initialise_state("[?][1]", &state, &start);
+	sput_fail_unless(
+		backtrack(&state, &start, 0),
+		"Backtracking [?][1] should succeed."
 	);
 }
 
