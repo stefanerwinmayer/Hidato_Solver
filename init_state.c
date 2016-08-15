@@ -9,7 +9,7 @@ void initialise_state(
 	char *p;
 	BOOL processing[VALID_INPUTS];
 	
-	state->board_rows = state->board_cols = 0;
+	state->board_rows = state->board_cols = state->ham_length = 0;
 	row = col = number = 0;
 
 	processing[NUMBER] = FALSE;
@@ -38,8 +38,10 @@ void initialise_state(
 			{
 				state->board[row][col] = 'F';
 				(state->board_cols)++;
+
 				state->hamiltonian[number - 1].row = row;
 				state->hamiltonian[number - 1].col = col;
+				state->ham_length++;
 
 				if (number == 1)
 				{
