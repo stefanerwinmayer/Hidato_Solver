@@ -68,11 +68,19 @@ void update_state(
 }
 
 void update_next_fixed(
-	const struct State *state,
+	struct State *state,
 	const struct Coordinate *current,
 	const int ham_pos)
 {
+	if (state->board[current->row][current->col] == VISITED_FIXED)
+	{
+		state->next_fixed_pos = ham_pos + 1;
 
+		while (state->hamiltonian[state->next_fixed_pos].row == UNKNOWN)
+		{
+			(state->next_fixed_pos)++;
+		}
+	}
 }
 
 BOOL valid_move(
