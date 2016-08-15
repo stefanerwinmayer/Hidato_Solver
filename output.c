@@ -9,7 +9,7 @@ void print_board(struct State *state)
 	{
 		if (state->hamiltonian[i].row >= 0 && state->hamiltonian[i].col >= 0)
 		{
-			output[state->hamiltonian[i].row][state->hamiltonian[i].col] = (char)i + 1;
+			output[state->hamiltonian[i].row][state->hamiltonian[i].col] = (char)(i + 1);
 		}
 	}
 
