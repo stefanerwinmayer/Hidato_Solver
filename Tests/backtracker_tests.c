@@ -12,8 +12,6 @@ static void setup()
 {
 	current.row = 1;
 	current.col = 1;
-
-	smart = FALSE;
 }
 
 static void test_update_state_free()
