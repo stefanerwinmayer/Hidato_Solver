@@ -24,7 +24,7 @@ static void test_update_state_free()
 	state_1.hamiltonian[1].row = UNKNOWN;
 	state_1.hamiltonian[1].col = UNKNOWN;
 
-	update_state(&state_1, &current, 1, smart);
+	update_state(&state_1, &current, 1);
 
 	sput_fail_unless(
 		state_1.board[1][1] == TAKEN,
@@ -40,7 +40,7 @@ static void test_update_state_fixed()
 {
 	state_2.board[1][1] = FIXED;
 
-	update_state(&state_2, &current, 1, smart);
+	update_state(&state_2, &current, 1);
 
 	sput_fail_unless(
 		state_2.board[1][1] == VISITED_FIXED,

@@ -15,7 +15,7 @@ BOOL backtrack(struct State *state,
 		{  1, -1 },{  1, 0 },{  1, 1 }
 	};
 
-	update_state(state, current, ham_pos, smart);
+	update_state(state, current, ham_pos);
 
 	for (i = 0; i < NUMBER_OF_MOVES; i++)
 	{
@@ -49,8 +49,7 @@ BOOL backtrack(struct State *state,
 void update_state(
 	struct State *state,
 	const struct Coordinate *current,
-	const int ham_pos,
-	const BOOL smart)
+	const int ham_pos)
 {
 	switch (state->board[current->row][current->col])
 	{

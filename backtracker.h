@@ -25,8 +25,7 @@ BOOL backtrack(
 void update_state(
 	struct State *state,
 	const struct Coordinate *current,
-	const int ham_pos,
-	const BOOL smart);
+	const int ham_pos);
 
 BOOL valid_move(
 	const struct State *state,
