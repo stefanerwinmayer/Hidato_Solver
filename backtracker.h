@@ -27,6 +27,11 @@ void update_state(
 	const struct Coordinate *current,
 	const int ham_pos);
 
+void update_next_fixed(
+	const struct State *state,
+	const struct Coordinate *current,
+	const int ham_pos);
+
 BOOL valid_move(
 	const struct State *state,
 	const struct Coordinate *next,

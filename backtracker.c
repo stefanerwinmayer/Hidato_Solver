@@ -67,6 +67,14 @@ void update_state(
 	}
 }
 
+void update_next_fixed(
+	const struct State *state,
+	const struct Coordinate *current,
+	const int ham_pos)
+{
+
+}
+
 BOOL valid_move(
 	const struct State *state,
 	const struct Coordinate *next,
