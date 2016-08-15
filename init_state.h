@@ -12,6 +12,9 @@
 #define X 2
 #define VALID_INPUTS 3
 
-void initialise_state(char *input, struct State *state);
+void initialise_state(
+	char *input,
+	struct State *state,
+	struct Coordinate *start);
 
 #endif

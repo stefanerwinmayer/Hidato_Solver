@@ -1,6 +1,9 @@
 #include "init_state.h"
 
-void initialise_state(char *input, struct State *state)
+void initialise_state(
+	char *input,
+	struct State *state,
+	struct Coordinate *start)
 {
 	int row, col, number;
 	char *p;
