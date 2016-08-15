@@ -2,15 +2,15 @@
 #include "../init_state.h"
 #include "../backtracker.h"
 
-struct State state_1;
-struct Coordinate start_1;
+struct State state;
+struct Coordinate start;
 
-static void test_backtrack_solvable()
+static void test_backtrack_solvable_one_number()
 {
-	initialise_state("[1]", &state_1, &start_1);
+	initialise_state("[1]", &state, &start);
 	
 	sput_fail_unless(
-		backtrack(&state_1, &start_1, 0),
+		backtrack(&state, &start, 0),
 		"Single known node should succeed."
 	);
 }
@@ -19,8 +19,8 @@ int run_backtracker_algorithm_tests(void)
 {
 	sput_start_testing();
 
-	sput_enter_suite("test_backtrack_solvable()");
-	sput_run_test(test_backtrack_solvable);
+	sput_enter_suite("test_backtrack_solvable_one_number()");
+	sput_run_test(test_backtrack_solvable_one_number);
 
 	sput_finish_testing();
 
