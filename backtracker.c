@@ -110,6 +110,14 @@ void revert_state(struct State *state,
 	}
 }
 
+BOOL sensible_move(
+	const struct State *state,
+	const struct Coordinate *next,
+	const int next_ham_pos)
+{
+	return FALSE;
+}
+
 int distance(
 	const struct Coordinate *first,
 	const struct Coordinate *second)
