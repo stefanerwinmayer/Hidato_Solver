@@ -40,6 +40,13 @@ void initialise_state(
 				(state->board_cols)++;
 				state->hamiltonian[number - 1].row = row;
 				state->hamiltonian[number - 1].col = col;
+
+				if (number == 1)
+				{
+					start->row = row;
+					start->col = col;
+				}
+
 				number = 0;
 
 				if (*p != '\n')
