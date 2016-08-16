@@ -12,6 +12,8 @@ struct State {
 	char board[MAX_ROWS][MAX_COLS];
 	int board_rows;
 	int board_cols;
+
+	int backtrack_counter;
 };
 
 #endif
