@@ -15,6 +15,7 @@ BOOL backtrack(struct State *state,
 		{  1, -1 },{  1, 0 },{  1, 1 }
 	};
 
+	(state->backtrack_counter)++;
 	update_state(state, current, ham_pos);
 
 	if (smart)
