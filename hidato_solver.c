@@ -17,6 +17,8 @@ int main(void)
 	printf("Input Hidato:\n\n");
 	print_board(&state);
 
+	state.backtrack_counter = 0;
+
 	backtrack(&state, &start, INITIAL_HAM_POS, smart);
 
 	printf("Hamiltonian Path:\n");
