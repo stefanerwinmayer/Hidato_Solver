@@ -19,7 +19,6 @@ BOOL backtrack(struct State *state,
 	(state->backtrack_counter)++;
 
 	update_board(state, current);
-	update_hamiltonian(state, current, ham_pos);
 
 	if (smart)
 	{
@@ -38,8 +37,7 @@ BOOL backtrack(struct State *state,
 				continue;
 			}
 
-			next->row = neighbour.row;
-			next->col = neighbour.col;
+			update_hamiltonian(next, &neighbour);
 
 			if (!backtrack(state, next, ham_pos + 1, smart))
 			{
@@ -89,17 +87,13 @@ void update_board(
 }
 
 void update_hamiltonian(
-	struct State *state,
-	const struct Coordinate *current,
-	const int ham_pos)
+	struct Coordinate *next,
+	const struct Coordinate *neighbour)
 {
-	switch (state->board[current->row][current->col])
+	if (next->row == UNKNOWN)
 	{
-	case TAKEN:
-
-		state->hamiltonian[ham_pos].row = current->row;
-		state->hamiltonian[ham_pos].col = current->col;
-		break;
+		next->row = neighbour->row;
+		next->col = neighbour->col;
 	}
 }
 

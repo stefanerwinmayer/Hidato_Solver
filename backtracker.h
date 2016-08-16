@@ -27,9 +27,8 @@ void update_board(
 	const struct Coordinate *current);
 
 void update_hamiltonian(
-	struct State *state,
-	const struct Coordinate *current,
-	const int ham_pos);
+	struct Coordinate *current,
+	const struct Coordinate *neighbour);
 
 void update_next_fixed(
 	struct State *state,
