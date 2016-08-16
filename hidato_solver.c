@@ -25,6 +25,8 @@ int main(void)
 	printf("Solved Hidato:\n\n");
 	print_board(&state);
 
+	printf("Number of calls to backtrack: %d", state.backtrack_counter);
+
 	(void)getchar();
 	return 0;
 }
