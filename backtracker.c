@@ -22,7 +22,7 @@ BOOL backtrack(struct State *state,
 
 	if (smart)
 	{
-		udpate_next_fixed(state, current);
+		update_next_fixed(state, current);
 	}
 
 	for (i = 0; i < NUMBER_OF_MOVES; i++)
