@@ -153,7 +153,18 @@ BOOL sensible_move(
 	const struct Coordinate *next,
 	const int next_ham_pos)
 {
-	return FALSE;
+	if (state->next_fixed_pos < state->ham_length)
+	{
+		struct Coordinate next_fixed = state->hamiltonian[state->next_fixed_pos];
+		int dist = distance(next, &next_fixed);
+		int num_diff = state->next_fixed_pos - next_ham_pos;
+		int is_ok = dist <= num_diff;
+		return is_ok;
+	}
+	else
+	{
+		return TRUE;
+	}
 }
 
 int distance(
