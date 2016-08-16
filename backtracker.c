@@ -159,17 +159,14 @@ void revert_board(struct State *state,
 	}
 }
 
-void revert_hamiltonian(struct State *state,
-	const struct Coordinate *current,
-	const int ham_pos)
+void revert_hamiltonian(
+	struct State *state,
+	struct Coordinate *current)
 {
-	switch (state->board[current->row][current->col])
+	if (state->board[current->row][current->col] == FREE)
 	{
-	case FREE:
-
-		state->hamiltonian[ham_pos].row = UNKNOWN;
-		state->hamiltonian[ham_pos].col = UNKNOWN;
-		break;
+		current->row = UNKNOWN;
+		current->col = UNKNOWN;
 	}
 }
 
