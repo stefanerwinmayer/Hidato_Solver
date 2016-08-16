@@ -30,6 +30,10 @@ BOOL backtrack(struct State *state,
 
 		if (valid_move(state, &next, ham_pos + 1))
 		{
+			if (smart && !sensible_move(state, &next, ham_pos + 1))
+			{
+				continue;
+			}
 			if (!backtrack(state, &next, ham_pos + 1, smart))
 			{
 				continue;
