@@ -32,7 +32,7 @@ BOOL backtrack(struct State *state,
 
 		if (valid_move(state, next, &neighbour))
 		{
-			if (smart && !sensible_move(state, &neighbour, ham_pos + 1))
+			if (smart && !sensible_move(state, next, &neighbour))
 			{
 				continue;
 			}
@@ -174,13 +174,13 @@ void revert_next_fixed(
 BOOL sensible_move(
 	const struct State *state,
 	const struct Coordinate *next,
-	const int next_ham_pos)
+	const struct Coordinate *neighbour)
 {
 	if (state->next_fixed < state->hamiltonian + state->ham_length - 1)
 	{
-		int dist = distance(next, state->next_fixed);
-		int num_diff = state->next_fixed - next;
-		int is_ok = dist <= num_diff;
+		int dist = distance(neighbour, state->next_fixed);
+		int available_steps = state->next_fixed - next;
+		int is_ok = dist <= available_steps;
 		return is_ok;
 	}
 	else

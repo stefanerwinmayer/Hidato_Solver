@@ -58,6 +58,6 @@ int distance(
 BOOL sensible_move(
 	const struct State *state,
 	const struct Coordinate *next,
-	const int next_ham_pos);
+	const struct Coordinate *neighbour);
 
 #endif
