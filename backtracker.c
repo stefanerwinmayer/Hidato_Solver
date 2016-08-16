@@ -31,7 +31,7 @@ BOOL backtrack(struct State *state,
 		neighbour.row = current->row + MOVE_SET[i].row;
 		neighbour.col = current->col + MOVE_SET[i].col;
 
-		if (valid_move(state, &neighbour, ham_pos + 1))
+		if (valid_move(state, next, &neighbour))
 		{
 			if (smart && !sensible_move(state, &neighbour, ham_pos + 1))
 			{
@@ -122,19 +122,17 @@ void update_next_fixed(
 BOOL valid_move(
 	const struct State *state,
 	const struct Coordinate *next,
-	const int next_ham_pos)
+	const struct Coordinate *neighbour)
 {
-	if (0 <= next->row && next->row < state->board_rows &&
-		0 <= next->col && next->col < state->board_cols)
+	if (0 <= neighbour->row && neighbour->row < state->board_rows &&
+		0 <= neighbour->col && neighbour->col < state->board_cols)
 	{
-		if (state->board[next->row][next->col] == FREE &&
-			state->hamiltonian[next_ham_pos].row == UNKNOWN)
+		if (next->row == UNKNOWN &&
+			state->board[neighbour->row][neighbour->col] == FREE)
 		{
 			return TRUE;
 		}
-		else if (state->board[next->row][next->col] == FIXED &&
-			state->hamiltonian[next_ham_pos].row == next->row &&
-			state->hamiltonian[next_ham_pos].col == next->col)
+		else if (next->row == neighbour->row && next->col == neighbour->col)
 		{
 			return TRUE;
 		}
