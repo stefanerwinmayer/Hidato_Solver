@@ -177,11 +177,10 @@ BOOL sensible_move(
 	const struct Coordinate *next,
 	const int next_ham_pos)
 {
-	if (state->next_fixed_pos < state->ham_length)
+	if (state->next_fixed < state->hamiltonian + state->ham_length - 1)
 	{
-		struct Coordinate next_fixed = state->hamiltonian[state->next_fixed_pos];
-		int dist = distance(next, &next_fixed);
-		int num_diff = state->next_fixed_pos - next_ham_pos;
+		int dist = distance(next, state->next_fixed);
+		int num_diff = state->next_fixed - next;
 		int is_ok = dist <= num_diff;
 		return is_ok;
 	}
