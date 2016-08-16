@@ -22,7 +22,11 @@ BOOL backtrack(
 	const int ham_pos,
 	const BOOL smart);
 
-void update_state(
+void update_board(
+	struct State *state,
+	const struct Coordinate *current);
+
+void update_hamiltonian(
 	struct State *state,
 	const struct Coordinate *current,
 	const int ham_pos);

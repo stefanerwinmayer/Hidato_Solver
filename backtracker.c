@@ -16,7 +16,9 @@ BOOL backtrack(struct State *state,
 	};
 
 	(state->backtrack_counter)++;
-	update_state(state, current, ham_pos);
+
+	update_board(state, current);
+	update_hamiltonian(state, current, ham_pos);
 
 	if (smart)
 	{
@@ -62,23 +64,35 @@ BOOL backtrack(struct State *state,
 	}
 }
 
-void update_state(
+void update_board(
 	struct State *state,
-	const struct Coordinate *current,
-	const int ham_pos)
+	const struct Coordinate *current)
 {
 	switch (state->board[current->row][current->col])
 	{
 	case FREE:
 
-		state->hamiltonian[ham_pos].row = current->row;
-		state->hamiltonian[ham_pos].col = current->col;
 		state->board[current->row][current->col] = TAKEN;
 		break;
 
 	case FIXED:
 
 		state->board[current->row][current->col] = VISITED_FIXED;
+		break;
+	}
+}
+
+void update_hamiltonian(
+	struct State *state,
+	const struct Coordinate *current,
+	const int ham_pos)
+{
+	switch (state->board[current->row][current->col])
+	{
+	case TAKEN:
+
+		state->hamiltonian[ham_pos].row = current->row;
+		state->hamiltonian[ham_pos].col = current->col;
 		break;
 	}
 }
