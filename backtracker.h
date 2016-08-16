@@ -32,8 +32,7 @@ void update_hamiltonian(
 
 void update_next_fixed(
 	struct State *state,
-	const struct Coordinate *current,
-	const int ham_pos);
+	const struct Coordinate *current);
 
 BOOL valid_move(
 	const struct State *state,
