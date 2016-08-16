@@ -53,11 +53,11 @@ BOOL backtrack(struct State *state,
 	if (ham_pos != state->ham_length - 1) /* if not solved yet */
 	{
 		revert_board(state, current);
-		revert_hamiltonian(state, current, ham_pos);
+		revert_hamiltonian(state, current);
 
 		if (smart)
 		{
-			revert_next_fixed(state, current, ham_pos);
+			revert_next_fixed(state, current);
 		}
 
 		return FALSE;
@@ -163,12 +163,11 @@ void revert_hamiltonian(
 
 void revert_next_fixed(
 	struct State *state,
-	const struct Coordinate *current,
-	const int ham_pos)
+	const struct Coordinate *current)
 {
 	if (state->board[current->row][current->col] == FIXED)
 	{
-		state->next_fixed_pos = ham_pos;
+		state->next_fixed = current;
 	}
 }
 
