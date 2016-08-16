@@ -15,9 +15,10 @@
 #define UNKOWN -1
 #define BLOCKED 'X'
 
+#define ONE 0
+
 void initialise_state(
 	char *input,
-	struct State *state,
-	struct Coordinate *start);
+	struct State *state);
 
 #endif

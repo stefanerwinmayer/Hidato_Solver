@@ -2,8 +2,7 @@
 
 void initialise_state(
 	char *input,
-	struct State *state,
-	struct Coordinate *start)
+	struct State *state)
 {
 	int row, col, number;
 	char *p;
@@ -60,8 +59,8 @@ void initialise_state(
 
 				if (number == 1)
 				{
-					start->row = row;
-					start->col = col;
+					state->hamiltonian[ONE].row = row;
+					state->hamiltonian[ONE].col = col;
 				}
 
 				number = 0;
