@@ -32,7 +32,7 @@ void update_hamiltonian(
 	const int ham_pos);
 
 void update_next_fixed(
-	const struct State *state,
+	struct State *state,
 	const struct Coordinate *current,
 	const int ham_pos);
 
