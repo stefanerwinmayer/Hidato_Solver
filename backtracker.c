@@ -7,6 +7,7 @@ BOOL backtrack(struct State *state,
 {
 	int i;
 	struct Coordinate next;
+	struct Coordinate neighbour;
 
 	static const struct Coordinate MOVE_SET[] =
 	{
@@ -27,15 +28,19 @@ BOOL backtrack(struct State *state,
 
 	for (i = 0; i < NUMBER_OF_MOVES; i++)
 	{
-		next.row = current->row + MOVE_SET[i].row;
-		next.col = current->col + MOVE_SET[i].col;
+		neighbour.row = current->row + MOVE_SET[i].row;
+		neighbour.col = current->col + MOVE_SET[i].col;
 
-		if (valid_move(state, &next, ham_pos + 1))
+		if (valid_move(state, &neighbour, ham_pos + 1))
 		{
-			if (smart && !sensible_move(state, &next, ham_pos + 1))
+			if (smart && !sensible_move(state, &neighbour, ham_pos + 1))
 			{
 				continue;
 			}
+
+			next.row = neighbour.row;
+			next.col = neighbour.col;
+
 			if (!backtrack(state, &next, ham_pos + 1, smart))
 			{
 				continue;
