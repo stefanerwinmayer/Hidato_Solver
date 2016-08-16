@@ -23,14 +23,14 @@ int main(int argc, char *argv[])
 		file_to_string(argv[2], input);
 	}
 
-	initialise_state(input, &state, &start);
+	initialise_state(input, &state);
 	
 	printf("Input Hidato:\n\n");
 	print_board(&state);
 
 	state.backtrack_counter = 0;
 
-	backtrack(&state, &start, INITIAL_HAM_POS, smart);
+	backtrack(&state, &state.hamiltonian[ONE], INITIAL_HAM_POS, smart);
 
 	printf("Hamiltonian Path:\n");
 	print_hamiltonian_path(&state);
