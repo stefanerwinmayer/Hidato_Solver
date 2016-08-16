@@ -9,6 +9,8 @@ struct State {
 	int ham_length;
 	int next_fixed_pos;
 
+	struct Coordinate *next_fixed;
+
 	char board[MAX_ROWS][MAX_COLS];
 	int board_rows;
 	int board_cols;
