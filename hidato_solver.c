@@ -1,17 +1,28 @@
 #include "hidato_solver.h"
 
-int main(void)
+int main(int argc, char *argv[])
 {
 	struct State state;
 	struct Coordinate start;
-	BOOL smart = FALSE;
+	BOOL smart;
 	char input[MAX_FILE_LENGTH];
-	char filename[] = "sample.txt";
 
 	printf("Welcome to Hidato!\n\n");
 
-	file_to_string(filename, input);
-	
+	if (strcmp(argv[1], "-b") == 0)
+	{
+		smart = FALSE;
+	}
+	else if(strcmp(argv[1], "-sb") == 0)
+	{
+		smart = TRUE;
+	}
+
+	if (strcmp(argv[2], "") != 0)
+	{
+		file_to_string(argv[2], input);
+	}
+
 	initialise_state(input, &state, &start);
 	
 	printf("Input Hidato:\n\n");
