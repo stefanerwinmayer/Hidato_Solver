@@ -15,7 +15,7 @@ void print_hamiltonian_path(struct State *state)
 void print_board(struct State *state)
 {
 	int i, j;
-	char output[MAX_ROWS][MAX_COLS] = { {BLOCKED} };
+	char output[MAX_ROWS][MAX_COLS];
 
 	for (i = 0; i < state->ham_length; i++)
 	{
@@ -32,6 +32,10 @@ void print_board(struct State *state)
 			if (state->board[i][j] == FREE)
 			{
 				output[i][j] = FREE;
+			}
+			else if (state->board[i][j] == BLOCKED)
+			{
+				output[i][j] = BLOCKED;
 			}
 		}
 	}
