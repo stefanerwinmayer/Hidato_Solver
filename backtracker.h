@@ -41,7 +41,11 @@ BOOL valid_move(
 	const struct Coordinate *next,
 	const int next_ham_pos);
 
-void revert_state(
+void revert_board(
+	struct State *state,
+	const struct Coordinate *current);
+
+void revert_hamiltonian(
 	struct State *state,
 	const struct Coordinate *current,
 	const int ham_pos);

@@ -49,7 +49,8 @@ BOOL backtrack(struct State *state,
 
 	if (ham_pos != state->ham_length - 1) /* if not solved yet */
 	{
-		revert_state(state, current, ham_pos);
+		revert_board(state, current);
+		revert_hamiltonian(state, current, ham_pos);
 
 		if (smart)
 		{
@@ -136,22 +137,33 @@ BOOL valid_move(
 	return FALSE;
 }
 
-void revert_state(struct State *state,
-	const struct Coordinate *current,
-	const int ham_pos)
+void revert_board(struct State *state,
+	const struct Coordinate *current)
 {
 	switch (state->board[current->row][current->col])
 	{
 	case TAKEN:
 
-		state->hamiltonian[ham_pos].row = UNKNOWN;
-		state->hamiltonian[ham_pos].col = UNKNOWN;
 		state->board[current->row][current->col] = FREE;
 		break;
 
 	case VISITED_FIXED:
 
 		state->board[current->row][current->col] = FIXED;
+		break;
+	}
+}
+
+void revert_hamiltonian(struct State *state,
+	const struct Coordinate *current,
+	const int ham_pos)
+{
+	switch (state->board[current->row][current->col])
+	{
+	case FREE:
+
+		state->hamiltonian[ham_pos].row = UNKNOWN;
+		state->hamiltonian[ham_pos].col = UNKNOWN;
 		break;
 	}
 }
