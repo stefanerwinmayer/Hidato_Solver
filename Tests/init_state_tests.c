@@ -294,28 +294,28 @@ static void test_initialise_state_ham_length()
 static void test_initialise_state_start_coordinate()
 {
 	sput_fail_unless(
-		start_1.row == 0 &&
-		start_1.col == 0,
+		state_1.hamiltonian[0].row == 0 &&
+		state_1.hamiltonian[0].col == 0,
 		"Number 1 is at (0, 0)");
 
 	sput_fail_unless(
-		start_8.row == 0 &&
-		start_8.col == 0,
+		state_8.hamiltonian[0].row == 0 &&
+		state_8.hamiltonian[0].col == 0,
 		"Number 1 is at (0, 0)");
 
 	sput_fail_unless(
-		start_9.row == 0 &&
-		start_9.col == 0,
+		state_9.hamiltonian[0].row == 0 &&
+		state_9.hamiltonian[0].col == 0,
 		"Number 1 is at (0, 0)");
 
 	sput_fail_unless(
-		start_10.row == 1 &&
-		start_10.col == 0,
+		state_10.hamiltonian[0].row == 1 &&
+		state_10.hamiltonian[0].col == 0,
 		"Number 1 is at (1, 0)");
 
 	sput_fail_unless(
-		start_11.row == 0 &&
-		start_11.col == 1,
+		state_11.hamiltonian[0].row == 0 &&
+		state_11.hamiltonian[0].col == 1,
 		"Number 1 is at (0, 1)");
 }
 
