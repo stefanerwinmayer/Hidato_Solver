@@ -6,7 +6,7 @@ BOOL backtrack(struct State *state,
 	const BOOL smart)
 {
 	int i;
-	struct Coordinate next;
+	struct Coordinate *next = current + 1;
 	struct Coordinate neighbour;
 
 	static const struct Coordinate MOVE_SET[] =
@@ -38,10 +38,10 @@ BOOL backtrack(struct State *state,
 				continue;
 			}
 
-			next.row = neighbour.row;
-			next.col = neighbour.col;
+			next->row = neighbour.row;
+			next->col = neighbour.col;
 
-			if (!backtrack(state, &next, ham_pos + 1, smart))
+			if (!backtrack(state, next, ham_pos + 1, smart))
 			{
 				continue;
 			}
