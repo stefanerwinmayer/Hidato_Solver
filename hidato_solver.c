@@ -3,7 +3,6 @@
 int main(int argc, char *argv[])
 {
 	struct State state;
-	struct Coordinate start;
 	BOOL backtracking, smart, hill_climbing;
 	char input[MAX_FILE_LENGTH];
 
