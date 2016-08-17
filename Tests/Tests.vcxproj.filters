@@ -54,6 +54,9 @@
     <ClCompile Include="..\hillclimber_runner.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\hillclimber.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="sput.h">
@@ -93,6 +96,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\hillclimber_state_struct.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\hillclimber.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

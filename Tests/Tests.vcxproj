@@ -152,6 +152,7 @@
     <ClCompile Include="..\backtracker.c" />
     <ClCompile Include="..\backtracker_runner.c" />
     <ClCompile Include="..\file_reader.c" />
+    <ClCompile Include="..\hillclimber.c" />
     <ClCompile Include="..\hillclimber_runner.c" />
     <ClCompile Include="..\init_state.c" />
     <ClCompile Include="..\output.c" />
@@ -169,6 +170,7 @@
     <ClInclude Include="..\coordinate_struct.h" />
     <ClInclude Include="..\file_reader.h" />
     <ClInclude Include="..\hidato_limits.h" />
+    <ClInclude Include="..\hillclimber.h" />
     <ClInclude Include="..\hillclimber_runner.h" />
     <ClInclude Include="..\hillclimber_state_struct.h" />
     <ClInclude Include="..\init_state.h" />
