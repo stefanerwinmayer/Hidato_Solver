@@ -7,7 +7,7 @@ void initialise_state(
 	int row, col, number;
 	char *p;
 	BOOL processing[VALID_INPUTS];
-	struct Coordinate unknown = { UNKOWN, UNKOWN };
+	struct Coordinate unknown = { UNKNOWN, UNKNOWN };
 
 	state->board_rows = state->board_cols = state->ham_length = 0;
 
@@ -115,5 +115,101 @@ void initialise_hillclimber(
 	char *input,
 	struct HC_State *state)
 {
+	int row, col, number;
+	char *p;
+	BOOL processing[VALID_INPUTS];
 
+	state->board_rows = state->board_cols = state->number_count = 0;
+
+	processing[NUMBER] = FALSE;
+	processing[QUESTION_MARK] = FALSE;
+	processing[X] = FALSE;
+
+	for (row = 0; row < MAX_ROWS; row++)
+	{
+		for (col = 0; col < MAX_COLS; col++)
+		{
+			state->original_solution[row][col] = NOT_IN_USE;
+		}
+	}
+
+	for (number = 0; number < MAX_NUMS; number++)
+	{
+		state->fixed[number] = FALSE;
+	}
+
+	row = col = number = 0;
+
+	(state->board_rows)++;
+	for (p = input; p < input + strlen(input); p++)
+	{
+		if (isdigit(*p))
+		{
+			number = (number * 10) + (*p - '0');
+			processing[NUMBER] = TRUE;
+		}
+		else if (*p == '?')
+		{
+			processing[QUESTION_MARK] = TRUE;
+		}
+		else if (toupper(*p) == 'X')
+		{
+			processing[X] = TRUE;
+		}
+		else
+		{
+			if (processing[NUMBER])
+			{
+				state->original_solution[row][col] = number;
+				(state->board_cols)++;
+
+				state->fixed[number - 1] = TRUE;
+				state->number_count++;
+
+				number = 0;
+
+				if (*p != '\n')
+				{
+					col++;
+				}
+
+				processing[NUMBER] = FALSE;
+			}
+			else if (processing[QUESTION_MARK])
+			{
+				state->original_solution[row][col] = UNKNOWN;
+				(state->board_cols)++;
+
+				state->number_count++;
+
+				if (*p != '\n')
+				{
+					col++;
+				}
+
+				processing[QUESTION_MARK] = FALSE;
+
+			}
+			else if (processing[X])
+			{
+				state->original_solution[row][col] = NOT_IN_USE;
+				(state->board_cols)++;
+
+				if (*p != '\n')
+				{
+					col++;
+				}
+
+				processing[X] = FALSE;
+			}
+
+			if (*p == '\n')
+			{
+				col = 0;
+				(state->board_cols) = 0;
+				(state->board_rows)++;
+				row++;
+			}
+		}
+	}
 }
