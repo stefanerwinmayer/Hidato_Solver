@@ -9,7 +9,7 @@ struct HC_State {
 
 	BOOL fixed[MAX_NUMS];
 
-	int solution[MAX_ROWS][MAX_COLS];
+	int original_solution[MAX_ROWS][MAX_COLS];
 	int best_solution[MAX_ROWS][MAX_COLS];
 
 	int board_rows;
