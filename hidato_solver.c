@@ -46,7 +46,7 @@ int main(int argc, char *argv[])
 
 		state.backtrack_counter = 0;
 
-		backtrack(&state, &state.hamiltonian[ONE], smart);
+		backtrack(&state, state.hamiltonian, smart);
 
 		printf("Hamiltonian Path:\n");
 		print_hamiltonian_path(&state);
