@@ -9,6 +9,4 @@
 #include "backtracker.h"
 #include "output.h"
 
-#define INITIAL_HAM_POS 0
-
 #endif
