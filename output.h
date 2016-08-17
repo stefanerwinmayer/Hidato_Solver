@@ -13,6 +13,10 @@
 
 void print_hamiltonian_path(struct State *state);
 void print_board(struct State *state);
-void print_solution(struct HC_State *state);
+//void print_solution(struct HC_State *state);
+void print_solution(
+	int board[MAX_ROWS][MAX_COLS],
+	int rows,
+	int cols);
 
 #endif

@@ -70,27 +70,30 @@ void print_board(struct State *state)
 	printf("\n");
 }
 
-void print_solution(struct HC_State *state)
+void print_solution(
+	int board[MAX_ROWS][MAX_COLS],
+	int rows,
+	int cols)
 {
 	int i, j;
 
 	printf(" ");
-	for (j = 0; j < state->board_cols; j++)
+	for (j = 0; j < cols; j++)
 	{
 		printf("   %d", j);
 	}
 	printf("\n");
 
-	for (i = 0; i < state->board_rows; i++)
+	for (i = 0; i < rows; i++)
 	{
 		printf("%d ", i);
-		for (j = 0; j < state->board_cols; j++)
+		for (j = 0; j < cols; j++)
 		{
-			if (state->original_solution[i][j] != NOT_IN_USE && state->original_solution[i][j] != UNKNOWN)
+			if (board[i][j] != NOT_IN_USE && board[i][j] != UNKNOWN)
 			{
-				printf("[%2.d]", state->original_solution[i][j]);
+				printf("[%2.d]", board[i][j]);
 			}
-			else if (state->original_solution[i][j] == NOT_IN_USE)
+			else if (board[i][j] == NOT_IN_USE)
 			{
 				printf("[XX]");
 			}
