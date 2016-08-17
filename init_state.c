@@ -110,3 +110,10 @@ void initialise_state(
 		}
 	}
 }
+
+void initialise_hillclimber(
+	char *input,
+	struct HC_State *state)
+{
+
+}

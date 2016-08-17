@@ -5,6 +5,7 @@
 #include <ctype.h>
 #include "state_struct.h"
 #include "coordinate_struct.h"
+#include "hillclimber_state_struct.h"
 #include "boolean.h"
 
 #define NUMBER 0
@@ -18,5 +19,9 @@
 void initialise_state(
 	char *input,
 	struct State *state);
+
+void initialise_hillclimber(
+	char *input,
+	struct HC_State *state);
 
 #endif
