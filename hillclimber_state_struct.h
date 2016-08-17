@@ -14,6 +14,6 @@ struct HC_State {
 
 	int board_rows;
 	int board_cols;
-}
+};
 
 #endif
