@@ -92,5 +92,8 @@
     <ClInclude Include="..\hillclimber_runner.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\hillclimber_state_struct.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -173,6 +173,7 @@
     <ClInclude Include="hidato_limits.h" />
     <ClInclude Include="hidato_solver.h" />
     <ClInclude Include="hillclimber_runner.h" />
+    <ClInclude Include="hillclimber_state_struct.h" />
     <ClInclude Include="init_state.h" />
     <ClInclude Include="output.h" />
     <ClInclude Include="state_struct.h" />
