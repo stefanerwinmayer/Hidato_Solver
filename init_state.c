@@ -59,8 +59,8 @@ void initialise_state(
 
 				if (number == 1)
 				{
-					state->hamiltonian[ONE].row = row;
-					state->hamiltonian[ONE].col = col;
+					state->hamiltonian[0].row = row;
+					state->hamiltonian[0].col = col;
 				}
 
 				number = 0;
