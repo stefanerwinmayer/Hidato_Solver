@@ -7,7 +7,6 @@
 struct State {
 	struct Coordinate hamiltonian[MAX_NUMS];
 	int ham_length;
-	int next_fixed_pos;
 
 	struct Coordinate *next_fixed;
 
