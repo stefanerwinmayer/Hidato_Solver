@@ -13,5 +13,6 @@
 
 void print_hamiltonian_path(struct State *state);
 void print_board(struct State *state);
+void print_solution(struct HC_State *state);
 
 #endif
