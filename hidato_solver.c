@@ -4,16 +4,16 @@ int main(int argc, char *argv[])
 {
 	struct State state;
 	struct Coordinate start;
-	BOOL backtracker, smart, hill_climber;
+	BOOL backtracking, smart, hill_climbing;
 	char input[MAX_FILE_LENGTH];
 
-	backtracker = smart = hill_climber = FALSE;
+	backtracking = smart = hill_climbing = FALSE;
 
 	printf("Welcome to Hidato!\n\n");
 
 	if (strcmp(argv[1], "-b") == 0)
 	{
-		backtracker = TRUE;
+		backtracking = TRUE;
 	}
 	else if (strcmp(argv[1], "-sb") == 0)
 	{
@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
 	}
 	else if (strcmp(argv[1], "-h") == 0)
 	{
-		hill_climber = TRUE;
+		hill_climbing = TRUE;
 	}
 	else
 	{
