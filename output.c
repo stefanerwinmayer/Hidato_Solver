@@ -69,3 +69,37 @@ void print_board(struct State *state)
 	}
 	printf("\n");
 }
+
+void print_solution(struct HC_State *state)
+{
+	int i, j;
+
+	printf(" ");
+	for (j = 0; j < state->board_cols; j++)
+	{
+		printf("   %d", j);
+	}
+	printf("\n");
+
+	for (i = 0; i < state->board_rows; i++)
+	{
+		printf("%d ", i);
+		for (j = 0; j < state->board_cols; j++)
+		{
+			if (state->original_solution[i][j] != NOT_IN_USE && state->original_solution[i][j] != UNKNOWN)
+			{
+				printf("[%2.d]", state->original_solution[i][j]);
+			}
+			else if (state->original_solution[i][j] == NOT_IN_USE)
+			{
+				printf("[XX]");
+			}
+			else
+			{
+				printf("[  ]");
+			}
+		}
+		printf("\n");
+	}
+	printf("\n");
+}
