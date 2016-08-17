@@ -39,6 +39,10 @@ int main(int argc, char *argv[])
 	{
 		run_backtracker(input, smart);
 	}
+	else if (hillclimbing)
+	{
+		run_hillclimber(input);
+	}
 
 	(void)getchar();
 	return 0;

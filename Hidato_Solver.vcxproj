@@ -160,6 +160,7 @@
     <ClCompile Include="backtracker_runner.c" />
     <ClCompile Include="file_reader.c" />
     <ClCompile Include="hidato_solver.c" />
+    <ClCompile Include="hillclimber_runner.c" />
     <ClCompile Include="init_state.c" />
     <ClCompile Include="output.c" />
   </ItemGroup>
@@ -171,6 +172,7 @@
     <ClInclude Include="file_reader.h" />
     <ClInclude Include="hidato_limits.h" />
     <ClInclude Include="hidato_solver.h" />
+    <ClInclude Include="hillclimber_runner.h" />
     <ClInclude Include="init_state.h" />
     <ClInclude Include="output.h" />
     <ClInclude Include="state_struct.h" />
