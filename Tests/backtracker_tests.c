@@ -244,6 +244,7 @@ int run_backtracker_tests(void)
 
 	sput_start_testing();
 
+	/*
 	sput_enter_suite("test_update_state_free()");
 	sput_run_test(test_update_state_free);
 
@@ -255,6 +256,7 @@ int run_backtracker_tests(void)
 
 	sput_enter_suite("test_revert_state_visited_fixed()");
 	sput_run_test(test_revert_state_visited_fixed);
+	*/
 
 	sput_enter_suite("test_valid_move_out_of_lower_bounds()");
 	sput_run_test(test_valid_move_out_of_lower_bounds);
