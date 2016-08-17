@@ -48,6 +48,9 @@
     <ClCompile Include="..\output.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\backtracker_runner.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="sput.h">
@@ -78,6 +81,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\output.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\backtracker_runner.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

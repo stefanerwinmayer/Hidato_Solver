@@ -2,7 +2,6 @@
 
 int main(int argc, char *argv[])
 {
-	struct State state;
 	BOOL backtracking, smart, hillclimbing;
 	char input[MAX_FILE_LENGTH];
 
@@ -38,28 +37,7 @@ int main(int argc, char *argv[])
 
 	if (backtracking)
 	{
-		initialise_state(input, &state);
-
-		printf("Input Hidato:\n\n");
-		print_board(&state);
-
-		printf("Solving the puzzle with the ");
-		(smart) ? printf("smart ") : printf("regular ");
-		printf("backtracker:\n\n");
-
-		state.backtrack_counter = 0;
-
-		backtrack(&state, state.hamiltonian, smart);
-
-		print_board(&state);
-
-		printf("Hamiltonian Path:\n\n");
-		print_hamiltonian_path(&state);
-
-		printf("Number of calls to the ");
-		(smart) ? printf("smart ") : printf("regular ");
-		printf("backtracker: %d", state.backtrack_counter);
-	
+		run_backtracker(input, smart);
 	}
 
 	(void)getchar();

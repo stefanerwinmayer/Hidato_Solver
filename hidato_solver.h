@@ -2,11 +2,8 @@
 #define HIDATO_SOLVER
 
 #include <stdio.h>
-#include <string.h>
-#include "state_struct.h"
+#include "boolean.h"
 #include "file_reader.h"
-#include "init_state.h"
-#include "backtracker.h"
-#include "output.h"
+#include "backtracker_runner.h"
 
 #endif
