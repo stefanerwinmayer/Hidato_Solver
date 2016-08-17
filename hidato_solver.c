@@ -3,10 +3,10 @@
 int main(int argc, char *argv[])
 {
 	struct State state;
-	BOOL backtracking, smart, hill_climbing;
+	BOOL backtracking, smart, hillclimbing;
 	char input[MAX_FILE_LENGTH];
 
-	backtracking = smart = hill_climbing = FALSE;
+	backtracking = smart = hillclimbing = FALSE;
 
 	printf("Welcome to Hidato!\n\n");
 
@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
 	}
 	else if (strcmp(argv[1], "-h") == 0)
 	{
-		hill_climbing = TRUE;
+		hillclimbing = TRUE;
 	}
 	else
 	{
