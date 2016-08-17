@@ -17,6 +17,7 @@ int main(int argc, char *argv[])
 	}
 	else if (strcmp(argv[1], "-sb") == 0)
 	{
+		backtracking = TRUE;
 		smart = TRUE;
 	}
 	else if (strcmp(argv[1], "-h") == 0)
@@ -36,22 +37,25 @@ int main(int argc, char *argv[])
 		file_to_string(argv[2], input);
 	}
 
-	initialise_state(input, &state);
-	
-	printf("Input Hidato:\n\n");
-	print_board(&state);
+	if (backtracking)
+	{
+		initialise_state(input, &state);
 
-	state.backtrack_counter = 0;
+		printf("Input Hidato:\n\n");
+		print_board(&state);
 
-	backtrack(&state, &state.hamiltonian[ONE], smart);
+		state.backtrack_counter = 0;
 
-	printf("Hamiltonian Path:\n");
-	print_hamiltonian_path(&state);
+		backtrack(&state, &state.hamiltonian[ONE], smart);
 
-	printf("Solved Hidato:\n\n");
-	print_board(&state);
+		printf("Hamiltonian Path:\n");
+		print_hamiltonian_path(&state);
 
-	printf("Number of calls to backtrack: %d", state.backtrack_counter);
+		printf("Solved Hidato:\n\n");
+		print_board(&state);
+
+		printf("Number of calls to backtrack: %d", state.backtrack_counter);
+	}
 
 	(void)getchar();
 	return 0;
