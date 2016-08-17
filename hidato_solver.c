@@ -4,19 +4,32 @@ int main(int argc, char *argv[])
 {
 	struct State state;
 	struct Coordinate start;
-	BOOL smart;
+	BOOL backtracker, smart, hill_climber;
 	char input[MAX_FILE_LENGTH];
+
+	backtracker = smart = hill_climber = FALSE;
 
 	printf("Welcome to Hidato!\n\n");
 
 	if (strcmp(argv[1], "-b") == 0)
 	{
-		smart = FALSE;
+		backtracker = TRUE;
 	}
-	else if(strcmp(argv[1], "-sb") == 0)
+	else if (strcmp(argv[1], "-sb") == 0)
 	{
 		smart = TRUE;
 	}
+	else if (strcmp(argv[1], "-h") == 0)
+	{
+		hill_climber = TRUE;
+	}
+	else
+	{
+		printf("Invalid input. Please specify the algorithm: -b or -sb or -h");
+		(void)getchar();
+		exit(EXIT_FAILURE);
+	}
+
 
 	if (strcmp(argv[2], "") != 0)
 	{
