@@ -3,6 +3,7 @@
 
 #include "hidato_limits.h"
 #include "coordinate_struct.h"
+#include "board.h"
 
 #define FIXED -9
 #define VISITED_FIXED -8
@@ -17,6 +18,8 @@ struct State {
 	int ham_length;
 
 	struct Coordinate *next_fixed;
+
+	struct Board board2;
 
 	int board[MAX_ROWS][MAX_COLS];
 	int board_rows;
