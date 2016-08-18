@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include "init_state.h"
+#include "hillclimber.h"
 #include "output.h"
 
 void run_hillclimber(char *input);
