@@ -38,7 +38,7 @@ void revert_board(
 	const struct Coordinate *current);
 
 void revert_hamiltonian(
-	struct State *state,
+	struct Board *board,
 	struct Coordinate *current);
 
 void revert_next_fixed(

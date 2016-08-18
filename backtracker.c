@@ -54,7 +54,7 @@ BOOL backtrack(
 	if (current != state->hamiltonian + state->ham_length - 1) /* if not solved yet */
 	{
 		revert_board(board, current);
-		revert_hamiltonian(state, current);
+		revert_hamiltonian(board, current);
 
 		if (smart)
 		{
@@ -154,10 +154,10 @@ void revert_board(
 }
 
 void revert_hamiltonian(
-	struct State *state,
+	struct Board *board,
 	struct Coordinate *current)
 {
-	if (state->board[current->row][current->col] == FREE)
+	if (board->grid[current->row][current->col] == FREE)
 	{
 		current->row = UNKNOWN;
 		current->col = UNKNOWN;
