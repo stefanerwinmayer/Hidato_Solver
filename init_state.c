@@ -140,6 +140,13 @@ void initialise_hillclimber(
 		fixed[number] = FALSE;
 	}
 
+	for (number = 0; number < MAX_NUMS; number++)
+	{
+		numbers->coordinates->row = UNKNOWN;
+		numbers->coordinates->col = UNKNOWN;
+	}
+
+
 	row = col = number = 0;
 
 	(board->rows)++;
@@ -165,6 +172,10 @@ void initialise_hillclimber(
 				board->grid[row][col] = number;
 				(board->cols)++;
 
+				numbers->coordinates[number - 1].row = row;
+				numbers->coordinates[number - 1].col = col;
+				(numbers->count)++;
+
 				fixed[number - 1] = TRUE;
 				board->number_count++;
 
@@ -182,6 +193,7 @@ void initialise_hillclimber(
 				board->grid[row][col] = UNKNOWN;
 				(board->cols)++;
 
+				(numbers->count)++;
 				board->number_count++;
 
 				if (*p != '\n')
