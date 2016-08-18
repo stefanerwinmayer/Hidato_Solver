@@ -167,12 +167,12 @@ void revert_hamiltonian(
 
 void revert_next_fixed(
 	struct Board *board,
-	struct State *state,
+	struct Num_Coordinates *numbers,
 	const struct Coordinate *current)
 {
 	if (board->grid[current->row][current->col] == FIXED)
 	{
-		state->next_fixed = current;
+		numbers->next_fixed = current;
 	}
 }
 
