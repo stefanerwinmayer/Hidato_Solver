@@ -81,3 +81,11 @@ void copy_board(
 		}
 	}
 }
+
+void climb_hills(
+	struct Board *initial,
+	struct Board *best_solution,
+	struct Num_Coordinates *numbers)
+{
+
+}
