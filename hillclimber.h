@@ -12,10 +12,7 @@ void produce_random_solution(
 	struct Board *board,
 	BOOL fixed[MAX_NUMS]);
 
-int assess_solution(
-	int board[MAX_ROWS][MAX_COLS],
-	int rows,
-	int cols);
+int assess_solution(struct Board *board);
 
 void copy_board(struct HC_State *state);
 
