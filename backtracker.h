@@ -30,7 +30,6 @@ void update_next_fixed(
 
 BOOL valid_move(
 	struct Board *board,
-	const struct State *state,
 	const struct Coordinate *next,
 	const struct Coordinate *neighbour);
 
