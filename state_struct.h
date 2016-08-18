@@ -3,7 +3,6 @@
 
 #include "hidato_limits.h"
 #include "coordinate_struct.h"
-#include "board.h"
 
 #define FIXED -9
 #define VISITED_FIXED -8

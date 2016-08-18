@@ -9,7 +9,7 @@ void initialise_state(
 	char *p;
 	BOOL processing[VALID_INPUTS];
 
-	state->board_rows = state->board_cols = state->ham_length = 0;
+	board->rows = board->cols = state->ham_length = 0;
 
 	processing[NUMBER] = FALSE;
 	processing[QUESTION_MARK] = FALSE;
@@ -19,7 +19,7 @@ void initialise_state(
 	{
 		for (col = 0; col < MAX_COLS; col++)
 		{
-			state->board[row][col] = BLOCKED;
+			board->grid[row][col] = BLOCKED;
 		}
 	}
 
@@ -31,7 +31,7 @@ void initialise_state(
 
 	row = col = number = 0;
 
-	(state->board_rows)++;
+	(board->rows)++;
 	for (p = input; p < input + strlen(input); p++)
 	{
 		if (isdigit(*p))
@@ -51,8 +51,8 @@ void initialise_state(
 		{
 			if (processing[NUMBER])
 			{
-				state->board[row][col] = FIXED;
-				(state->board_cols)++;
+				board->grid[row][col] = FIXED;
+				(board->cols)++;
 
 				state->hamiltonian[number - 1].row = row;
 				state->hamiltonian[number - 1].col = col;
@@ -75,8 +75,8 @@ void initialise_state(
 			}
 			else if (processing[QUESTION_MARK])
 			{
-				state->board[row][col] = FREE;
-				(state->board_cols)++;
+				board->grid[row][col] = FREE;
+				(board->cols)++;
 
 				state->ham_length++;
 
@@ -90,8 +90,8 @@ void initialise_state(
 			}
 			else if (processing[X])
 			{
-				state->board[row][col] = BLOCKED;
-				(state->board_cols)++;
+				board->grid[row][col] = BLOCKED;
+				(board->cols)++;
 
 				if (*p != '\n')
 				{
@@ -104,8 +104,8 @@ void initialise_state(
 			if (*p == '\n')
 			{
 				col = 0;
-				(state->board_cols) = 0;
-				(state->board_rows)++;
+				(board->cols) = 0;
+				(board->rows)++;
 				row++;
 			}
 		}
