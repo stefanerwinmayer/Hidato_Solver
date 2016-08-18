@@ -16,6 +16,12 @@ void run_hillclimber(char *input)
 	printf("Random solution:\n\n");
 	print_solution(state.original_solution, state.board_rows, state.board_cols);
 
-	printf("Score: %d", assess_solution(&state));
+	printf("Score: %d\n\n", assess_solution(&state));
+
+	copy_board(&state);
+
+	printf("Best solution:\n\n");
+	print_solution(state.best_solution, state.board_rows, state.board_cols);
+	
 
 }

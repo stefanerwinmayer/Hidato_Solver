@@ -59,3 +59,16 @@ int assess_solution(struct HC_State *state)
 
 	return score;
 }
+
+void copy_board(struct HC_State *state)
+{
+	int row, col;
+
+	for (row = 0; row < state->board_rows; row++)
+	{
+		for (col = 0; col < state->board_cols; col++)
+		{
+			state->best_solution[row][col] = state->original_solution[row][col];
+		}
+	}
+}
