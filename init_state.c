@@ -7,7 +7,6 @@ void initialise_state(
 	int row, col, number;
 	char *p;
 	BOOL processing[VALID_INPUTS];
-	struct Coordinate unknown = { UNKNOWN, UNKNOWN };
 
 	state->board_rows = state->board_cols = state->ham_length = 0;
 
@@ -25,7 +24,8 @@ void initialise_state(
 
 	for (number = 0; number < MAX_NUMS; number++)
 	{
-		state->hamiltonian[number] = unknown;
+		state->hamiltonian[number].row = UNKNOWN;
+		state->hamiltonian[number].col = UNKNOWN;
 	}
 
 	row = col = number = 0;
