@@ -58,12 +58,6 @@ void initialise_state(
 				numbers->coordinates[number - 1].col = col;
 				(numbers->count)++;
 
-				if (number == 1)
-				{
-					numbers->coordinates[0].row = row;
-					numbers->coordinates[0].col = col;
-				}
-
 				number = 0;
 
 				if (*p != '\n')
