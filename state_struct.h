@@ -19,8 +19,6 @@ struct State {
 
 	struct Coordinate *next_fixed;
 
-	struct Board board2;
-
 	int board[MAX_ROWS][MAX_COLS];
 	int board_rows;
 	int board_cols;
