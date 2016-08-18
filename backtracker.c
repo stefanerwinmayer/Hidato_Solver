@@ -19,7 +19,7 @@ BOOL backtrack(
 
 	(state->backtrack_counter)++;
 
-	update_board(state, current);
+	update_board(board, current);
 
 	if (smart)
 	{
@@ -70,19 +70,19 @@ BOOL backtrack(
 }
 
 void update_board(
-	struct State *state,
+	struct Board *board,
 	const struct Coordinate *current)
 {
-	switch (state->board[current->row][current->col])
+	switch (board->grid[current->row][current->col])
 	{
 	case FREE:
 
-		state->board[current->row][current->col] = TAKEN;
+		board->grid[current->row][current->col] = TAKEN;
 		break;
 
 	case FIXED:
 
-		state->board[current->row][current->col] = VISITED_FIXED;
+		board->grid[current->row][current->col] = VISITED_FIXED;
 		break;
 	}
 }

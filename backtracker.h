@@ -16,7 +16,7 @@ BOOL backtrack(
 	const BOOL smart);
 
 void update_board(
-	struct State *state,
+	struct Board *board,
 	const struct Coordinate *current);
 
 void update_hamiltonian(
