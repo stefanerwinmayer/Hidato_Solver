@@ -121,7 +121,7 @@ void initialise_hillclimber(
 	char *p;
 	BOOL processing[VALID_INPUTS];
 
-	board->rows = board->cols = board->number_count = 0;
+	board->rows = board->cols = board->number_count = numbers->count = 0;
 
 	processing[NUMBER] = FALSE;
 	processing[QUESTION_MARK] = FALSE;
