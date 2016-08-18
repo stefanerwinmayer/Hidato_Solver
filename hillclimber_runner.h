@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include "init_state.h"
+#include "board.h"
 #include "hillclimber.h"
 #include "output.h"
 

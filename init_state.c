@@ -99,7 +99,7 @@ void initialise_state(
 
 				processing[X] = FALSE;
 			}
-			
+
 			if (*p == '\n')
 			{
 				col = 0;
@@ -113,13 +113,14 @@ void initialise_state(
 
 void initialise_hillclimber(
 	char *input,
-	struct HC_State *state)
+	BOOL fixed[MAX_NUMS],
+	struct Board *board)
 {
 	int row, col, number;
 	char *p;
 	BOOL processing[VALID_INPUTS];
 
-	state->board_rows = state->board_cols = state->number_count = 0;
+	board->rows = board->cols = board->number_count = 0;
 
 	processing[NUMBER] = FALSE;
 	processing[QUESTION_MARK] = FALSE;
@@ -129,18 +130,18 @@ void initialise_hillclimber(
 	{
 		for (col = 0; col < MAX_COLS; col++)
 		{
-			state->original_solution[row][col] = NOT_IN_USE;
+			board->grid[row][col] = NOT_IN_USE;
 		}
 	}
 
 	for (number = 0; number < MAX_NUMS; number++)
 	{
-		state->fixed[number] = FALSE;
+		fixed[number] = FALSE;
 	}
 
 	row = col = number = 0;
 
-	(state->board_rows)++;
+	(board->rows)++;
 	for (p = input; p < input + strlen(input); p++)
 	{
 		if (isdigit(*p))
@@ -160,11 +161,11 @@ void initialise_hillclimber(
 		{
 			if (processing[NUMBER])
 			{
-				state->original_solution[row][col] = number;
-				(state->board_cols)++;
+				board->grid[row][col] = number;
+				(board->cols)++;
 
-				state->fixed[number - 1] = TRUE;
-				state->number_count++;
+				fixed[number - 1] = TRUE;
+				board->number_count++;
 
 				number = 0;
 
@@ -177,10 +178,10 @@ void initialise_hillclimber(
 			}
 			else if (processing[QUESTION_MARK])
 			{
-				state->original_solution[row][col] = UNKNOWN;
-				(state->board_cols)++;
+				board->grid[row][col] = UNKNOWN;
+				(board->cols)++;
 
-				state->number_count++;
+				board->number_count++;
 
 				if (*p != '\n')
 				{
@@ -192,8 +193,8 @@ void initialise_hillclimber(
 			}
 			else if (processing[X])
 			{
-				state->original_solution[row][col] = NOT_IN_USE;
-				(state->board_cols)++;
+				board->grid[row][col] = NOT_IN_USE;
+				(board->cols)++;
 
 				if (*p != '\n')
 				{
@@ -206,8 +207,8 @@ void initialise_hillclimber(
 			if (*p == '\n')
 			{
 				col = 0;
-				(state->board_cols) = 0;
-				(state->board_rows)++;
+				(board->cols) = 0;
+				(board->rows)++;
 				row++;
 			}
 		}

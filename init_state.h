@@ -5,7 +5,7 @@
 #include <ctype.h>
 #include "state_struct.h"
 #include "coordinate_struct.h"
-#include "hillclimber_state_struct.h"
+#include "board.h"
 #include "boolean.h"
 
 #define NUMBER 0
@@ -24,6 +24,7 @@ void initialise_state(
 
 void initialise_hillclimber(
 	char *input,
-	struct HC_State *state);
+	BOOL fixed[MAX_NUMS],
+	struct Board *initial);
 
 #endif
