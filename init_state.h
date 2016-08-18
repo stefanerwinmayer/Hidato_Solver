@@ -24,7 +24,7 @@ void initialise_state(
 
 void initialise_hillclimber(
 	char *input,
-	BOOL fixed[MAX_NUMS],
+	BOOL *fixed,
 	struct Coordinate *num_coordinates,
 	struct Board *initial);
 
