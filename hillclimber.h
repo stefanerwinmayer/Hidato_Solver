@@ -1,7 +1,7 @@
 #ifndef HILLCLIMBER
 #define HILLCLIMBER
 
-#include "hillclimber_state_struct.h"
+#include "boolean.h"
 #include "board.h"
 #include "coordinate_struct.h"
 

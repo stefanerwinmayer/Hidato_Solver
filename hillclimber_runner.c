@@ -2,7 +2,6 @@
 
 void run_hillclimber(char *input)
 {
-	struct HC_State state;
 	BOOL fixed[MAX_NUMS];
 	struct Board initial;
 	struct Board best_solution;
