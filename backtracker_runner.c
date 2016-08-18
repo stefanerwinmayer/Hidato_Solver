@@ -8,10 +8,10 @@ void run_backtracker(
 	struct Board board;
 	struct Num_Coordinates numbers;
 
-	initialise_state(input, &board, &numbers, &state);
+	initialise_state(input, &board, &numbers);
 
 	printf("Input Hidato:\n\n");
-	print_board(&board, &state);
+	print_board(&board, &numbers);
 
 	printf("Solving the puzzle with the ");
 	(smart) ? printf("smart ") : printf("regular ");
@@ -21,7 +21,7 @@ void run_backtracker(
 
 	//backtrack(&board, &state, state.hamiltonian, smart);
 
-	print_board(&board, &state);
+	print_board(&board, &numbers);
 
 	printf("Hamiltonian Path:\n\n");
 	print_hamiltonian_path(&state);

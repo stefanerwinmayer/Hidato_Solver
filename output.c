@@ -12,16 +12,18 @@ void print_hamiltonian_path(struct State *state)
 	printf("\n\n");
 }
 
-void print_board(struct Board *board, struct State *state)
+void print_board(
+	struct Board *board,
+	struct Num_Coordinates *numbers)
 {
 	int i, j;
 	char output[MAX_ROWS][MAX_COLS];
 
-	for (i = 0; i < state->ham_length; i++)
+	for (i = 0; i < numbers->count; i++)
 	{
-		if (state->hamiltonian[i].row >= 0 && state->hamiltonian[i].col >= 0)
+		if (numbers->coordinates[i].row >= 0 && numbers->coordinates[i].col >= 0)
 		{
-			output[state->hamiltonian[i].row][state->hamiltonian[i].col] = (char)(i + 1);
+			output[numbers->coordinates[i].row][numbers->coordinates[i].col] = (char)(i + 1);
 		}
 	}
 
