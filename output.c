@@ -1,13 +1,13 @@
 #include "output.h"
 
-void print_hamiltonian_path(struct State *state)
+void print_hamiltonian_path(struct Num_Coordinates *numbers)
 {
 	int i;
 
-	printf("(%d, %d)", state->hamiltonian[0].row, state->hamiltonian[0].col);
-	for (i = 1; i < state->ham_length; i++)
+	printf("(%d, %d)", numbers->coordinates[0].row, numbers->coordinates[0].col);
+	for (i = 1; i < numbers->count; i++)
 	{
-		printf(" -> (%d, %d)", state->hamiltonian[i].row, state->hamiltonian[i].col);
+		printf(" -> (%d, %d)", numbers->coordinates[i].row, numbers->coordinates[i].col);
 	}
 	printf("\n\n");
 }

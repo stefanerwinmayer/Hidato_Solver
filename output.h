@@ -6,7 +6,7 @@
 #include "board.h"
 #include "num_coordinates.h"
 
-void print_hamiltonian_path(struct State *state);
+void print_hamiltonian_path(struct Num_Coordinates *numbers);
 
 void print_board(
 	struct Board *board,
