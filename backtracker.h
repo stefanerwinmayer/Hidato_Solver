@@ -29,6 +29,7 @@ void update_next_fixed(
 	const struct Coordinate *current);
 
 BOOL valid_move(
+	struct Board *board,
 	const struct State *state,
 	const struct Coordinate *next,
 	const struct Coordinate *neighbour);

@@ -31,7 +31,7 @@ BOOL backtrack(
 		neighbour.row = current->row + MOVE_SET[i].row;
 		neighbour.col = current->col + MOVE_SET[i].col;
 
-		if (valid_move(state, next, &neighbour))
+		if (valid_move(board, state, next, &neighbour))
 		{
 			if (smart && !sensible_move(state, next, &neighbour))
 			{
@@ -115,15 +115,16 @@ void update_next_fixed(
 }
 
 BOOL valid_move(
+	struct Board *board,
 	const struct State *state,
 	const struct Coordinate *next,
 	const struct Coordinate *neighbour)
 {
-	if (0 <= neighbour->row && neighbour->row < state->board_rows &&
-		0 <= neighbour->col && neighbour->col < state->board_cols)
+	if (0 <= neighbour->row && neighbour->row < board->rows &&
+		0 <= neighbour->col && neighbour->col < board->cols)
 	{
 		if (next->row == UNKNOWN &&
-			state->board[neighbour->row][neighbour->col] == FREE)
+			board->grid[neighbour->row][neighbour->col] == FREE)
 		{
 			return TRUE;
 		}
