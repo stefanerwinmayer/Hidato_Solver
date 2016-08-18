@@ -7,6 +7,8 @@
 struct Num_Coordinates {
 	struct Coordinate coordinates[MAX_NUMS];
 	int count;
+
+	struct Coordinate *next_fixed;
 };
 
-#endif#pragma once
+#endif
