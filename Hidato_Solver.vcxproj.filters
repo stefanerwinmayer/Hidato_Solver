@@ -83,7 +83,7 @@
     <ClInclude Include="board.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Num_Coordinates.h">
+    <ClInclude Include="num_coordinates.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

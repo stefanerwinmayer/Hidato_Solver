@@ -177,7 +177,7 @@
     <ClInclude Include="hillclimber.h" />
     <ClInclude Include="hillclimber_runner.h" />
     <ClInclude Include="init_state.h" />
-    <ClInclude Include="Num_Coordinates.h" />
+    <ClInclude Include="num_coordinates.h" />
     <ClInclude Include="output.h" />
     <ClInclude Include="state_struct.h" />
   </ItemGroup>
