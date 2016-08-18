@@ -19,7 +19,7 @@ void run_backtracker(
 
 	state.backtrack_counter = 0;
 
-	//backtrack(&board, &state, state.hamiltonian, smart);
+	backtrack(&board, &numbers, &state, state.hamiltonian, smart);
 
 	print_board(&board, &numbers);
 

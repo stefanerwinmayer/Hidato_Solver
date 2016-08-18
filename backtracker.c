@@ -2,6 +2,7 @@
 
 BOOL backtrack(
 	struct Board *board,
+	struct Num_Coordinates *numbers,
 	struct State *state,
 	const struct Coordinate *current,
 	const BOOL smart)
@@ -40,7 +41,7 @@ BOOL backtrack(
 
 			update_hamiltonian(next, &neighbour);
 
-			if (!backtrack(board, state, next, smart))
+			if (!backtrack(board, numbers, state, next, smart))
 			{
 				continue;
 			}
@@ -51,7 +52,7 @@ BOOL backtrack(
 		}
 	}
 
-	if (current != state->hamiltonian + state->ham_length - 1) /* if not solved yet */
+	if (current != numbers->coordinates + numbers->count - 1) /* if not solved yet */
 	{
 		revert_board(board, current);
 		revert_hamiltonian(board, current);
