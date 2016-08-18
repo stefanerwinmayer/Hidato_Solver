@@ -2,6 +2,7 @@
 
 void initialise_state(
 	char *input,
+	struct Board *board,
 	struct State *state)
 {
 	int row, col, number;

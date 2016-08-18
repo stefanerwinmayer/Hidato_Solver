@@ -16,6 +16,7 @@
 
 void initialise_state(
 	char *input,
+	struct Board *board,
 	struct State *state);
 
 void initialise_hillclimber(

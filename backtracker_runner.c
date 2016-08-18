@@ -5,8 +5,9 @@ void run_backtracker(
 	BOOL smart)
 {
 	struct State state;
+	struct Board board;
 
-	initialise_state(input, &state);
+	initialise_state(input, &board, &state);
 
 	printf("Input Hidato:\n\n");
 	print_board(&state);
