@@ -50,7 +50,7 @@ void initialise_state(
 		{
 			if (processing[NUMBER])
 			{
-				state->board[row][col] = 'F';
+				state->board[row][col] = FIXED;
 				(state->board_cols)++;
 
 				state->hamiltonian[number - 1].row = row;
@@ -74,7 +74,7 @@ void initialise_state(
 			}
 			else if (processing[QUESTION_MARK])
 			{
-				state->board[row][col] = '?';
+				state->board[row][col] = FREE;
 				(state->board_cols)++;
 
 				state->ham_length++;
@@ -89,7 +89,7 @@ void initialise_state(
 			}
 			else if (processing[X])
 			{
-				state->board[row][col] = 'X';
+				state->board[row][col] = BLOCKED;
 				(state->board_cols)++;
 
 				if (*p != '\n')
@@ -130,7 +130,7 @@ void initialise_hillclimber(
 	{
 		for (col = 0; col < MAX_COLS; col++)
 		{
-			board->grid[row][col] = NOT_IN_USE;
+			board->grid[row][col] = BLOCKED;
 		}
 	}
 
@@ -199,7 +199,7 @@ void initialise_hillclimber(
 			}
 			else if (processing[X])
 			{
-				board->grid[row][col] = NOT_IN_USE;
+				board->grid[row][col] = BLOCKED;
 				(board->cols)++;
 
 				if (*p != '\n')

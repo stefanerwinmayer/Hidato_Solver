@@ -6,7 +6,6 @@
 #include "coordinate_struct.h"
 #include "num_coordinates.h"
 
-#define UNKNOWN -1
 #define NUMBER_OF_MOVES 8
 
 void produce_random_solution(

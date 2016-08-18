@@ -6,14 +6,6 @@
 #include "coordinate_struct.h"
 #include "state_struct.h"
 
-#define FIXED 'F'
-#define VISITED_FIXED 'V'
-#define FREE '?'
-#define TAKEN 'T'
-#define BLOCKED 'X'
-
-#define UNKNOWN -1
-
 #define NUMBER_OF_MOVES 8
 
 BOOL backtrack(

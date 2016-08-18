@@ -86,11 +86,11 @@ void print_solution(struct Board *board)
 		printf("%d ", row);
 		for (col = 0; col < board->cols; col++)
 		{
-			if (board->grid[row][col] != NOT_IN_USE && board->grid[row][col] != UNKNOWN)
+			if (board->grid[row][col] != BLOCKED && board->grid[row][col] != UNKNOWN)
 			{
 				printf("[%2.d]", board->grid[row][col]);
 			}
-			else if (board->grid[row][col] == NOT_IN_USE)
+			else if (board->grid[row][col] == BLOCKED)
 			{
 				printf("[XX]");
 			}
