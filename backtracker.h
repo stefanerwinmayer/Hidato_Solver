@@ -27,7 +27,7 @@ void update_hamiltonian(
 
 void update_next_fixed(
 	struct Board *board,
-	struct State *state,
+	struct Num_Coordinates *numbers,
 	const struct Coordinate *current);
 
 BOOL valid_move(

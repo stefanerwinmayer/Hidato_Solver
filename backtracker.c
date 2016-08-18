@@ -24,7 +24,7 @@ BOOL backtrack(
 
 	if (smart)
 	{
-		update_next_fixed(board, state, current);
+		update_next_fixed(board, numbers, current);
 	}
 
 	for (i = 0; i < NUMBER_OF_MOVES; i++)
@@ -101,16 +101,16 @@ void update_hamiltonian(
 
 void update_next_fixed(
 	struct Board *board,
-	struct State *state,
+	struct Num_Coordinates *numbers,
 	const struct Coordinate *current)
 {
 	if (board->grid[current->row][current->col] == VISITED_FIXED)
 	{
-		state->next_fixed = current + 1;
+		numbers->next_fixed = current + 1;
 
-		while (state->next_fixed->row == UNKNOWN)
+		while (numbers->next_fixed->row == UNKNOWN)
 		{
-			(state->next_fixed)++;
+			(numbers->next_fixed)++;
 		}
 	}
 }
