@@ -62,15 +62,22 @@ int assess_solution(struct Board *board)
 	return score;
 }
 
-void copy_board(struct HC_State *state)
+void copy_board(
+	struct Board *source,
+	struct Board *dest)
 {
 	int row, col;
 
-	for (row = 0; row < state->board_rows; row++)
+	dest->rows = source->rows;
+	dest->cols = source->cols;
+
+	dest->number_count = source->number_count;
+
+	for (row = 0; row < dest->rows; row++)
 	{
-		for (col = 0; col < state->board_cols; col++)
+		for (col = 0; col < dest->cols; col++)
 		{
-			state->best_solution[row][col] = state->original_solution[row][col];
+			dest->grid[row][col] = source->grid[row][col];
 		}
 	}
 }

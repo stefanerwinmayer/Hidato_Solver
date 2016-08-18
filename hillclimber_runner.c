@@ -21,11 +21,10 @@ void run_hillclimber(char *input)
 
 	printf("Score: %d\n\n", assess_solution(&initial));
 
-	copy_board(&state);
+	copy_board(&initial, &best_solution);
 
 	printf("Best solution:\n\n");
-	//print_solution(state.best_solution, state.board_rows, state.board_cols);
-	printf("Score: %d\n\n", assess_solution(state.best_solution, state.board_rows, state.board_cols));
+	print_solution(&best_solution);
+	printf("Score: %d\n\n", assess_solution(&best_solution));
 	
-
 }

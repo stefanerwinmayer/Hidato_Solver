@@ -14,6 +14,8 @@ void produce_random_solution(
 
 int assess_solution(struct Board *board);
 
-void copy_board(struct HC_State *state);
+void copy_board(
+	struct Board *source,
+	struct Board *dest);
 
 #endif
