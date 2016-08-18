@@ -13,8 +13,8 @@
 BOOL backtrack(
 	struct Board *board,
 	struct Num_Coordinates *numbers,
-	struct State *state,
 	const struct Coordinate *current,
+	int *counter,
 	const BOOL smart);
 
 void update_board(

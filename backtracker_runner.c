@@ -7,6 +7,7 @@ void run_backtracker(
 	struct State state;
 	struct Board board;
 	struct Num_Coordinates numbers;
+	int counter = 0;
 
 	initialise_state(input, &board, &numbers);
 
@@ -17,9 +18,7 @@ void run_backtracker(
 	(smart) ? printf("smart ") : printf("regular ");
 	printf("backtracker:\n\n");
 
-	state.backtrack_counter = 0;
-
-	backtrack(&board, &numbers, &state, numbers.coordinates, smart);
+	backtrack(&board, &numbers, numbers.coordinates, &counter, smart);
 
 	print_board(&board, &numbers);
 
@@ -28,5 +27,5 @@ void run_backtracker(
 
 	printf("Number of calls to the ");
 	(smart) ? printf("smart ") : printf("regular ");
-	printf("backtracker: %d", state.backtrack_counter);
+	printf("backtracker: %d", counter);
 }
