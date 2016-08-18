@@ -6,6 +6,7 @@ void run_backtracker(
 {
 	struct State state;
 	struct Board board;
+	struct Num_Coordinates numbers;
 
 	initialise_state(input, &board, &state);
 

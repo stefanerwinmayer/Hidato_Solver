@@ -5,6 +5,7 @@
 #include "boolean.h"
 #include "state_struct.h"
 #include "board.h"
+#include "num_coordinates.h"
 #include "init_state.h"
 #include "backtracker.h"
 #include "output.h"
