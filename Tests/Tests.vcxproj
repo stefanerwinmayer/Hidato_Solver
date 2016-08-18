@@ -166,6 +166,7 @@
   <ItemGroup>
     <ClInclude Include="..\backtracker.h" />
     <ClInclude Include="..\backtracker_runner.h" />
+    <ClInclude Include="..\board.h" />
     <ClInclude Include="..\boolean.h" />
     <ClInclude Include="..\coordinate_struct.h" />
     <ClInclude Include="..\file_reader.h" />
