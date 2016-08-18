@@ -113,7 +113,6 @@ void initialise_state(
 
 void initialise_hillclimber(
 	char *input,
-	BOOL *fixed,
 	struct Num_Coordinates *numbers,
 	struct Board *board)
 {
@@ -133,11 +132,6 @@ void initialise_hillclimber(
 		{
 			board->grid[row][col] = NOT_IN_USE;
 		}
-	}
-
-	for (number = 0; number < MAX_NUMS; number++)
-	{
-		fixed[number] = FALSE;
 	}
 
 	for (number = 0; number < MAX_NUMS; number++)
@@ -176,7 +170,6 @@ void initialise_hillclimber(
 				numbers->coordinates[number - 1].col = col;
 				(numbers->count)++;
 
-				fixed[number - 1] = TRUE;
 				board->number_count++;
 
 				number = 0;

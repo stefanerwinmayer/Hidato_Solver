@@ -2,7 +2,7 @@
 
 void produce_random_solution(
 	struct Board *board,
-	BOOL fixed[MAX_NUMS])
+	struct Num_Coordinates *numbers)
 {
 	int row, col;
 	int i = 0;
@@ -13,7 +13,7 @@ void produce_random_solution(
 		{
 			if (board->grid[row][col] == UNKNOWN)
 			{
-				while (fixed[i] == TRUE)
+				while (numbers->coordinates[i].row != UNKNOWN)
 					i++;
 
 				board->grid[row][col] = i + 1;

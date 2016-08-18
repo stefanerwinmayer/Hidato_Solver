@@ -2,19 +2,18 @@
 
 void run_hillclimber(char *input)
 {
-	BOOL fixed[MAX_NUMS];
 	struct Num_Coordinates numbers;
 	struct Board initial;
 	struct Board best_solution;
 
-	initialise_hillclimber(input, fixed, &numbers, &initial);
+	initialise_hillclimber(input, &numbers, &initial);
 
 	printf("Input Hidato:\n\n");
 	print_solution(&initial);
 
 	printf("Solving the puzzle with the hill climber algorithm:\n\n");
 
-	produce_random_solution(&initial, fixed);
+	produce_random_solution(&initial, &numbers);
 
 	printf("Random solution:\n\n");
 	print_solution(&initial);
