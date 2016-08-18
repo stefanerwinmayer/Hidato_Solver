@@ -72,25 +72,25 @@ void print_board(struct State *state)
 
 void print_solution(struct Board *board)
 {
-	int i, j;
+	int row, col;
 
 	printf(" ");
-	for (j = 0; j < board->cols; j++)
+	for (col = 0; col < board->cols; col++)
 	{
-		printf("   %d", j);
+		printf("   %d", col);
 	}
 	printf("\n");
 
-	for (i = 0; i < board->rows; i++)
+	for (row = 0; row < board->rows; row++)
 	{
-		printf("%d ", i);
-		for (j = 0; j < board->cols; j++)
+		printf("%d ", row);
+		for (col = 0; col < board->cols; col++)
 		{
-			if (board->grid[i][j] != NOT_IN_USE && board->grid[i][j] != UNKNOWN)
+			if (board->grid[row][col] != NOT_IN_USE && board->grid[row][col] != UNKNOWN)
 			{
-				printf("[%2.d]", board->grid[i][j]);
+				printf("[%2.d]", board->grid[row][col]);
 			}
-			else if (board->grid[i][j] == NOT_IN_USE)
+			else if (board->grid[row][col] == NOT_IN_USE)
 			{
 				printf("[XX]");
 			}
