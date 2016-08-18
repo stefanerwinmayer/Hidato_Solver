@@ -35,7 +35,7 @@ BOOL valid_move(
 	const struct Coordinate *neighbour);
 
 void revert_board(
-	struct State *state,
+	struct Board *board,
 	const struct Coordinate *current);
 
 void revert_hamiltonian(

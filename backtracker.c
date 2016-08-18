@@ -53,7 +53,7 @@ BOOL backtrack(
 
 	if (current != state->hamiltonian + state->ham_length - 1) /* if not solved yet */
 	{
-		revert_board(state, current);
+		revert_board(board, current);
 		revert_hamiltonian(state, current);
 
 		if (smart)
@@ -136,19 +136,20 @@ BOOL valid_move(
 	return FALSE;
 }
 
-void revert_board(struct State *state,
+void revert_board(
+	struct Board *board,
 	const struct Coordinate *current)
 {
-	switch (state->board[current->row][current->col])
+	switch (board->grid[current->row][current->col])
 	{
 	case TAKEN:
 
-		state->board[current->row][current->col] = FREE;
+		board->grid[current->row][current->col] = FREE;
 		break;
 
 	case VISITED_FIXED:
 
-		state->board[current->row][current->col] = FIXED;
+		board->grid[current->row][current->col] = FIXED;
 		break;
 	}
 }
