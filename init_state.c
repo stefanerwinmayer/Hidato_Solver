@@ -114,6 +114,7 @@ void initialise_state(
 void initialise_hillclimber(
 	char *input,
 	BOOL fixed[MAX_NUMS],
+	struct Coordinate *num_coordinates,
 	struct Board *board)
 {
 	int row, col, number;

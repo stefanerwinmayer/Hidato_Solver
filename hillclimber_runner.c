@@ -3,10 +3,11 @@
 void run_hillclimber(char *input)
 {
 	BOOL fixed[MAX_NUMS];
+	struct Coordinate num_coordinates[MAX_NUMS];
 	struct Board initial;
 	struct Board best_solution;
 
-	initialise_hillclimber(input, fixed, &initial);
+	initialise_hillclimber(input, fixed, num_coordinates, &initial);
 
 	printf("Input Hidato:\n\n");
 	print_solution(&initial);
