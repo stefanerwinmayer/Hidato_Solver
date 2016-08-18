@@ -34,7 +34,7 @@ BOOL backtrack(
 
 		if (valid_move(board, next, &neighbour))
 		{
-			if (smart && !sensible_move(state, next, &neighbour))
+			if (smart && !sensible_move(numbers, next, &neighbour))
 			{
 				continue;
 			}
@@ -59,7 +59,7 @@ BOOL backtrack(
 
 		if (smart)
 		{
-			revert_next_fixed(board, state, current);
+			revert_next_fixed(board, numbers, current);
 		}
 
 		return FALSE;

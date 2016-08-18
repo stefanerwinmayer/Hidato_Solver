@@ -24,7 +24,7 @@ void run_backtracker(
 	print_board(&board, &numbers);
 
 	printf("Hamiltonian Path:\n\n");
-	print_hamiltonian_path(&state);
+	print_hamiltonian_path(&numbers);
 
 	printf("Number of calls to the ");
 	(smart) ? printf("smart ") : printf("regular ");
