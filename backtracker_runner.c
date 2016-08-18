@@ -8,7 +8,7 @@ void run_backtracker(
 	struct Board board;
 	struct Num_Coordinates numbers;
 
-	initialise_state(input, &board, &state);
+	initialise_state(input, &board, &numbers, &state);
 
 	printf("Input Hidato:\n\n");
 	print_board(&board, &state);
@@ -19,7 +19,7 @@ void run_backtracker(
 
 	state.backtrack_counter = 0;
 
-	backtrack(&board, &state, state.hamiltonian, smart);
+	//backtrack(&board, &state, state.hamiltonian, smart);
 
 	print_board(&board, &state);
 

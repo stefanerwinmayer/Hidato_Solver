@@ -3,13 +3,13 @@
 void initialise_state(
 	char *input,
 	struct Board *board,
-	struct State *state)
+	struct Num_Coordinates *numbers)
 {
 	int row, col, number;
 	char *p;
 	BOOL processing[VALID_INPUTS];
 
-	board->rows = board->cols = state->ham_length = 0;
+	board->rows = board->cols = numbers->count = 0;
 
 	processing[NUMBER] = FALSE;
 	processing[QUESTION_MARK] = FALSE;
@@ -25,8 +25,8 @@ void initialise_state(
 
 	for (number = 0; number < MAX_NUMS; number++)
 	{
-		state->hamiltonian[number].row = UNKNOWN;
-		state->hamiltonian[number].col = UNKNOWN;
+		numbers->coordinates[number].row = UNKNOWN;
+		numbers->coordinates[number].col = UNKNOWN;
 	}
 
 	row = col = number = 0;
@@ -54,14 +54,14 @@ void initialise_state(
 				board->grid[row][col] = FIXED;
 				(board->cols)++;
 
-				state->hamiltonian[number - 1].row = row;
-				state->hamiltonian[number - 1].col = col;
-				state->ham_length++;
+				numbers->coordinates[number - 1].row = row;
+				numbers->coordinates[number - 1].col = col;
+				(numbers->count)++;
 
 				if (number == 1)
 				{
-					state->hamiltonian[0].row = row;
-					state->hamiltonian[0].col = col;
+					numbers->coordinates[0].row = row;
+					numbers->coordinates[0].col = col;
 				}
 
 				number = 0;
@@ -78,7 +78,7 @@ void initialise_state(
 				board->grid[row][col] = FREE;
 				(board->cols)++;
 
-				state->ham_length++;
+				(numbers->count)++;
 
 				if (*p != '\n')
 				{
