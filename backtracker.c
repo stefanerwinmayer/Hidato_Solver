@@ -1,6 +1,8 @@
 #include "backtracker.h"
 
-BOOL backtrack(struct State *state,
+BOOL backtrack(
+	struct Board *board,
+	struct State *state,
 	const struct Coordinate *current,
 	const BOOL smart)
 {
@@ -38,7 +40,7 @@ BOOL backtrack(struct State *state,
 
 			update_hamiltonian(next, &neighbour);
 
-			if (!backtrack(state, next, smart))
+			if (!backtrack(board, state, next, smart))
 			{
 				continue;
 			}

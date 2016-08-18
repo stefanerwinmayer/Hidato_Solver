@@ -4,11 +4,13 @@
 #include <math.h>
 #include "boolean.h"
 #include "coordinate_struct.h"
+#include "board.h"
 #include "state_struct.h"
 
 #define NUMBER_OF_MOVES 8
 
 BOOL backtrack(
+	struct Board *board,
 	struct State *state,
 	const struct Coordinate *current,
 	const BOOL smart);
