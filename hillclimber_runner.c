@@ -14,12 +14,12 @@ void run_hillclimber(char *input)
 
 	printf("Solving the puzzle with the hill climber algorithm:\n\n");
 
-	produce_random_solution(&state);
+	produce_random_solution(&initial, fixed);
 
 	printf("Random solution:\n\n");
-	//print_solution(state.original_solution, state.board_rows, state.board_cols);
+	print_solution(&initial);
 
-	printf("Score: %d\n\n", assess_solution(state.original_solution, state.board_rows, state.board_cols));
+	//printf("Score: %d\n\n", assess_solution(state.original_solution, state.board_rows, state.board_cols));
 
 	copy_board(&state);
 

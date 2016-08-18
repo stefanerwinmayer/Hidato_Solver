@@ -1,20 +1,22 @@
 #include "hillclimber.h"
 
-void produce_random_solution(struct HC_State *state)
+void produce_random_solution(
+	struct Board *board,
+	BOOL fixed[MAX_NUMS])
 {
 	int row, col;
 	int i = 0;
 
-	for (row = 0; row < state->board_rows; row++)
+	for (row = 0; row < board->rows; row++)
 	{
-		for (col = 0; col < state->board_cols; col++)
+		for (col = 0; col < board->cols; col++)
 		{
-			if (state->original_solution[row][col] == UNKNOWN)
+			if (board->grid[row][col] == UNKNOWN)
 			{
-				while (state->fixed[i] == TRUE)
+				while (fixed[i] == TRUE)
 					i++;
 
-				state->original_solution[row][col] = i + 1;
+				board->grid[row][col] = i + 1;
 				i++;
 			}
 		}
