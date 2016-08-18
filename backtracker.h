@@ -25,12 +25,12 @@ void update_hamiltonian(
 	const struct Coordinate *neighbour);
 
 void update_next_fixed(
-	struct Board *board,
+	const struct Board *board,
 	struct Num_Coordinates *numbers,
 	const struct Coordinate *current);
 
 BOOL valid_move(
-	struct Board *board,
+	const struct Board *board,
 	const struct Coordinate *next,
 	const struct Coordinate *neighbour);
 
@@ -39,11 +39,11 @@ void revert_board(
 	const struct Coordinate *current);
 
 void revert_hamiltonian(
-	struct Board *board,
+	const struct Board *board,
 	struct Coordinate *current);
 
 void revert_next_fixed(
-	struct Board *board,
+	const struct Board *board,
 	struct Num_Coordinates *numbers,
 	const struct Coordinate *current);
 

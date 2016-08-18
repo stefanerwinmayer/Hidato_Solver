@@ -100,7 +100,7 @@ void update_hamiltonian(
 }
 
 void update_next_fixed(
-	struct Board *board,
+	const struct Board *board,
 	struct Num_Coordinates *numbers,
 	const struct Coordinate *current)
 {
@@ -116,7 +116,7 @@ void update_next_fixed(
 }
 
 BOOL valid_move(
-	struct Board *board,
+	const struct Board *board,
 	const struct Coordinate *next,
 	const struct Coordinate *neighbour)
 {
@@ -155,7 +155,7 @@ void revert_board(
 }
 
 void revert_hamiltonian(
-	struct Board *board,
+	const struct Board *board,
 	struct Coordinate *current)
 {
 	if (board->grid[current->row][current->col] == FREE)
@@ -166,7 +166,7 @@ void revert_hamiltonian(
 }
 
 void revert_next_fixed(
-	struct Board *board,
+	const struct Board *board,
 	struct Num_Coordinates *numbers,
 	const struct Coordinate *current)
 {
