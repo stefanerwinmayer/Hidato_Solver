@@ -21,7 +21,10 @@ void produce_random_solution(struct HC_State *state)
 	}
 }
 
-int assess_solution(struct HC_State *state)
+int assess_solution(
+	int board[MAX_ROWS][MAX_COLS],
+	int rows,
+	int cols)
 {
 	int i, row, col;
 	int score = 0;
@@ -34,9 +37,9 @@ int assess_solution(struct HC_State *state)
 		{ 1, -1 },{ 1, 0 },{ 1, 1 }
 	};
 
-	for (row = 0; row < state->board_rows; row++)
+	for (row = 0; row < rows; row++)
 	{
-		for (col = 0; col < state->board_cols; col++)
+		for (col = 0; col < cols; col++)
 		{
 			for (i = 0; i < NUMBER_OF_MOVES; i++)
 			{
@@ -44,11 +47,11 @@ int assess_solution(struct HC_State *state)
 				neighbour.col = col + MOVE_SET[i].col;
 
 
-				if (0 <= neighbour.row && neighbour.row < state->board_rows &&
-					0 <= neighbour.col && neighbour.col < state->board_cols)
+				if (0 <= neighbour.row && neighbour.row < rows &&
+					0 <= neighbour.col && neighbour.col < cols)
 				{
-					if (state->original_solution[neighbour.row][neighbour.col] == state->original_solution[row][col] + 1 ||
-					state->original_solution[neighbour.row][neighbour.col] == state->original_solution[row][col] - 1)
+					if (board[neighbour.row][neighbour.col] == board[row][col] + 1 ||
+						board[neighbour.row][neighbour.col] == board[row][col] - 1)
 					{
 						score++;
 					}
