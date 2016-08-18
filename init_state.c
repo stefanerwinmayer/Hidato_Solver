@@ -142,8 +142,8 @@ void initialise_hillclimber(
 
 	for (number = 0; number < MAX_NUMS; number++)
 	{
-		numbers->coordinates->row = UNKNOWN;
-		numbers->coordinates->col = UNKNOWN;
+		numbers->coordinates[number].row = UNKNOWN;
+		numbers->coordinates[number].col = UNKNOWN;
 	}
 
 
