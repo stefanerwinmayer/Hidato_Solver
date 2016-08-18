@@ -12,7 +12,7 @@ void print_hamiltonian_path(struct State *state)
 	printf("\n\n");
 }
 
-void print_board(struct State *state)
+void print_board(struct Board *board, struct State *state)
 {
 	int i, j;
 	char output[MAX_ROWS][MAX_COLS];
@@ -25,15 +25,15 @@ void print_board(struct State *state)
 		}
 	}
 
-	for (i = 0; i < state->board_rows; i++)
+	for (i = 0; i < board->rows; i++)
 	{
-		for (j = 0; j < state->board_cols; j++)
+		for (j = 0; j < board->cols; j++)
 		{
-			if (state->board[i][j] == FREE)
+			if (board->grid[i][j] == FREE)
 			{
 				output[i][j] = FREE;
 			}
-			else if (state->board[i][j] == BLOCKED)
+			else if (board->grid[i][j] == BLOCKED)
 			{
 				output[i][j] = BLOCKED;
 			}
@@ -41,16 +41,16 @@ void print_board(struct State *state)
 	}
 
 	printf(" ");
-	for (j = 0; j < state->board_cols; j++)
+	for (j = 0; j < board->cols; j++)
 	{
 		printf("   %d", j);
 	}
 	printf("\n");
 
-	for (i = 0; i < state->board_rows; i++)
+	for (i = 0; i < board->rows; i++)
 	{
 		printf("%d ", i);
-		for (j = 0; j < state->board_cols; j++)
+		for (j = 0; j < board->cols; j++)
 		{
 			if (output[i][j] != BLOCKED && output[i][j] != FREE)
 			{

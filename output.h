@@ -6,7 +6,7 @@
 #include "board.h"
 
 void print_hamiltonian_path(struct State *state);
-void print_board(struct State *state);
+void print_board(struct Board *board, struct State *state);
 void print_solution(struct Board *board);
 
 #endif

@@ -10,7 +10,7 @@ void run_backtracker(
 	initialise_state(input, &board, &state);
 
 	printf("Input Hidato:\n\n");
-	print_board(&state);
+	print_board(&board, &state);
 
 	printf("Solving the puzzle with the ");
 	(smart) ? printf("smart ") : printf("regular ");
@@ -20,7 +20,7 @@ void run_backtracker(
 
 	backtrack(&state, state.hamiltonian, smart);
 
-	print_board(&state);
+	print_board(&board, &state);
 
 	printf("Hamiltonian Path:\n\n");
 	print_hamiltonian_path(&state);
