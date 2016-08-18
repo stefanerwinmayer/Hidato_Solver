@@ -177,14 +177,14 @@ void revert_next_fixed(
 }
 
 BOOL sensible_move(
-	const struct State *state,
+	const struct Num_Coordinates *numbers,
 	const struct Coordinate *next,
 	const struct Coordinate *neighbour)
 {
-	if (state->next_fixed < state->hamiltonian + state->ham_length - 1)
+	if (numbers->next_fixed < numbers->coordinates + numbers->count - 1)
 	{
-		int dist = distance(neighbour, state->next_fixed);
-		int available_steps = state->next_fixed - next;
+		int dist = distance(neighbour, numbers->next_fixed);
+		int available_steps = numbers->next_fixed - next;
 		int is_ok = dist <= available_steps;
 		return is_ok;
 	}

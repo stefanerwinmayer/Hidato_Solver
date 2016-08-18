@@ -53,7 +53,7 @@ int distance(
 	const struct Coordinate *second);
 
 BOOL sensible_move(
-	const struct State *state,
+	const struct Num_Coordinates *numbers,
 	const struct Coordinate *next,
 	const struct Coordinate *neighbour);
 
