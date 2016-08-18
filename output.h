@@ -2,7 +2,6 @@
 #define OUTPUT
 
 #include <stdio.h>
-#include "state_struct.h"
 #include "board.h"
 #include "num_coordinates.h"
 

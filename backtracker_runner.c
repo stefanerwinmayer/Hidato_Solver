@@ -4,7 +4,6 @@ void run_backtracker(
 	char *input,
 	BOOL smart)
 {
-	struct State state;
 	struct Board board;
 	struct Num_Coordinates numbers;
 	int counter = 0;

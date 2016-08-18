@@ -6,7 +6,6 @@
 #include "coordinate_struct.h"
 #include "board.h"
 #include "num_coordinates.h"
-#include "state_struct.h"
 
 #define NUMBER_OF_MOVES 8
 
