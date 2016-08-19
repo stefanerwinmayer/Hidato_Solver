@@ -25,6 +25,23 @@ void produce_random_solution(
 	}
 }
 
+int assess_solution(struct Num_Coordinates *numbers)
+{
+	struct Coordinate *current;
+	int score = 0;
+
+	for (current = numbers->coordinates; current < numbers->coordinates + numbers->count - 1; current++)
+	{
+		if (distance(current, current + 1) == 1)
+		{
+			score++;
+		}
+	}
+
+	return score;
+}
+
+/*
 int assess_solution(struct Board *board)
 {
 	int i, row, col;
@@ -63,7 +80,7 @@ int assess_solution(struct Board *board)
 
 	return score;
 }
-
+*/
 void copy_board(
 	struct Board *source,
 	struct Board *dest)

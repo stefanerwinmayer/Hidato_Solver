@@ -18,9 +18,10 @@ void run_hillclimber(char *input)
 
 	printf("Random solution:\n\n");
 	print_board(&initial, &numbers);
-	/*
-	printf("Score: %d\n\n", assess_solution(&initial));
 
+	printf("Score: %d\n\n", assess_solution(&numbers));
+
+	/*
 	copy_board(&initial, &best_solution);
 
 	printf("Best solution:\n\n");

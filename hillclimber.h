@@ -6,13 +6,15 @@
 #include "coordinate_struct.h"
 #include "num_coordinates.h"
 
+#include "backtracker.h"
+
 #define NUMBER_OF_MOVES 8
 
 void produce_random_solution(
 	struct Board *board,
 	struct Num_Coordinates *numbers);
 
-int assess_solution(struct Board *board);
+int assess_solution(struct Num_Coordinates *numbers);
 
 void copy_board(
 	struct Board *source,
