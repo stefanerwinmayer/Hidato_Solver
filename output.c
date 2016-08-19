@@ -72,6 +72,7 @@ void print_board(
 	printf("\n");
 }
 
+/*
 void print_solution(struct Board *board)
 {
 	int row, col;
@@ -105,3 +106,4 @@ void print_solution(struct Board *board)
 	}
 	printf("\n");
 }
+*/

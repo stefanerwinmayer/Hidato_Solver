@@ -106,6 +106,7 @@ void initialise_state(
 	}
 }
 
+/*
 void initialise_hillclimber(
 	char *input,
 	struct Num_Coordinates *numbers,
@@ -215,3 +216,4 @@ void initialise_hillclimber(
 		}
 	}
 }
+*/
