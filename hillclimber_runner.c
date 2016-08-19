@@ -23,7 +23,7 @@ void run_hillclimber(char *input)
 
 	copy_solution(&initial, &best);
 
-	produce_variations(3, &board, &best);
+	produce_variations(3, &board, &initial, &best);
 
 	//climb_hills(&initial, &best_solution, &numbers);
 

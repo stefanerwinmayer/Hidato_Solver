@@ -88,7 +88,7 @@ void climb_hills(
 				other++;
 			}
 
-			
+
 			swap.row = current->row;
 			swap.col = current->col;
 			current->row = other->row;
@@ -112,20 +112,37 @@ void climb_hills(
 	}
 }
 
-void produce_variations(int n, struct Board *board, struct Num_Coordinates *numbers)
+void produce_variations(
+	int n,
+	struct Board *board,
+	struct Num_Coordinates *initial,
+	struct Num_Coordinates *numbers)
 {
 	int i;
 	struct Coordinate temp;
 
 	if (n == 1)
 	{
-		print_board(board, numbers);
+		for (i = 0; i < initial->count; i++)
+		{
+			if (board->grid[initial->coordinates[i].row][initial->coordinates[i].col] == FIXED &&
+				(numbers->coordinates[i].row != initial->coordinates[i].col ||
+				numbers->coordinates[i].col != initial->coordinates[i].col))
+			{
+				break;
+			}
+		}
+
+		if (i == initial->count)
+		{
+			print_board(board, numbers);
+		}
 	}
 	else
 	{
 		for (i = 0; i < n - 1; i++)
 		{
-			produce_variations(n - 1, board, numbers);
+			produce_variations(n - 1, board, initial, numbers);
 			if (n % 2 == 0)
 			{
 				temp.row = numbers->coordinates[i].row;
@@ -146,7 +163,7 @@ void produce_variations(int n, struct Board *board, struct Num_Coordinates *numb
 
 			}
 		}
-		produce_variations(n - 1, board, numbers);
+		produce_variations(n - 1, board, initial, numbers);
 	}
 }
 
