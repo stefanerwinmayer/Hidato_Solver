@@ -21,8 +21,6 @@ void run_hillclimber(char *input)
 
 	printf("Score: %d\n\n", assess_solution(&numbers));
 
-	copy_board(&initial, &best_solution);
-
 	produce_variations(3, &initial, &numbers);
 
 	//climb_hills(&initial, &best_solution, &numbers);

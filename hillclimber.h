@@ -17,10 +17,6 @@ void produce_random_solution(
 
 int assess_solution(struct Num_Coordinates *numbers);
 
-void copy_board(
-	struct Board *source,
-	struct Board *dest);
-
 void climb_hills(
 	struct Board *initial,
 	struct Board *best_solution,
