@@ -6,11 +6,12 @@ void run_hillclimber(char *input)
 	struct Board initial;
 	struct Board best_solution;
 
-	initialise_hillclimber(input, &numbers, &initial);
+	initialise_state(input, &initial, &numbers);
 
 	printf("Input Hidato:\n\n");
-	print_solution(&initial);
+	print_board(&initial, &numbers);
 
+	/*
 	printf("Solving the puzzle with the hill climber algorithm:\n\n");
 
 	produce_random_solution(&initial, &numbers);
@@ -25,5 +26,6 @@ void run_hillclimber(char *input)
 	printf("Best solution:\n\n");
 	print_solution(&best_solution);
 	printf("Score: %d\n\n", assess_solution(&best_solution));
+	*/
 	
 }
