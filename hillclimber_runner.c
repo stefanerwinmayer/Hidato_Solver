@@ -2,26 +2,25 @@
 
 void run_hillclimber(char *input)
 {
-	struct Num_Coordinates numbers;
-	struct Board initial;
-	struct Board best_solution;
+	struct Num_Coordinates initial;
+	struct Board board;
 
-	initialise_state(input, &initial, &numbers);
+	initialise_state(input, &board, &initial);
 
 	printf("Input Hidato:\n\n");
-	print_board(&initial, &numbers);
+	print_board(&board, &initial);
 
 	
 	printf("Solving the puzzle with the hill climber algorithm:\n\n");
 	
-	produce_random_solution(&initial, &numbers);
+	produce_random_solution(&board, &initial);
 
 	printf("Random solution:\n\n");
-	print_board(&initial, &numbers);
+	print_board(&board, &initial);
 
-	printf("Score: %d\n\n", assess_solution(&numbers));
+	printf("Score: %d\n\n", assess_solution(&initial));
 
-	produce_variations(3, &initial, &numbers);
+	produce_variations(3, &board, &initial);
 
 	//climb_hills(&initial, &best_solution, &numbers);
 
