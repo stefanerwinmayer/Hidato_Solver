@@ -6,6 +6,7 @@
 #include "coordinate_struct.h"
 #include "num_coordinates.h"
 
+#include "output.h"
 #include "backtracker.h"
 
 #define NUMBER_OF_MOVES 8

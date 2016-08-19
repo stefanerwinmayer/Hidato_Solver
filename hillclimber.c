@@ -66,6 +66,35 @@ void climb_hills(
 	struct Board *best_solution,
 	struct Num_Coordinates *numbers)
 {
+	struct Coordinate *current;
+	struct Coordinate *next;
+	struct Coordinate swap;
+
+	current = numbers->coordinates;
+
+	while (initial->grid[current->row][current->col] != TAKEN)
+		current++;
+
+	next = current + 1;
+
+	while (initial->grid[next->row][next->col] != TAKEN)
+		next++;
+
+
+	swap = *current;
+	*current = *next;
+	*next = swap;
+
+	/*
+	swap.row = current->row;
+	swap.col = current->col;
+	current->row = next->row;
+	current->col = next->col;
+	next->row = swap.row;
+	next->col = swap.col;
+	*/
+
+	print_board(initial, numbers);
 
 }
 
