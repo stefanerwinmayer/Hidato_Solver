@@ -41,46 +41,6 @@ int assess_solution(struct Num_Coordinates *numbers)
 	return score;
 }
 
-/*
-int assess_solution(struct Board *board)
-{
-	int i, row, col;
-	int score = 0;
-	struct Coordinate neighbour;
-
-	static const struct Coordinate MOVE_SET[] =
-	{
-		{ -1, -1 },{ -1, 0 },{ -1, 1 },
-		{ 0, -1 },{ 0, 1 },
-		{ 1, -1 },{ 1, 0 },{ 1, 1 }
-	};
-
-	for (row = 0; row < board->rows; row++)
-	{
-		for (col = 0; col < board->cols; col++)
-		{
-			for (i = 0; i < NUMBER_OF_MOVES; i++)
-			{
-				neighbour.row = row + MOVE_SET[i].row;
-				neighbour.col = col + MOVE_SET[i].col;
-
-
-				if (0 <= neighbour.row && neighbour.row < board->rows &&
-					0 <= neighbour.col && neighbour.col < board->cols)
-				{
-					if (board->grid[neighbour.row][neighbour.col] == board->grid[row][col] + 1 ||
-						board->grid[neighbour.row][neighbour.col] == board->grid[row][col] - 1)
-					{
-						score++;
-					}
-				}
-			}
-		}
-	}
-
-	return score;
-}
-*/
 void copy_board(
 	struct Board *source,
 	struct Board *dest)
@@ -108,3 +68,44 @@ void climb_hills(
 {
 
 }
+
+/*
+int assess_solution(struct Board *board)
+{
+int i, row, col;
+int score = 0;
+struct Coordinate neighbour;
+
+static const struct Coordinate MOVE_SET[] =
+{
+{ -1, -1 },{ -1, 0 },{ -1, 1 },
+{ 0, -1 },{ 0, 1 },
+{ 1, -1 },{ 1, 0 },{ 1, 1 }
+};
+
+for (row = 0; row < board->rows; row++)
+{
+for (col = 0; col < board->cols; col++)
+{
+for (i = 0; i < NUMBER_OF_MOVES; i++)
+{
+neighbour.row = row + MOVE_SET[i].row;
+neighbour.col = col + MOVE_SET[i].col;
+
+
+if (0 <= neighbour.row && neighbour.row < board->rows &&
+0 <= neighbour.col && neighbour.col < board->cols)
+{
+if (board->grid[neighbour.row][neighbour.col] == board->grid[row][col] + 1 ||
+board->grid[neighbour.row][neighbour.col] == board->grid[row][col] - 1)
+{
+score++;
+}
+}
+}
+}
+}
+
+return score;
+}
+*/
