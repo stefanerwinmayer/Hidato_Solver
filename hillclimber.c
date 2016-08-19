@@ -11,12 +11,14 @@ void produce_random_solution(
 	{
 		for (col = 0; col < board->cols; col++)
 		{
-			if (board->grid[row][col] == UNKNOWN)
+			if (board->grid[row][col] == FREE)
 			{
 				while (numbers->coordinates[i].row != UNKNOWN)
 					i++;
 
-				board->grid[row][col] = i + 1;
+				numbers->coordinates[i].row = row;
+				numbers->coordinates[i].col = col;
+				board->grid[row][col] = TAKEN;
 				i++;
 			}
 		}

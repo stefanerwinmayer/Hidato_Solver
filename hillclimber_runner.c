@@ -11,14 +11,14 @@ void run_hillclimber(char *input)
 	printf("Input Hidato:\n\n");
 	print_board(&initial, &numbers);
 
-	/*
+	
 	printf("Solving the puzzle with the hill climber algorithm:\n\n");
-
+	
 	produce_random_solution(&initial, &numbers);
 
 	printf("Random solution:\n\n");
-	print_solution(&initial);
-
+	print_board(&initial, &numbers);
+	/*
 	printf("Score: %d\n\n", assess_solution(&initial));
 
 	copy_board(&initial, &best_solution);
