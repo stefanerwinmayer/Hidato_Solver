@@ -3,6 +3,7 @@
 void run_hillclimber(char *input)
 {
 	struct Num_Coordinates initial;
+	struct Num_Coordinates best;
 	struct Board board;
 
 	initialise_state(input, &board, &initial);
@@ -20,7 +21,9 @@ void run_hillclimber(char *input)
 
 	printf("Score: %d\n\n", assess_solution(&initial));
 
-	produce_variations(3, &board, &initial);
+	copy_solution(&initial, &best);
+
+	produce_variations(3, &board, &best);
 
 	//climb_hills(&initial, &best_solution, &numbers);
 
