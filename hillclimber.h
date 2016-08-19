@@ -26,4 +26,6 @@ void climb_hills(
 	struct Board *best_solution,
 	struct Num_Coordinates *numbers);
 
+void generate(int n, int a[], int size);
+
 #endif

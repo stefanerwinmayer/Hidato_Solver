@@ -67,35 +67,89 @@ void climb_hills(
 	struct Num_Coordinates *numbers)
 {
 	struct Coordinate *current;
-	struct Coordinate *next;
+	struct Coordinate *other;
 	struct Coordinate swap;
 
 	current = numbers->coordinates;
 
-	while (initial->grid[current->row][current->col] != TAKEN)
+
+
+
+	while (current < numbers->coordinates + numbers->count)
+	{
+
+		while (initial->grid[current->row][current->col] != TAKEN)
+		{
+			current++;
+		}
+
+		other = current + 1;
+
+		while (other < numbers->coordinates + numbers->count)
+		{
+			while (initial->grid[other->row][other->col] != TAKEN) //||
+				//other == current)
+			{
+				other++;
+			}
+
+			
+			swap.row = current->row;
+			swap.col = current->col;
+			current->row = other->row;
+			current->col = other->col;
+			other->row = swap.row;
+			other->col = swap.col;
+
+			print_board(initial, numbers);
+
+			swap.row = current->row;
+			swap.col = current->col;
+			current->row = other->row;
+			current->col = other->col;
+			other->row = swap.row;
+			other->col = swap.col;
+
+			other++;
+		}
+
 		current++;
+	}
+}
 
-	next = current + 1;
+void generate(int n, int a[], int size)
+{
+	int i, temp;
 
-	while (initial->grid[next->row][next->col] != TAKEN)
-		next++;
-
-
-	swap = *current;
-	*current = *next;
-	*next = swap;
-
-	/*
-	swap.row = current->row;
-	swap.col = current->col;
-	current->row = next->row;
-	current->col = next->col;
-	next->row = swap.row;
-	next->col = swap.col;
-	*/
-
-	print_board(initial, numbers);
-
+	if (n == 1)
+	{
+		for (i = 0; i < size; i++)
+		{
+			printf("%d", a[i]);
+		}
+		printf("\n");
+	}
+	else
+	{
+		for (i = 0; i < n - 1; i++)
+		{
+			generate(n - 1, a, size);
+			if (n % 2 == 0)
+			{
+				temp = a[i];
+				a[i] = a[n - 1];
+				a[n - 1] = temp;
+			}
+			else
+			{
+				temp = a[0];
+				a[0] = a[n - 1];
+				a[n - 1] = temp;
+				
+			}
+		}
+		generate(n - 1, a, size);
+	}
 }
 
 /*
