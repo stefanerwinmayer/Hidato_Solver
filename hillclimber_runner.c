@@ -35,6 +35,8 @@ void run_hillclimber(char *input)
 		printf("%d", A[i]);
 	}
 
+	produce_variations(3, &initial, &numbers);
+
 	//climb_hills(&initial, &best_solution, &numbers);
 
 	/*

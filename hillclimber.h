@@ -28,4 +28,6 @@ void climb_hills(
 
 void generate(int n, int a[], int size);
 
+void produce_variations(int n, struct Board *board, struct Num_Coordinates *numbers);
+
 #endif

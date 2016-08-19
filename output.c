@@ -13,8 +13,8 @@ void print_hamiltonian_path(struct Num_Coordinates *numbers)
 }
 
 void print_board(
-	struct Board *board,
-	struct Num_Coordinates *numbers)
+	const struct Board *board,
+	const struct Num_Coordinates *numbers)
 {
 	int i, j;
 	char output[MAX_ROWS][MAX_COLS];

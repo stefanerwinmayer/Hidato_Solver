@@ -152,6 +152,44 @@ void generate(int n, int a[], int size)
 	}
 }
 
+void produce_variations(int n, struct Board *board, struct Num_Coordinates *numbers)
+{
+	int i;
+	struct Coordinate temp;
+
+	if (n == 1)
+	{
+		print_board(board, numbers);
+	}
+	else
+	{
+		for (i = 0; i < n - 1; i++)
+		{
+			produce_variations(n - 1, board, numbers);
+			if (n % 2 == 0)
+			{
+				temp.row = numbers->coordinates[i].row;
+				temp.col = numbers->coordinates[i].col;
+				numbers->coordinates[i].row = numbers->coordinates[n - 1].row;
+				numbers->coordinates[i].col = numbers->coordinates[n - 1].col;
+				numbers->coordinates[n - 1].row = temp.row;
+				numbers->coordinates[n - 1].col = temp.col;
+			}
+			else
+			{
+				temp.row = numbers->coordinates[0].row;
+				temp.col = numbers->coordinates[0].col;
+				numbers->coordinates[0].row = numbers->coordinates[n - 1].row;
+				numbers->coordinates[0].col = numbers->coordinates[n - 1].col;
+				numbers->coordinates[n - 1].row = temp.row;
+				numbers->coordinates[n - 1].col = temp.col;
+
+			}
+		}
+		produce_variations(n - 1, board, numbers);
+	}
+}
+
 /*
 int assess_solution(struct Board *board)
 {
