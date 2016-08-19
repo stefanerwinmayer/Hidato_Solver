@@ -1,5 +1,4 @@
 #include "hillclimber.h"
-#define UNKNOWN -2
 
 void produce_random_solution(
 	struct Board *board,
