@@ -117,41 +117,6 @@ void climb_hills(
 	}
 }
 
-void generate(int n, int a[], int size)
-{
-	int i, temp;
-
-	if (n == 1)
-	{
-		for (i = 0; i < size; i++)
-		{
-			printf("%d", a[i]);
-		}
-		printf("\n");
-	}
-	else
-	{
-		for (i = 0; i < n - 1; i++)
-		{
-			generate(n - 1, a, size);
-			if (n % 2 == 0)
-			{
-				temp = a[i];
-				a[i] = a[n - 1];
-				a[n - 1] = temp;
-			}
-			else
-			{
-				temp = a[0];
-				a[0] = a[n - 1];
-				a[n - 1] = temp;
-				
-			}
-		}
-		generate(n - 1, a, size);
-	}
-}
-
 void produce_variations(int n, struct Board *board, struct Num_Coordinates *numbers)
 {
 	int i;

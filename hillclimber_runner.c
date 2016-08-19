@@ -23,18 +23,6 @@ void run_hillclimber(char *input)
 
 	copy_board(&initial, &best_solution);
 
-	int n = 3;
-	int size = 3;
-	int A[] = { 1, 2, 3 };
-	generate(n, A, size);
-
-
-	printf("\n\n");
-	for (int i = 0; i < size; i++)
-	{
-		printf("%d", A[i]);
-	}
-
 	produce_variations(3, &initial, &numbers);
 
 	//climb_hills(&initial, &best_solution, &numbers);
