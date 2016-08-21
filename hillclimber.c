@@ -92,6 +92,7 @@ void climb_hills(
 			other->col = swap.col;
 
 			print_board(board, initial);
+			printf("Score: %d\n\n", assess_solution(initial));
 
 			swap.row = current->row;
 			swap.col = current->col;
