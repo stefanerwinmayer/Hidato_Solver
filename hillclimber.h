@@ -29,6 +29,8 @@ void climb_hills(
 void process_deriviate_solutions(
 	struct Board *board,
 	struct Num_Coordinates *initial,
-	struct Num_Coordinates *best);
+	struct Num_Coordinates *best,
+	int best_score,
+	int high_score);
 
 #endif

@@ -61,31 +61,38 @@ void climb_hills(
 	struct Num_Coordinates *initial,
 	struct Num_Coordinates *best)
 {
+	int high_score;
+	const int best_score = initial->count - 1;
+
 	produce_random_solution(board, initial);
 
 	printf("Random solution:\n\n");
 	print_board(board, initial);
 
-	printf("Score: %d\n\n", assess_solution(initial));
+	high_score = assess_solution(initial);
+	printf("Score: %d\n\n", high_score);
 
 	copy_solution(initial, best);
 
-	printf("Deriviate solutions:\n\n");
-	process_deriviate_solutions(board, initial, best);
+	if (high_score < best_score)
+	{
+		printf("Deriviate solutions:\n\n");
+		process_deriviate_solutions(board, initial, best, best_score, high_score);
+	}
 }
 
 void process_deriviate_solutions(
 	struct Board *board,
 	struct Num_Coordinates *initial,
-	struct Num_Coordinates *best)
+	struct Num_Coordinates *best,
+	int best_score,
+	int high_score)
 {
 	struct Coordinate *current;
 	struct Coordinate *other;
 	struct Coordinate swap;
-	int high_score, score;
-	const int best_score = initial->count - 1;
+	int score = 0;
 	
-	high_score = score = 0;
 	current = initial->coordinates;
 
 	while (current < initial->coordinates + initial->count)
@@ -121,6 +128,11 @@ void process_deriviate_solutions(
 			{
 				copy_solution(initial, best);
 				high_score = score;
+			}
+
+			if (score == best_score)
+			{
+				return;
 			}
 
 			swap.row = current->row;
