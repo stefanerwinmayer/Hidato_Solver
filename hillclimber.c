@@ -96,6 +96,8 @@ void process_deriviate_solutions(
 	
 	current = initial->coordinates;
 
+	printf("RUNNING A ROUND\n\n");
+
 	while (current < initial->coordinates + initial->count)
 	{
 
