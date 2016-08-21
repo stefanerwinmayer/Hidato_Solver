@@ -21,6 +21,11 @@ void copy_solution(
 	struct Num_Coordinates *source,
 	struct Num_Coordinates *dest);
 
+void climb_hills(
+	struct Board *board,
+	struct Num_Coordinates *initial,
+	struct Num_Coordinates *best);
+
 void process_deriviate_solutions(
 	struct Board *board,
 	struct Num_Coordinates *initial,

@@ -56,6 +56,24 @@ void copy_solution(
 	}
 }
 
+void climb_hills(
+	struct Board *board,
+	struct Num_Coordinates *initial,
+	struct Num_Coordinates *best)
+{
+	produce_random_solution(board, initial);
+
+	printf("Random solution:\n\n");
+	print_board(board, initial);
+
+	printf("Score: %d\n\n", assess_solution(initial));
+
+	copy_solution(initial, best);
+
+	printf("Deriviate solutions:\n\n");
+	process_deriviate_solutions(board, initial, best);
+}
+
 void process_deriviate_solutions(
 	struct Board *board,
 	struct Num_Coordinates *initial,
