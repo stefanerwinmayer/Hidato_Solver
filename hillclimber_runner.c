@@ -23,14 +23,13 @@ void run_hillclimber(char *input)
 
 	copy_solution(&initial, &best);
 
-	produce_variations(3, &board, &initial, &best);
 
 	//climb_hills(&initial, &best_solution, &numbers);
 
-	/*
+	
 	printf("Best solution:\n\n");
-	print_board(&best_solution, &numbers);
-	printf("Score: %d\n\n", assess_solution(&numbers));
-	*/
+	print_board(&board, &best);
+	printf("Score: %d\n\n", assess_solution(&best));
+	
 	
 }
