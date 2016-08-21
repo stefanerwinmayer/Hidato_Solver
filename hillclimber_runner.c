@@ -24,7 +24,7 @@ void run_hillclimber(char *input)
 	copy_solution(&initial, &best);
 
 	printf("Deriviate solutions:\n\n");
-	climb_hills(&board, &initial, &best);
+	process_deriviate_solutions(&board, &initial, &best);
 
 	
 	printf("Best solution:\n\n");
