@@ -64,7 +64,10 @@ void climb_hills(
 	struct Coordinate *current;
 	struct Coordinate *other;
 	struct Coordinate swap;
-
+	int high_score, score;
+	const int best_score = initial->count - 1;
+	
+	high_score = score = 0;
 	current = initial->coordinates;
 
 	while (current < initial->coordinates + initial->count)
@@ -92,7 +95,15 @@ void climb_hills(
 			other->col = swap.col;
 
 			print_board(board, initial);
-			printf("Score: %d\n\n", assess_solution(initial));
+
+			score = assess_solution(initial);
+			printf("Score: %d\n\n", score);
+
+			if (score > high_score)
+			{
+				copy_solution(initial, best);
+				high_score = score;
+			}
 
 			swap.row = current->row;
 			swap.col = current->col;
