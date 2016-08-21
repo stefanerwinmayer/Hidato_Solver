@@ -57,37 +57,32 @@ void copy_solution(
 }
 
 void climb_hills(
-	struct Board *initial,
-	struct Board *best_solution,
-	struct Num_Coordinates *numbers)
+	struct Board *board,
+	struct Num_Coordinates *initial,
+	struct Num_Coordinates *best)
 {
 	struct Coordinate *current;
 	struct Coordinate *other;
 	struct Coordinate swap;
 
-	current = numbers->coordinates;
+	current = initial->coordinates;
 
-
-
-
-	while (current < numbers->coordinates + numbers->count)
+	while (current < initial->coordinates + initial->count)
 	{
 
-		while (initial->grid[current->row][current->col] != TAKEN)
+		while (board->grid[current->row][current->col] != TAKEN)
 		{
 			current++;
 		}
 
 		other = current + 1;
 
-		while (other < numbers->coordinates + numbers->count)
+		while (other < initial->coordinates + initial->count)
 		{
-			while (initial->grid[other->row][other->col] != TAKEN) //||
-				//other == current)
+			while (board->grid[other->row][other->col] != TAKEN)
 			{
 				other++;
 			}
-
 
 			swap.row = current->row;
 			swap.col = current->col;
@@ -96,7 +91,7 @@ void climb_hills(
 			other->row = swap.row;
 			other->col = swap.col;
 
-			print_board(initial, numbers);
+			print_board(board, initial);
 
 			swap.row = current->row;
 			swap.col = current->col;
