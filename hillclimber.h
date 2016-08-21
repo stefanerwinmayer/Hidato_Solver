@@ -26,10 +26,4 @@ void climb_hills(
 	struct Num_Coordinates *initial,
 	struct Num_Coordinates *best);
 
-void produce_variations(
-	int n,
-	struct Board *board,
-	struct Num_Coordinates *initial,
-	struct Num_Coordinates *numbers);
-
 #endif
