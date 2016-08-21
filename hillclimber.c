@@ -91,6 +91,7 @@ void process_deriviate_solutions(
 	struct Coordinate *current;
 	struct Coordinate *other;
 	struct Coordinate swap;
+	int round_high_score = high_score;
 	int score = 0;
 	
 	current = initial->coordinates;
@@ -119,15 +120,17 @@ void process_deriviate_solutions(
 			other->row = swap.row;
 			other->col = swap.col;
 
-			print_board(board, initial);
+			//print_board(board, initial);
 
 			score = assess_solution(initial);
-			printf("Score: %d\n\n", score);
+			//printf("Score: %d\n\n", score);
 
-			if (score > high_score)
+			if (score > round_high_score)
 			{
 				copy_solution(initial, best);
-				high_score = score;
+				round_high_score = score;
+				print_board(board, best);
+				printf("Score: %d\n\n", score);
 			}
 
 			if (score == best_score)
@@ -146,6 +149,14 @@ void process_deriviate_solutions(
 		}
 
 		current++;
+	}
+
+	if (round_high_score > high_score)
+	{
+		high_score = round_high_score;
+		copy_solution(best, initial);
+
+		process_deriviate_solutions(board, initial, best, best_score, high_score);
 	}
 }
 
