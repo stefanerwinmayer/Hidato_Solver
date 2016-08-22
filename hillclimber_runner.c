@@ -17,7 +17,7 @@ void run_hillclimber(char *input)
 
 	outcome = climb_hills(&board, &initial, &best, &process_deriviate_counter);
 
-	printf("Best solution:\n\n");
+	printf("Best OVERALL solution:\n\n");
 	print_board(&board, &best);
 	printf("Score: %d\n\n", assess_solution(&best));
 
