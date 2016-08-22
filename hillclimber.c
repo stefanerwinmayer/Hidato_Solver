@@ -88,10 +88,11 @@ void copy_solution(
 BOOL climb_hills(
 	struct Board *board,
 	struct Num_Coordinates *initial,
-	struct Num_Coordinates *best)
+	struct Num_Coordinates *best,
+	int *process_deriviate_counter)
 {
 	int high_score;
-	BOOL solved = FALSE;
+	BOOL solved = TRUE;
 	const int best_score = initial->count - 1;
 
 	produce_random_solution(board, initial);
@@ -104,11 +105,13 @@ BOOL climb_hills(
 
 	copy_solution(initial, best);
 
-	if (high_score < best_score)
+	if (high_score != best_score)
 	{
 		printf("Deriviate solutions:\n\n");
-		solved = process_deriviate_solutions(board, initial, best, best_score, high_score);
+		solved = process_deriviate_solutions(board, initial, best, best_score, high_score, process_deriviate_counter);
 	}
+	
+	return solved;
 }
 
 BOOL process_deriviate_solutions(
@@ -116,14 +119,18 @@ BOOL process_deriviate_solutions(
 	struct Num_Coordinates *initial,
 	struct Num_Coordinates *best,
 	int best_score,
-	int high_score)
+	int high_score,
+	int *process_deriviate_counter)
 {
 	struct Coordinate *current;
 	struct Coordinate *other;
+	BOOL solved = FALSE;
 	int round_high_score = high_score;
 	int score = 0;
 
 	current = initial->coordinates;
+
+	(*process_deriviate_counter)++;
 
 	printf("RUNNING A ROUND\n\n");
 
@@ -182,10 +189,10 @@ BOOL process_deriviate_solutions(
 		high_score = round_high_score;
 		copy_solution(best, initial);
 
-		process_deriviate_solutions(board, initial, best, best_score, high_score);
+		solved = process_deriviate_solutions(board, initial, best, best_score, high_score, process_deriviate_counter);
 	}
 
-	return FALSE;
+	return solved;
 }
 
 void swap_numbers(
