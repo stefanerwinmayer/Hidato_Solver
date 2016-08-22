@@ -1,6 +1,8 @@
 #ifndef HILLCLIMBER
 #define HILLCLIMBER
 
+#include <stdlib.h>
+
 #include "boolean.h"
 #include "board.h"
 #include "coordinate_struct.h"
@@ -10,6 +12,10 @@
 #include "backtracker.h"
 
 #define NUMBER_OF_MOVES 8
+
+void produce_predictable_solution(
+	struct Board *board,
+	struct Num_Coordinates *numbers);
 
 void produce_random_solution(
 	struct Board *board,
