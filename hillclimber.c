@@ -85,12 +85,13 @@ void copy_solution(
 	}
 }
 
-void climb_hills(
+BOOL climb_hills(
 	struct Board *board,
 	struct Num_Coordinates *initial,
 	struct Num_Coordinates *best)
 {
 	int high_score;
+	BOOL solved = FALSE;
 	const int best_score = initial->count - 1;
 
 	produce_random_solution(board, initial);
@@ -106,11 +107,11 @@ void climb_hills(
 	if (high_score < best_score)
 	{
 		printf("Deriviate solutions:\n\n");
-		process_deriviate_solutions(board, initial, best, best_score, high_score);
+		solved = process_deriviate_solutions(board, initial, best, best_score, high_score);
 	}
 }
 
-void process_deriviate_solutions(
+BOOL process_deriviate_solutions(
 	struct Board *board,
 	struct Num_Coordinates *initial,
 	struct Num_Coordinates *best,
@@ -149,7 +150,7 @@ void process_deriviate_solutions(
 			{
 				swap_numbers(current, other);
 
-				print_board(board, initial);
+				//print_board(board, initial);
 
 				score = assess_solution(initial);
 				//printf("Score: %d\n\n", score);
@@ -164,7 +165,7 @@ void process_deriviate_solutions(
 
 				if (score == best_score)
 				{
-					return;
+					return TRUE;
 				}
 
 				swap_numbers(current, other);
@@ -183,6 +184,8 @@ void process_deriviate_solutions(
 
 		process_deriviate_solutions(board, initial, best, best_score, high_score);
 	}
+
+	return FALSE;
 }
 
 void swap_numbers(
