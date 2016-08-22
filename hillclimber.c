@@ -119,12 +119,7 @@ void process_deriviate_solutions(
 			if (board->grid[current->row][current->col] == TAKEN &&
 				board->grid[other->row][other->col] == TAKEN)
 			{
-				swap.row = current->row;
-				swap.col = current->col;
-				current->row = other->row;
-				current->col = other->col;
-				other->row = swap.row;
-				other->col = swap.col;
+				swap_numbers(current, other);
 
 				print_board(board, initial);
 
@@ -144,12 +139,7 @@ void process_deriviate_solutions(
 					return;
 				}
 
-				swap.row = current->row;
-				swap.col = current->col;
-				current->row = other->row;
-				current->col = other->col;
-				other->row = swap.row;
-				other->col = swap.col;
+				swap_numbers(current, other);
 			}
 
 			other++;
