@@ -32,7 +32,7 @@ void run_hillclimber(char *input)
 		attempt++;
 
 		printf("Best solution after %d. attempt:\n\n", attempt);
-		print_board(&temp_board, &temp_solution);
+		print_board(&temp_board, &best);
 		printf("Score: %d\n\n", assess_solution(&temp_solution));
 
 	}
