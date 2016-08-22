@@ -31,16 +31,14 @@ void copy_solution(
 BOOL climb_hills(
 	struct Board *board,
 	struct Num_Coordinates *initial,
-	struct Num_Coordinates *best,
-	int *process_deriviate_counter);
+	struct Num_Coordinates *best);
 
 BOOL process_deriviate_solutions(
 	struct Board *board,
 	struct Num_Coordinates *initial,
 	struct Num_Coordinates *best,
 	int best_score,
-	int high_score,
-	int *process_deriviate_counter);
+	int high_score);
 
 void swap_numbers(
 	struct Coordinate *first,

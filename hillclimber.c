@@ -88,8 +88,7 @@ void copy_solution(
 BOOL climb_hills(
 	struct Board *board,
 	struct Num_Coordinates *initial,
-	struct Num_Coordinates *best,
-	int *process_deriviate_counter)
+	struct Num_Coordinates *best)
 {
 	int high_score;
 	BOOL solved = TRUE;
@@ -107,8 +106,10 @@ BOOL climb_hills(
 
 	if (high_score != optimum_score)
 	{
-		printf("PROCESSING DERIVIATE SOLUTIONS:\n\n");
-		solved = process_deriviate_solutions(board, initial, best, optimum_score, high_score, process_deriviate_counter);
+		printf(" --------------------------------\n");
+		printf("| PROCESSING DERIVIATE SOLUTIONS |\n");
+		printf(" --------------------------------\n\n");
+		solved = process_deriviate_solutions(board, initial, best, optimum_score, high_score);
 	}
 	
 	return solved;
@@ -119,8 +120,7 @@ BOOL process_deriviate_solutions(
 	struct Num_Coordinates *initial,
 	struct Num_Coordinates *best,
 	int best_score,
-	int high_score,
-	int *process_deriviate_counter)
+	int high_score)
 {
 	struct Coordinate *current;
 	struct Coordinate *other;
@@ -129,8 +129,6 @@ BOOL process_deriviate_solutions(
 	int score = 0;
 
 	current = initial->coordinates;
-
-	(*process_deriviate_counter)++;
 
 	while (current < initial->coordinates + initial->count)
 	{
@@ -188,7 +186,7 @@ BOOL process_deriviate_solutions(
 		high_score = round_high_score;
 		copy_solution(best, initial);
 
-		solved = process_deriviate_solutions(board, initial, best, best_score, high_score, process_deriviate_counter);
+		solved = process_deriviate_solutions(board, initial, best, best_score, high_score);
 	}
 
 	return solved;
