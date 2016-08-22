@@ -90,7 +90,6 @@ void process_deriviate_solutions(
 {
 	struct Coordinate *current;
 	struct Coordinate *other;
-	struct Coordinate swap;
 	int round_high_score = high_score;
 	int score = 0;
 
