@@ -31,9 +31,6 @@ void produce_random_solution(
 {
 	int row, col;
 	int random_num;
-	time_t t;
-
-	srand((unsigned)time(&t));
 
 	for (row = 0; row < board->rows; row++)
 	{
@@ -85,33 +82,62 @@ void copy_solution(
 	}
 }
 
+void copy_board(
+	struct Board *source,
+	struct Board *dest)
+{
+	int row, col;
+
+	dest->rows = source->rows;
+	dest->cols = source->cols;
+
+	for (row = 0; row < dest->cols; row++)
+	{
+		for (col = 0; col < dest->cols; col++)
+		{
+			dest->grid[row][col] = source->grid[row][col];
+		}
+	}
+}
+
 BOOL climb_hills(
 	struct Board *board,
 	struct Num_Coordinates *initial,
 	struct Num_Coordinates *best)
 {
 	int high_score;
-	BOOL solved = TRUE;
+	BOOL solved = FALSE;
 	const int optimum_score = initial->count - 1;
 
-	produce_random_solution(board, initial);
+	struct Num_Coordinates temp_solution;
+	struct Board temp_board;
 
-	printf("Random solution:\n\n");
-	print_board(board, initial);
+	time_t t;
+	srand((unsigned)time(&t));
 
-	high_score = assess_solution(initial);
-	printf("Score: %d\n\n", high_score);
-
-	copy_solution(initial, best);
-
-	if (high_score != optimum_score)
+	while (!solved)
 	{
-		printf(" --------------------------------\n");
-		printf("| PROCESSING DERIVIATE SOLUTIONS |\n");
-		printf(" --------------------------------\n\n");
-		solved = process_deriviate_solutions(board, initial, best, optimum_score, high_score);
+		copy_solution(initial, &temp_solution);
+		copy_board(board, &temp_board);
+
+		produce_random_solution(&temp_board, &temp_solution);
+
+		printf("Random solution:\n\n");
+		print_board(&temp_board, &temp_solution);
+
+		high_score = assess_solution(&temp_solution);
+		printf("Score: %d\n\n", high_score);
+
+		copy_solution(&temp_solution, best);
+
+		if (high_score != optimum_score)
+		{
+			printf(" --------------------------------\n");
+			printf("| PROCESSING DERIVIATE SOLUTIONS |\n");
+			printf(" --------------------------------\n\n");
+			solved = process_deriviate_solutions(&temp_board, &temp_solution, best, optimum_score, high_score);
+		}
 	}
-	
 	return solved;
 }
 

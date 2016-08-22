@@ -28,6 +28,10 @@ void copy_solution(
 	struct Num_Coordinates *source,
 	struct Num_Coordinates *dest);
 
+void copy_board(
+	struct Board *source,
+	struct Board *dest);
+
 BOOL climb_hills(
 	struct Board *board,
 	struct Num_Coordinates *initial,
