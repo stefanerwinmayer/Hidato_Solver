@@ -111,19 +111,12 @@ BOOL climb_hills(
 
 	produce_random_solution(board, initial);
 
-	//printf("Random solution:\n\n");
-	//print_board(board, initial);
-
 	high_score = assess_solution(initial);
-	//printf("Score: %d\n\n", high_score);
 
 	copy_solution(initial, best);
 
 	if (high_score != optimum_score)
 	{
-		//printf(" --------------------------------\n");
-		//printf("| PROCESSING DERIVIATE SOLUTIONS |\n");
-		//printf(" --------------------------------\n\n");
 		solved = process_deriviate_solutions(board, initial, best, optimum_score, high_score);
 	}
 	return solved;
@@ -167,18 +160,12 @@ BOOL process_deriviate_solutions(
 			{
 				swap_numbers(current, other);
 
-				//print_board(board, initial);
-
 				score = assess_solution(initial);
 
 				if (score > round_high_score)
 				{
 					copy_solution(initial, best);
 					round_high_score = score;
-
-					//printf("Best INTERIM solution:\n\n");
-					//print_board(board, best);
-					//printf("Score: %d\n\n", score);
 				}
 
 				if (score == optimum_score)
