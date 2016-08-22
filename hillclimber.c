@@ -109,36 +109,23 @@ BOOL climb_hills(
 	BOOL solved = FALSE;
 	const int optimum_score = initial->count - 1;
 
-	struct Num_Coordinates temp_solution;
-	struct Board temp_board;
+	produce_random_solution(board, initial);
 
-	time_t t;
-	srand((unsigned)time(&t));
+	printf("Random solution:\n\n");
+	print_board(board, initial);
 
-	while (!solved)
+	high_score = assess_solution(initial);
+	printf("Score: %d\n\n", high_score);
+
+	copy_solution(initial, best);
+
+	if (high_score != optimum_score)
 	{
-		copy_solution(initial, &temp_solution);
-		copy_board(board, &temp_board);
-
-		produce_random_solution(&temp_board, &temp_solution);
-
-		printf("Random solution:\n\n");
-		print_board(&temp_board, &temp_solution);
-
-		high_score = assess_solution(&temp_solution);
-		printf("Score: %d\n\n", high_score);
-
-		copy_solution(&temp_solution, best);
-
-		if (high_score != optimum_score)
-		{
-			printf(" --------------------------------\n");
-			printf("| PROCESSING DERIVIATE SOLUTIONS |\n");
-			printf(" --------------------------------\n\n");
-			solved = process_deriviate_solutions(&temp_board, &temp_solution, best, optimum_score, high_score);
-		}
+		printf(" --------------------------------\n");
+		printf("| PROCESSING DERIVIATE SOLUTIONS |\n");
+		printf(" --------------------------------\n\n");
+		solved = process_deriviate_solutions(board, initial, best, optimum_score, high_score);
 	}
-	copy_board(&temp_board, board);
 	return solved;
 }
 
