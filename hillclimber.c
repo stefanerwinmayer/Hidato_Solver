@@ -93,7 +93,7 @@ BOOL climb_hills(
 {
 	int high_score;
 	BOOL solved = TRUE;
-	const int optimum = initial->count - 1;
+	const int optimum_score = initial->count - 1;
 
 	produce_random_solution(board, initial);
 
@@ -105,10 +105,10 @@ BOOL climb_hills(
 
 	copy_solution(initial, best);
 
-	if (high_score != optimum)
+	if (high_score != optimum_score)
 	{
-		printf("Deriviate solutions:\n\n");
-		solved = process_deriviate_solutions(board, initial, best, optimum, high_score, process_deriviate_counter);
+		printf("PROCESSING DERIVIATE SOLUTIONS:\n\n");
+		solved = process_deriviate_solutions(board, initial, best, optimum_score, high_score, process_deriviate_counter);
 	}
 	
 	return solved;
