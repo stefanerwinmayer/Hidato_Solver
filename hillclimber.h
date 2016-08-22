@@ -2,6 +2,7 @@
 #define HILLCLIMBER
 
 #include <stdlib.h>
+#include <time.h>
 
 #include "boolean.h"
 #include "board.h"
