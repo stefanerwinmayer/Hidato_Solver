@@ -158,12 +158,12 @@ BOOL process_deriviate_solutions(
 				//print_board(board, initial);
 
 				score = assess_solution(initial);
-				//printf("Score: %d\n\n", score);
 
 				if (score > round_high_score)
 				{
 					copy_solution(initial, best);
 					round_high_score = score;
+
 					printf("Best INTERIM solution:\n\n");
 					print_board(board, best);
 					printf("Score: %d\n\n", score);
