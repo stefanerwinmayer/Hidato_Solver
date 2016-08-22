@@ -138,6 +138,7 @@ BOOL climb_hills(
 			solved = process_deriviate_solutions(&temp_board, &temp_solution, best, optimum_score, high_score);
 		}
 	}
+	copy_board(&temp_board, board);
 	return solved;
 }
 
