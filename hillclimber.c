@@ -119,7 +119,7 @@ BOOL process_deriviate_solutions(
 	struct Board *board,
 	struct Num_Coordinates *initial,
 	struct Num_Coordinates *best,
-	int best_score,
+	int optimum_score,
 	int high_score)
 {
 	struct Coordinate *current;
@@ -167,7 +167,7 @@ BOOL process_deriviate_solutions(
 					printf("Score: %d\n\n", score);
 				}
 
-				if (score == best_score)
+				if (score == optimum_score)
 				{
 					return TRUE;
 				}
@@ -186,7 +186,7 @@ BOOL process_deriviate_solutions(
 		high_score = round_high_score;
 		copy_solution(best, initial);
 
-		solved = process_deriviate_solutions(board, initial, best, best_score, high_score);
+		solved = process_deriviate_solutions(board, initial, best, optimum_score, high_score);
 	}
 
 	return solved;
