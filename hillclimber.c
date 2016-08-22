@@ -167,6 +167,20 @@ void process_deriviate_solutions(
 	}
 }
 
+void swap_numbers(
+	struct Coordinate *first,
+	struct Coordinate *second)
+{
+	struct Coordinate temp;
+
+	temp.row = first->row;
+	temp.col = first->col;
+	first->row = second->row;
+	first->col = second->col;
+	second->row = temp.row;
+	second->col = temp.col;
+}
+
 /*
 void produce_variations(
 	int n,

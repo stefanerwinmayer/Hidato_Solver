@@ -33,4 +33,8 @@ void process_deriviate_solutions(
 	int best_score,
 	int high_score);
 
+void swap_numbers(
+	struct Coordinate *first,
+	struct Coordinate *second);
+
 #endif
