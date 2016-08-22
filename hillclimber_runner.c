@@ -10,6 +10,7 @@ void run_hillclimber(char *input)
 
 	struct Board board;
 	BOOL solved = FALSE;
+	int attempt = 0;
 
 	time_t t;
 	srand((unsigned)time(&t));
@@ -28,15 +29,13 @@ void run_hillclimber(char *input)
 		copy_board(&board, &temp_board);
 
 		solved = climb_hills(&temp_board, &temp_solution, &best);
+		attempt++;
+
+		printf("Best solution after %d. attempt:\n\n", attempt);
+		print_board(&temp_board, &temp_solution);
+		printf("Score: %d\n\n", assess_solution(&temp_solution));
 
 	}
 
-	copy_board(&temp_board, &board);
-
-	printf("Best OVERALL solution:\n\n");
-	print_board(&board, &best);
-	printf("Score: %d\n\n", assess_solution(&best));
-
-	solved ? printf("Solved!") : printf("Could not solve it!");
-	
+	printf("Solved after %d attempts.", attempt);
 }
