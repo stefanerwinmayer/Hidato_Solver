@@ -101,7 +101,8 @@ void process_deriviate_solutions(
 	while (current < initial->coordinates + initial->count)
 	{
 
-		while (board->grid[current->row][current->col] != TAKEN)
+		while (board->grid[current->row][current->col] != TAKEN &&
+			current < initial->coordinates + initial->count)
 		{
 			current++;
 		}
@@ -110,7 +111,8 @@ void process_deriviate_solutions(
 
 		while (other < initial->coordinates + initial->count)
 		{
-			while (board->grid[other->row][other->col] != TAKEN)
+			while (board->grid[other->row][other->col] != TAKEN &&
+				other < initial->coordinates + initial->count)
 			{
 				other++;
 			}
