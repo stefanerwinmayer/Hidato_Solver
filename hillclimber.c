@@ -93,14 +93,13 @@ void process_deriviate_solutions(
 	struct Coordinate swap;
 	int round_high_score = high_score;
 	int score = 0;
-	
+
 	current = initial->coordinates;
 
 	printf("RUNNING A ROUND\n\n");
 
 	while (current < initial->coordinates + initial->count)
 	{
-
 		while (board->grid[current->row][current->col] != TAKEN &&
 			current < initial->coordinates + initial->count)
 		{
@@ -117,37 +116,41 @@ void process_deriviate_solutions(
 				other++;
 			}
 
-			swap.row = current->row;
-			swap.col = current->col;
-			current->row = other->row;
-			current->col = other->col;
-			other->row = swap.row;
-			other->col = swap.col;
-
-			//print_board(board, initial);
-
-			score = assess_solution(initial);
-			//printf("Score: %d\n\n", score);
-
-			if (score > round_high_score)
+			if (board->grid[current->row][current->col] == TAKEN &&
+				board->grid[other->row][other->col] == TAKEN)
 			{
-				copy_solution(initial, best);
-				round_high_score = score;
-				print_board(board, best);
-				printf("Score: %d\n\n", score);
-			}
+				swap.row = current->row;
+				swap.col = current->col;
+				current->row = other->row;
+				current->col = other->col;
+				other->row = swap.row;
+				other->col = swap.col;
 
-			if (score == best_score)
-			{
-				return;
-			}
+				print_board(board, initial);
 
-			swap.row = current->row;
-			swap.col = current->col;
-			current->row = other->row;
-			current->col = other->col;
-			other->row = swap.row;
-			other->col = swap.col;
+				score = assess_solution(initial);
+				//printf("Score: %d\n\n", score);
+
+				if (score > round_high_score)
+				{
+					copy_solution(initial, best);
+					round_high_score = score;
+					print_board(board, best);
+					printf("Score: %d\n\n", score);
+				}
+
+				if (score == best_score)
+				{
+					return;
+				}
+
+				swap.row = current->row;
+				swap.col = current->col;
+				current->row = other->row;
+				current->col = other->col;
+				other->row = swap.row;
+				other->col = swap.col;
+			}
 
 			other++;
 		}
