@@ -14,8 +14,6 @@ struct Board {
 
 	int rows;
 	int cols;
-
-	int number_count;
 };
 
 #endif
