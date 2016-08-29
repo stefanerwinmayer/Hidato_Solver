@@ -9,29 +9,31 @@ int main(int argc, char *argv[])
 
 	printf("Welcome to Hidato!\n\n");
 
-	if (strcmp(argv[ALGORITHM], "-b") == 0)
+	if (argc != 3)
 	{
-		backtracking = TRUE;
-	}
-	else if (strcmp(argv[ALGORITHM], "-sb") == 0)
-	{
-		backtracking = TRUE;
-		smart = TRUE;
-	}
-	else if (strcmp(argv[ALGORITHM], "-h") == 0)
-	{
-		hillclimbing = TRUE;
+		printf("Invalid input: Please specify the algorithm: -b or -sb or -h");
+		printf(", and a valid file.");
 	}
 	else
 	{
-		printf("Invalid input. Please specify the algorithm: -b or -sb or -h");
-		(void)getchar();
-		exit(EXIT_FAILURE);
-	}
+		if (strcmp(argv[ALGORITHM], "-b") == 0)
+		{
+			backtracking = TRUE;
+		}
+		else if (strcmp(argv[ALGORITHM], "-sb") == 0)
+		{
+			backtracking = TRUE;
+			smart = TRUE;
+		}
+		else if (strcmp(argv[ALGORITHM], "-h") == 0)
+		{
+			hillclimbing = TRUE;
+		}
+		else
+		{
+			printf("Invalid input: Please specify a valid algorithm: -b or -sb or -h.\n");
+		}
 
-
-	if (strcmp(argv[FILE_NAME], "") != 0)
-	{
 		file_to_string(argv[FILE_NAME], input);
 	}
 
