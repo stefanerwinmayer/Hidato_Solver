@@ -9,16 +9,16 @@ int main(int argc, char *argv[])
 
 	printf("Welcome to Hidato!\n\n");
 
-	if (strcmp(argv[1], "-b") == 0)
+	if (strcmp(argv[ALGORITHM], "-b") == 0)
 	{
 		backtracking = TRUE;
 	}
-	else if (strcmp(argv[1], "-sb") == 0)
+	else if (strcmp(argv[ALGORITHM], "-sb") == 0)
 	{
 		backtracking = TRUE;
 		smart = TRUE;
 	}
-	else if (strcmp(argv[1], "-h") == 0)
+	else if (strcmp(argv[ALGORITHM], "-h") == 0)
 	{
 		hillclimbing = TRUE;
 	}
@@ -30,9 +30,9 @@ int main(int argc, char *argv[])
 	}
 
 
-	if (strcmp(argv[2], "") != 0)
+	if (strcmp(argv[FILE_NAME], "") != 0)
 	{
-		file_to_string(argv[2], input);
+		file_to_string(argv[FILE_NAME], input);
 	}
 
 	if (backtracking)

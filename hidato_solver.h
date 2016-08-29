@@ -7,4 +7,7 @@
 #include "backtracker_runner.h"
 #include "hillclimber_runner.h"
 
+#define ALGORITHM 1
+#define FILE_NAME 2
+
 #endif
