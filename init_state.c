@@ -8,6 +8,7 @@ void initialise_state(
 	int row, col, number;
 	char *p;
 	BOOL processing[VALID_INPUTS];
+	BOOL seen_one = FALSE;
 
 	board->rows = board->cols = numbers->count = 0;
 
@@ -51,6 +52,11 @@ void initialise_state(
 		{
 			if (processing[NUMBER])
 			{
+				if (number == 1)
+				{
+					seen_one = TRUE;
+				}
+
 				board->grid[row][col] = FIXED;
 				(board->cols)++;
 
@@ -103,5 +109,12 @@ void initialise_state(
 				row++;
 			}
 		}
+	}
+
+	if (!seen_one)
+	{
+		printf("Invalid input: Number 1 must be present.");
+		(void)getchar();
+		exit(1);
 	}
 }
