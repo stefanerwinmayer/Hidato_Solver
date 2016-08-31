@@ -42,16 +42,17 @@ void print_board(
 		}
 	}
 
-	printf(" ");
-	for (j = 0; j < board->cols; j++)
+	printf("     0");
+	for (j = 1; j < board->cols; j++)
 	{
-		printf("   %d", j);
+		printf("%4.d", j);
 	}
 	printf("\n");
 
+	printf(" 0");
 	for (i = 0; i < board->rows; i++)
 	{
-		printf("%d ", i);
+		printf("%2.d ", i);
 		for (j = 0; j < board->cols; j++)
 		{
 			if (output[i][j] != BLOCKED && output[i][j] != FREE)
