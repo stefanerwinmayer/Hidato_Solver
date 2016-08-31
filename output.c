@@ -60,7 +60,7 @@ void print_board(
 			}
 			else if (output[i][j] == BLOCKED)
 			{
-				printf("[XX]");
+				printf("    ");
 			}
 			else
 			{
