@@ -11,7 +11,7 @@
 #define NUMBER 0
 #define QUESTION_MARK 1
 #define X 2
-#define VALID_INPUTS 3
+#define NUM_VALID_INPUTS 3
 #define ONE 0
 
 void initialise_state(

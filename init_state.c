@@ -7,7 +7,7 @@ void initialise_state(
 {
 	int row, col, number;
 	char *p;
-	BOOL processing[VALID_INPUTS];
+	BOOL processing[NUM_VALID_INPUTS];
 	BOOL seen[MAX_NUMS] = { FALSE };
 
 	board->rows = board->cols = numbers->count = 0;
