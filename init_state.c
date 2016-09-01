@@ -8,7 +8,7 @@ void initialise_state(
 	int row, col, number;
 	char *p;
 	BOOL processing[VALID_INPUTS];
-	BOOL seen_one = FALSE;
+	BOOL seen[MAX_NUMS] = { FALSE };
 
 	board->rows = board->cols = numbers->count = 0;
 
@@ -52,10 +52,14 @@ void initialise_state(
 		{
 			if (processing[NUMBER])
 			{
-				if (number == 1)
+				if (seen[number - 1])
 				{
-					seen_one = TRUE;
+					printf("Invalid input: Number %d is present multiple times.", number);
+					(void)getchar();
+					exit(1);
 				}
+
+				seen[number - 1] = TRUE;
 
 				board->grid[row][col] = FIXED;
 				(board->cols)++;
@@ -111,7 +115,7 @@ void initialise_state(
 		}
 	}
 
-	if (!seen_one)
+	if (!seen[ONE])
 	{
 		printf("Invalid input: Number 1 must be present.");
 		(void)getchar();
