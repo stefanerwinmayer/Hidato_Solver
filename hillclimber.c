@@ -100,13 +100,13 @@ void copy_board(
 	}
 }
 
-BOOL climb_hills(
+int climb_hills(
 	struct Board *board,
 	struct Num_Coordinates *initial,
 	struct Num_Coordinates *best)
 {
 	int high_score;
-	BOOL solved = FALSE;
+	//BOOL solved = FALSE;
 	const int optimum_score = initial->count - 1;
 
 	produce_random_solution(board, initial);
@@ -117,12 +117,12 @@ BOOL climb_hills(
 
 	if (high_score != optimum_score)
 	{
-		solved = process_deriviate_solutions(board, initial, best, optimum_score, high_score);
+		high_score = process_deriviate_solutions(board, initial, best, optimum_score, high_score);
 	}
-	return solved;
+	return high_score;
 }
 
-BOOL process_deriviate_solutions(
+int process_deriviate_solutions(
 	struct Board *board,
 	struct Num_Coordinates *initial,
 	struct Num_Coordinates *best,
@@ -187,10 +187,10 @@ BOOL process_deriviate_solutions(
 		high_score = round_high_score;
 		copy_solution(best, initial);
 
-		solved = process_deriviate_solutions(board, initial, best, optimum_score, high_score);
+		high_score = process_deriviate_solutions(board, initial, best, optimum_score, high_score);
 	}
 
-	return solved;
+	return high_score;
 }
 
 void swap_numbers(

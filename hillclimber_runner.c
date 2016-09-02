@@ -9,7 +9,9 @@ void run_hillclimber(char *input)
 	//struct Board temp_board;
 
 	struct Board board;
-	BOOL solved = FALSE;
+
+	int score;
+	//BOOL solved = FALSE;
 	//int attempt = 0;
 
 	time_t t;
@@ -22,10 +24,12 @@ void run_hillclimber(char *input)
 
 	printf("Solving the puzzle with the hill climber algorithm:\n\n");
 
-	solved = climb_hills(&board, &initial, &best);
+	score = climb_hills(&board, &initial, &best);
 	
 	printf("Best solution:\n\n");
 	print_board(&board, &initial);
+
+	printf("Score: %d", score);
 
 	/*
 	while (!solved)
