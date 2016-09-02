@@ -1,30 +1,5 @@
 #include "hillclimber.h"
 
-void produce_predictable_solution(
-	struct Board *board,
-	struct Num_Coordinates *numbers)
-{
-	int row, col;
-	int i = 0;
-
-	for (row = 0; row < board->rows; row++)
-	{
-		for (col = 0; col < board->cols; col++)
-		{
-			if (board->grid[row][col] == FREE)
-			{
-				while (numbers->coordinates[i].row != UNKNOWN)
-					i++;
-
-				numbers->coordinates[i].row = row;
-				numbers->coordinates[i].col = col;
-				board->grid[row][col] = TAKEN;
-				i++;
-			}
-		}
-	}
-}
-
 void produce_random_solution(
 	struct Board *board,
 	struct Num_Coordinates *numbers)
@@ -206,3 +181,30 @@ void swap_numbers(
 	second->row = temp.row;
 	second->col = temp.col;
 }
+
+/*
+void produce_predictable_solution(
+struct Board *board,
+struct Num_Coordinates *numbers)
+{
+int row, col;
+int i = 0;
+
+for (row = 0; row < board->rows; row++)
+{
+for (col = 0; col < board->cols; col++)
+{
+if (board->grid[row][col] == FREE)
+{
+while (numbers->coordinates[i].row != UNKNOWN)
+i++;
+
+numbers->coordinates[i].row = row;
+numbers->coordinates[i].col = col;
+board->grid[row][col] = TAKEN;
+i++;
+}
+}
+}
+}
+*/
