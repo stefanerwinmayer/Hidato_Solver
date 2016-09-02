@@ -111,7 +111,7 @@ int process_deriviate_solutions(
 
 			if (score == optimum_score)
 			{
-				return TRUE;
+				return score;
 			}
 
 			swap_numbers(current, other);
