@@ -63,7 +63,6 @@ int climb_hills(
 	struct Num_Coordinates *best)
 {
 	int high_score;
-	//const int optimum_score = initial->count - 1;
 
 	produce_random_solution(board, initial);
 
