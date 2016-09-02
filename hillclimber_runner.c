@@ -5,12 +5,12 @@ void run_hillclimber(char *input)
 	struct Num_Coordinates initial;
 	struct Num_Coordinates best;
 
-	struct Num_Coordinates temp_solution;
-	struct Board temp_board;
+	//struct Num_Coordinates temp_solution;
+	//struct Board temp_board;
 
 	struct Board board;
 	BOOL solved = FALSE;
-	int attempt = 0;
+	//int attempt = 0;
 
 	time_t t;
 	srand((unsigned)time(&t));
