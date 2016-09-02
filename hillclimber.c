@@ -136,10 +136,9 @@ int process_deriviate_solutions(
 
 	if (round_high_score > high_score)
 	{
-		high_score = round_high_score;
 		copy_solution(best, initial);
 
-		high_score = process_deriviate_solutions(board, initial, best, high_score);
+		high_score = process_deriviate_solutions(board, initial, best, round_high_score);
 	}
 
 	return high_score;
