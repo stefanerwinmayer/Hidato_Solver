@@ -91,21 +91,13 @@ int process_deriviate_solutions(
 
 	while (current < initial->coordinates + initial->count)
 	{
-		while (board->grid[current->row][current->col] != TAKEN &&
-			current < initial->coordinates + initial->count)
-		{
-			current++;
-		}
+		find_number_to_swap(board, initial, current);
 
 		other = current + 1;
 
 		while (other < initial->coordinates + initial->count)
-		{
-			while (board->grid[other->row][other->col] != TAKEN &&
-				other < initial->coordinates + initial->count)
-			{
-				other++;
-			}
+		{	
+			find_number_to_swap(board, initial, other);
 
 			if (board->grid[current->row][current->col] == TAKEN &&
 				board->grid[other->row][other->col] == TAKEN)
@@ -142,6 +134,18 @@ int process_deriviate_solutions(
 	}
 
 	return high_score;
+}
+
+void find_number_to_swap(
+	struct Board *board,
+	struct Num_Coordinates *numbers,
+	struct Coordinate *number)
+{
+	while (board->grid[number->row][number->col] != TAKEN &&
+		number < numbers->coordinates + numbers->count)
+	{
+		number++;
+	}
 }
 
 void swap_numbers(
