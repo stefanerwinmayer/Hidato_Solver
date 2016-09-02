@@ -109,10 +109,12 @@ int process_deriviate_solutions(
 				round_high_score = score;
 			}
 
+			/*
 			if (score == optimum_score)
 			{
 				return score;
 			}
+			*/
 
 			swap_numbers(current, other);
 
