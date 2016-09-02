@@ -72,10 +72,8 @@ int climb_hills(
 
 	copy_solution(initial, best);
 
-	if (high_score != optimum_score)
-	{
-		high_score = process_deriviate_solutions(board, initial, best, optimum_score, high_score);
-	}
+	high_score = process_deriviate_solutions(board, initial, best, optimum_score, high_score);
+
 	return high_score;
 }
 
