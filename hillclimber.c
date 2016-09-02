@@ -85,7 +85,6 @@ int process_deriviate_solutions(
 	struct Coordinate *other;
 	int round_high_score = high_score;
 	int score = 0;
-	const int optimum_score = initial->count - 1;
 
 	current = initial->coordinates;
 
