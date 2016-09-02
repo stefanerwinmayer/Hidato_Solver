@@ -96,29 +96,25 @@ int process_deriviate_solutions(
 		other = current + 1;
 
 		while (other < initial->coordinates + initial->count)
-		{	
+		{
 			find_number_to_swap(board, initial, other);
 
-			if (board->grid[current->row][current->col] == TAKEN &&
-				board->grid[other->row][other->col] == TAKEN)
+			swap_numbers(current, other);
+
+			score = assess_solution(initial);
+
+			if (score > round_high_score)
 			{
-				swap_numbers(current, other);
-
-				score = assess_solution(initial);
-
-				if (score > round_high_score)
-				{
-					copy_solution(initial, best);
-					round_high_score = score;
-				}
-
-				if (score == optimum_score)
-				{
-					return TRUE;
-				}
-
-				swap_numbers(current, other);
+				copy_solution(initial, best);
+				round_high_score = score;
 			}
+
+			if (score == optimum_score)
+			{
+				return TRUE;
+			}
+
+			swap_numbers(current, other);
 
 			other++;
 		}
@@ -141,7 +137,9 @@ void find_number_to_swap(
 	struct Num_Coordinates *numbers,
 	struct Coordinate *number)
 {
-	while (board->grid[number->row][number->col] != TAKEN &&
+	while ((
+		board->grid[number->row][number->col] == FIXED ||
+		board->grid[number->row][number->col] == BLOCKED) &&
 		number < numbers->coordinates + numbers->count)
 	{
 		number++;
