@@ -20,16 +20,11 @@ void run_hillclimber(char *input)
 	printf("Solving the puzzle with the hill climber algorithm:\n\n");
 
 	high_score = climb_hills(&board, &initial, &best);
-	
+
 	printf("Best solution:\n\n");
 	print_board(&board, &best);
 
 	printf("Best possible score: %d\n", optimum_score);
 	printf("Achieved Score: %d\n", high_score);
 	printf("Quality of solution: %.2lf %%\n", ((double)high_score / optimum_score) * 100);
-	if (high_score != optimum_score)
-	{
-		printf("NOT ");
-	}
-	printf("SOLVED!");
 }
