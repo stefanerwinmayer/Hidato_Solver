@@ -22,6 +22,12 @@ void run_hillclimber(char *input)
 
 	printf("Solving the puzzle with the hill climber algorithm:\n\n");
 
+	solved = climb_hills(&board, &initial, &best);
+	
+	printf("Best solution:\n\n");
+	print_board(&board, &initial);
+
+	/*
 	while (!solved)
 	{
 
@@ -38,4 +44,5 @@ void run_hillclimber(char *input)
 	}
 
 	printf("Solved after %d attempts.", attempt);
+	*/
 }
