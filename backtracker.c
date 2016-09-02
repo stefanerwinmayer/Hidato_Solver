@@ -181,12 +181,13 @@ BOOL sensible_move(
 	const struct Coordinate *next,
 	const struct Coordinate *neighbour)
 {
+	int dist, available_steps;
+
 	if (numbers->next_fixed < numbers->coordinates + numbers->count - 1)
 	{
-		int dist = distance(neighbour, numbers->next_fixed);
-		int available_steps = numbers->next_fixed - next;
-		int is_ok = dist <= available_steps;
-		return is_ok;
+		dist = distance(neighbour, numbers->next_fixed);
+		available_steps = numbers->next_fixed - next;
+		return dist <= available_steps;
 	}
 	else
 	{
