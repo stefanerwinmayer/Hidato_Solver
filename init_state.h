@@ -3,6 +3,8 @@
 
 #include <string.h>
 #include <ctype.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include "num_coordinates.h"
 #include "coordinate_struct.h"
 #include "board.h"

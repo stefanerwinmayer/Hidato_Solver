@@ -52,7 +52,7 @@ void initialise_state(
 				{
 					printf("Invalid input: Number %d is present multiple times.", number);
 					(void)getchar();
-					exit(1);
+					exit(EXIT_FAILURE);
 				}
 
 				seen[number - 1] = TRUE;
@@ -115,6 +115,6 @@ void initialise_state(
 	{
 		printf("Invalid input: Number 1 must be present.");
 		(void)getchar();
-		exit(1);
+		exit(EXIT_FAILURE);
 	}
 }
