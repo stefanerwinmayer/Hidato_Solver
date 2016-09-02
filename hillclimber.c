@@ -57,24 +57,6 @@ void copy_solution(
 	}
 }
 
-void copy_board(
-	struct Board *source,
-	struct Board *dest)
-{
-	int row, col;
-
-	dest->rows = source->rows;
-	dest->cols = source->cols;
-
-	for (row = 0; row < dest->cols; row++)
-	{
-		for (col = 0; col < dest->cols; col++)
-		{
-			dest->grid[row][col] = source->grid[row][col];
-		}
-	}
-}
-
 int climb_hills(
 	struct Board *board,
 	struct Num_Coordinates *initial,
@@ -204,6 +186,26 @@ numbers->coordinates[i].col = col;
 board->grid[row][col] = TAKEN;
 i++;
 }
+}
+}
+}
+*/
+
+/*
+void copy_board(
+struct Board *source,
+struct Board *dest)
+{
+int row, col;
+
+dest->rows = source->rows;
+dest->cols = source->cols;
+
+for (row = 0; row < dest->cols; row++)
+{
+for (col = 0; col < dest->cols; col++)
+{
+dest->grid[row][col] = source->grid[row][col];
 }
 }
 }
