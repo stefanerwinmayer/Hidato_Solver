@@ -4,15 +4,8 @@ void run_hillclimber(char *input)
 {
 	struct Num_Coordinates initial;
 	struct Num_Coordinates best;
-
-	//struct Num_Coordinates temp_solution;
-	//struct Board temp_board;
-
 	struct Board board;
-
 	int score;
-	//BOOL solved = FALSE;
-	//int attempt = 0;
 
 	time_t t;
 	srand((unsigned)time(&t));
@@ -30,23 +23,4 @@ void run_hillclimber(char *input)
 	print_board(&board, &initial);
 
 	printf("Score: %d", score);
-
-	/*
-	while (!solved)
-	{
-
-		copy_solution(&initial, &temp_solution);
-		copy_board(&board, &temp_board);
-
-		solved = climb_hills(&temp_board, &temp_solution, &best);
-		attempt++;
-
-		printf("Best solution after %d. attempt:\n\n", attempt);
-		print_board(&temp_board, &best);
-		printf("Score: %d\n\n", assess_solution(&temp_solution));
-
-	}
-
-	printf("Solved after %d attempts.", attempt);
-	*/
 }
