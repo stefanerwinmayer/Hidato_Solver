@@ -32,12 +32,12 @@ void copy_board(
 	struct Board *source,
 	struct Board *dest);
 
-BOOL climb_hills(
+int climb_hills(
 	struct Board *board,
 	struct Num_Coordinates *initial,
 	struct Num_Coordinates *best);
 
-BOOL process_deriviate_solutions(
+int process_deriviate_solutions(
 	struct Board *board,
 	struct Num_Coordinates *initial,
 	struct Num_Coordinates *best,
