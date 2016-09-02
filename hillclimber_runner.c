@@ -26,7 +26,7 @@ void run_hillclimber(char *input)
 
 	printf("Best possible score: %d\n", optimum_score);
 	printf("Achieved Score: %d\n", high_score);
-	printf("Quality of solution: %.2lf\n", ((double)high_score / optimum_score) * 100);
+	printf("Quality of solution: %.2lf %%\n", ((double)high_score / optimum_score) * 100);
 	if (high_score != optimum_score)
 	{
 		printf("NOT ");
