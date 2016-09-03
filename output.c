@@ -49,7 +49,7 @@ void print_board(
 	}
 	printf("\n");
 
-	printf(" 0");
+	//printf(" 0");
 	for (i = 0; i < board->rows; i++)
 	{
 		printf("%2.d ", i);
