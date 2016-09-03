@@ -57,8 +57,6 @@ int climb_hills(
 
 	high_score = assess_solution(initial);
 
-	//copy_solution(initial, best);
-
 	high_score = process_deriviate_solutions(board, initial, best, high_score);
 
 	return high_score;
@@ -98,7 +96,6 @@ int process_deriviate_solutions(
 			{
 				best_swap_one = current;
 				best_swap_two = other;
-				//copy_solution(initial, best);
 				round_high_score = score;
 			}
 
@@ -112,7 +109,6 @@ int process_deriviate_solutions(
 
 	if (round_high_score > high_score)
 	{
-		//copy_solution(best, initial);
 		swap_numbers(best_swap_one, best_swap_two);
 		high_score = process_deriviate_solutions(board, initial, best, round_high_score);
 	}
