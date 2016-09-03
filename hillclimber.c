@@ -52,8 +52,6 @@ int climb_hills(
 
 	produce_random_solution(board, initial);
 
-	print_board(board, initial);
-
 	high_score = assess_solution(initial);
 
 	high_score = process_deriviate_solutions(board, initial, high_score);
