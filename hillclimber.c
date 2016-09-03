@@ -26,12 +26,12 @@ void produce_random_solution(
 	}
 }
 
-int assess_solution(struct Num_Coordinates *numbers)
+int assess_solution(struct Num_Coordinates *solution)
 {
 	struct Coordinate *current;
 	int score = 0;
 
-	for (current = numbers->coordinates; current < numbers->coordinates + numbers->count - 1; current++)
+	for (current = solution->coordinates; current < solution->coordinates + solution->count - 1; current++)
 	{
 		if (distance(current, current + 1) == 1)
 		{
@@ -63,7 +63,7 @@ int climb_hills(
 
 int process_deriviate_solutions(
 	struct Board *board,
-	struct Num_Coordinates *initial,
+	struct Num_Coordinates *solution,
 	int high_score)
 {
 	struct Coordinate *current;
@@ -74,21 +74,21 @@ int process_deriviate_solutions(
 	int round_high_score = high_score;
 	int score = 0;
 
-	current = initial->coordinates;
+	current = solution->coordinates;
 
-	while (current < initial->coordinates + initial->count)
+	while (current < solution->coordinates + solution->count)
 	{
-		current = find_number_to_swap(board, initial, current);
+		current = find_number_to_swap(board, solution, current);
 
 		other = current + 1;
 
-		while (other < initial->coordinates + initial->count)
+		while (other < solution->coordinates + solution->count)
 		{
-			other = find_number_to_swap(board, initial, other);
+			other = find_number_to_swap(board, solution, other);
 
 			swap_numbers(current, other);
 
-			score = assess_solution(initial);
+			score = assess_solution(solution);
 
 			if (score > round_high_score)
 			{
@@ -108,7 +108,7 @@ int process_deriviate_solutions(
 	if (round_high_score > high_score)
 	{
 		swap_numbers(best_swap_one, best_swap_two);
-		high_score = process_deriviate_solutions(board, initial, round_high_score);
+		high_score = process_deriviate_solutions(board, solution, round_high_score);
 	}
 
 	return high_score;
@@ -116,13 +116,13 @@ int process_deriviate_solutions(
 
 struct Coordinate *find_number_to_swap(
 	struct Board *board,
-	struct Num_Coordinates *numbers,
+	struct Num_Coordinates *solution,
 	struct Coordinate *number)
 {
 	while ((
 		board->grid[number->row][number->col] == FIXED ||
 		board->grid[number->row][number->col] == BLOCKED) &&
-		number < numbers->coordinates + numbers->count)
+		number < solution->coordinates + solution->count)
 	{
 		number++;
 	}
