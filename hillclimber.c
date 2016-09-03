@@ -66,6 +66,8 @@ int climb_hills(
 
 	produce_random_solution(board, initial);
 
+	print_board(board, initial);
+
 	high_score = assess_solution(initial);
 
 	copy_solution(initial, best);
@@ -90,13 +92,13 @@ int process_deriviate_solutions(
 
 	while (current < initial->coordinates + initial->count)
 	{
-		find_number_to_swap(board, initial, current);
+		current = find_number_to_swap(board, initial, current);
 
 		other = current + 1;
 
 		while (other < initial->coordinates + initial->count)
 		{
-			find_number_to_swap(board, initial, other);
+			other = find_number_to_swap(board, initial, other);
 
 			swap_numbers(current, other);
 
@@ -126,7 +128,7 @@ int process_deriviate_solutions(
 	return high_score;
 }
 
-void find_number_to_swap(
+struct Coordinate *find_number_to_swap(
 	struct Board *board,
 	struct Num_Coordinates *numbers,
 	struct Coordinate *number)
@@ -138,6 +140,8 @@ void find_number_to_swap(
 	{
 		number++;
 	}
+
+	return number;
 }
 
 void swap_numbers(

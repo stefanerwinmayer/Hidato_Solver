@@ -39,7 +39,7 @@ void swap_numbers(
 	struct Coordinate *first,
 	struct Coordinate *second);
 
-void find_number_to_swap(
+struct Coordinate *find_number_to_swap(
 	struct Board *board,
 	struct Num_Coordinates *numbers,
 	struct Coordinate *number);
