@@ -7,7 +7,6 @@
 void run_hillclimber(char *input)
 {
 	struct Num_Coordinates initial;
-	struct Num_Coordinates best;
 	struct Board board;
 	int high_score;
 	int optimum_score;
@@ -34,7 +33,7 @@ void run_hillclimber(char *input)
 	QueryPerformanceCounter(&t1);
 #endif
 
-	high_score = climb_hills(&board, &initial, &best);
+	high_score = climb_hills(&board, &initial);
 
 #ifdef _WIN32
 	QueryPerformanceCounter(&t2);

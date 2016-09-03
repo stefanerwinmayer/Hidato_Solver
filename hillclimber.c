@@ -46,8 +46,7 @@ int assess_solution(struct Num_Coordinates *numbers)
 
 int climb_hills(
 	struct Board *board,
-	struct Num_Coordinates *initial,
-	struct Num_Coordinates *best)
+	struct Num_Coordinates *initial)
 {
 	int high_score;
 
@@ -57,7 +56,7 @@ int climb_hills(
 
 	high_score = assess_solution(initial);
 
-	high_score = process_deriviate_solutions(board, initial, best, high_score);
+	high_score = process_deriviate_solutions(board, initial, high_score);
 
 	return high_score;
 }
@@ -65,7 +64,6 @@ int climb_hills(
 int process_deriviate_solutions(
 	struct Board *board,
 	struct Num_Coordinates *initial,
-	struct Num_Coordinates *best,
 	int high_score)
 {
 	struct Coordinate *current;
@@ -110,7 +108,7 @@ int process_deriviate_solutions(
 	if (round_high_score > high_score)
 	{
 		swap_numbers(best_swap_one, best_swap_two);
-		high_score = process_deriviate_solutions(board, initial, best, round_high_score);
+		high_score = process_deriviate_solutions(board, initial, round_high_score);
 	}
 
 	return high_score;

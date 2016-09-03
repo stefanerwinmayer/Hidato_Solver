@@ -22,13 +22,11 @@ int assess_solution(struct Num_Coordinates *numbers);
 
 int climb_hills(
 	struct Board *board,
-	struct Num_Coordinates *initial,
-	struct Num_Coordinates *best);
+	struct Num_Coordinates *initial);
 
 int process_deriviate_solutions(
 	struct Board *board,
 	struct Num_Coordinates *initial,
-	struct Num_Coordinates *best,
 	int high_score);
 
 void swap_numbers(
