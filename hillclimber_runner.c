@@ -42,7 +42,7 @@ void run_hillclimber(char *input)
 #endif
 
 	printf("Best solution:\n\n");
-	print_board(&board, &best);
+	print_board(&board, &initial);
 
 	printf("Best possible score: %d\n", optimum_score);
 	printf("Achieved Score: %d\n", high_score);

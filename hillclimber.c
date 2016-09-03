@@ -70,7 +70,7 @@ int climb_hills(
 
 	high_score = assess_solution(initial);
 
-	copy_solution(initial, best);
+	//copy_solution(initial, best);
 
 	high_score = process_deriviate_solutions(board, initial, best, high_score);
 
@@ -85,6 +85,9 @@ int process_deriviate_solutions(
 {
 	struct Coordinate *current;
 	struct Coordinate *other;
+	struct Coordinate *best_swap_one = NULL;
+	struct Coordinate *best_swap_two = NULL;
+
 	int round_high_score = high_score;
 	int score = 0;
 
@@ -106,7 +109,9 @@ int process_deriviate_solutions(
 
 			if (score > round_high_score)
 			{
-				copy_solution(initial, best);
+				best_swap_one = current;
+				best_swap_two = other;
+				//copy_solution(initial, best);
 				round_high_score = score;
 			}
 
@@ -120,8 +125,8 @@ int process_deriviate_solutions(
 
 	if (round_high_score > high_score)
 	{
-		copy_solution(best, initial);
-
+		//copy_solution(best, initial);
+		swap_numbers(best_swap_one, best_swap_two);
 		high_score = process_deriviate_solutions(board, initial, best, round_high_score);
 	}
 
