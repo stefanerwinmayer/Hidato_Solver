@@ -42,20 +42,7 @@ int assess_solution(struct Num_Coordinates *numbers)
 	return score;
 }
 
-void copy_solution(
-	struct Num_Coordinates *source,
-	struct Num_Coordinates *dest)
-{
-	int i;
 
-	dest->count = source->count;
-
-	for (i = 0; i < source->count; i++)
-	{
-		dest->coordinates[i].row = source->coordinates[i].row;
-		dest->coordinates[i].col = source->coordinates[i].col;
-	}
-}
 
 int climb_hills(
 	struct Board *board,
@@ -207,5 +194,21 @@ for (col = 0; col < dest->cols; col++)
 dest->grid[row][col] = source->grid[row][col];
 }
 }
+}
+*/
+/*
+void copy_solution(
+	struct Num_Coordinates *source,
+	struct Num_Coordinates *dest)
+{
+	int i;
+
+	dest->count = source->count;
+
+	for (i = 0; i < source->count; i++)
+	{
+		dest->coordinates[i].row = source->coordinates[i].row;
+		dest->coordinates[i].col = source->coordinates[i].col;
+	}
 }
 */
