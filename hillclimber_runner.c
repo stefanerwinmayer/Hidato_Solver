@@ -23,7 +23,6 @@ void run_hillclimber(char *input)
 #endif
 
 	initialise_state(input, &board, &initial);
-	optimum_score = initial.count - 1;
 
 	printf("Input Hidato:\n\n");
 	print_board(&board, &initial);
@@ -45,6 +44,7 @@ void run_hillclimber(char *input)
 	printf("Best solution:\n\n");
 	print_board(&board, &initial);
 
+	optimum_score = initial.count - 1;
 	printf("Best possible score: %d\n", optimum_score);
 
 	for (i = 0; i < initial.count; i++)
