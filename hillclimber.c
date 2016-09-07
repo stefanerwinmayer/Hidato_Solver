@@ -32,11 +32,11 @@ void assess_solution(
 {
 	int i;
 
-	for (i = 1; i < solution->count; i++)
+	for (i = 0; i < solution->count - 1; i++)
 	{
-		if (distance(&solution->coordinates[i - 1], &solution->coordinates[i]) == 1)
+		if (distance(&solution->coordinates[i], &solution->coordinates[i + 1]) == 1)
 		{
-			points[i - 1] = 1;
+			points[i] = 1;
 		}
 	}
 }
