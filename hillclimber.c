@@ -60,16 +60,14 @@ void process_deriviate_solutions(
 	struct Num_Coordinates *solution,
 	int *points)
 {
-	int i, j;
-	int best_swap_index_one;
-	int best_swap_index_two;
+	int i, j, best_i, best_j;
 	int improvement;
 	int score_change;
 
 	do
 	{
-		best_swap_index_one = NONE;
-		best_swap_index_two = NONE;
+		best_i = NONE;
+		best_j = NONE;
 
 		improvement = i = 0;
 
@@ -87,8 +85,8 @@ void process_deriviate_solutions(
 
 				if (score_change > improvement)
 				{
-					best_swap_index_one = i;
-					best_swap_index_two = j;
+					best_i = i;
+					best_j = j;
 					improvement = score_change;
 				}
 
@@ -100,9 +98,9 @@ void process_deriviate_solutions(
 
 		if (improvement > 0)
 		{
-			swap_numbers(solution, best_swap_index_one, best_swap_index_two);
-			assess_solution(solution, points, best_swap_index_one - 1, best_swap_index_one + 1);
-			assess_solution(solution, points, best_swap_index_two - 1, best_swap_index_two + 1);
+			swap_numbers(solution, best_i, best_j);
+			assess_solution(solution, points, best_i - 1, best_i + 1);
+			assess_solution(solution, points, best_j - 1, best_j + 1);
 		}
 
 	} while (improvement > 0);
