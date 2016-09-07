@@ -60,8 +60,7 @@ void process_deriviate_solutions(
 	struct Num_Coordinates *solution,
 	int *points)
 {
-	int current_index;
-	int other_index;
+	int i, j;
 	int best_swap_index_one;
 	int best_swap_index_two;
 	int improvement;
@@ -72,31 +71,31 @@ void process_deriviate_solutions(
 		best_swap_index_one = NONE;
 		best_swap_index_two = NONE;
 
-		improvement = current_index = 0;
+		improvement = i = 0;
 
-		while (current_index < solution->count)
+		while (i < solution->count)
 		{
-			current_index = find_number_to_swap(board, solution, current_index);
+			i = find_number_to_swap(board, solution, i);
 
-			other_index = current_index + 1;
+			j = i + 1;
 
-			while (other_index < solution->count)
+			while (j < solution->count)
 			{
-				other_index = find_number_to_swap(board, solution, other_index);
+				j = find_number_to_swap(board, solution, j);
 
-				score_change = assess_deriviate(solution, points, current_index, other_index);
+				score_change = assess_deriviate(solution, points, i, j);
 
 				if (score_change > improvement)
 				{
-					best_swap_index_one = current_index;
-					best_swap_index_two = other_index;
+					best_swap_index_one = i;
+					best_swap_index_two = j;
 					improvement = score_change;
 				}
 
-				other_index++;
+				j++;
 			}
 
-			current_index++;
+			i++;
 		}
 
 		if (improvement > 0)
