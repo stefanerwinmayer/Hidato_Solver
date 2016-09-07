@@ -154,19 +154,19 @@ int find_number_to_swap(
 
 void swap_numbers(
 	struct Num_Coordinates *solution,
-	int index_one,
-	int index_two)
+	int i,
+	int j)
 {
 	struct Coordinate temp;
 
-	temp.row = solution->coordinates[index_one].row;
-	temp.col = solution->coordinates[index_one].col;
+	temp.row = solution->coordinates[i].row;
+	temp.col = solution->coordinates[i].col;
 
-	solution->coordinates[index_one].row = solution->coordinates[index_two].row;
-	solution->coordinates[index_one].col = solution->coordinates[index_two].col;
+	solution->coordinates[i].row = solution->coordinates[j].row;
+	solution->coordinates[i].col = solution->coordinates[j].col;
 
-	solution->coordinates[index_two].row = temp.row;
-	solution->coordinates[index_two].col = temp.col;
+	solution->coordinates[j].row = temp.row;
+	solution->coordinates[j].col = temp.col;
 }
 
 /*
