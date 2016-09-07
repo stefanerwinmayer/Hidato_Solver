@@ -62,6 +62,7 @@ void process_deriviate_solutions(
 	int other_index;
 	int best_swap_index_one;
 	int best_swap_index_two;
+	int improvement;
 	int score_change;
 
 	do
@@ -69,7 +70,7 @@ void process_deriviate_solutions(
 		best_swap_index_one = NONE;
 		best_swap_index_two = NONE;
 
-		current_index = 0;
+		improvement = current_index = 0;
 
 		while (current_index < solution->count)
 		{
@@ -83,10 +84,11 @@ void process_deriviate_solutions(
 
 				score_change = assess_deriviate(solution, points, current_index, other_index);
 
-				if (score_change > 0)
+				if (score_change > improvement)
 				{
 					best_swap_index_one = current_index;
 					best_swap_index_two = other_index;
+					improvement = score_change;
 				}
 
 				other_index++;
@@ -101,7 +103,7 @@ void process_deriviate_solutions(
 			assess_solution(solution, points);
 		}
 
-	} while (best_swap_index_one != NONE);
+	} while (improvement > 0);
 } 
 
 int assess_deriviate(
