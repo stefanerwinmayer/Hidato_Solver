@@ -64,70 +64,89 @@ int process_deriviate_solutions(
 	struct Num_Coordinates *solution,
 	int high_score)
 {
-	struct Coordinate *current;
-	struct Coordinate *other;
-	struct Coordinate *best_swap_one = NULL;
-	struct Coordinate *best_swap_two = NULL;
+	int current_index;
+	int other_index;
+	int best_swap_index_one;
+	int best_swap_index_two;
 
 	int round_high_score = high_score;
 	int score = 0;
 
-	current = solution->coordinates;
+	current_index = 0;
 
-	while (current < solution->coordinates + solution->count)
+	while (current_index < solution->count)
 	{
-		current = find_number_to_swap(board, solution, current);
+		current_index = find_number_to_swap(board, solution, current_index);
 
-		other = current + 1;
+		other_index = current_index + 1;
 
-		while (other < solution->coordinates + solution->count)
+		while (other_index < solution->count)
 		{
-			other = find_number_to_swap(board, solution, other);
+			other_index = find_number_to_swap(board, solution, other_index);
 
-			swap_numbers(current, other);
+			swap_numbers(solution, current_index, other_index);
 
 			score = assess_solution(solution);
 
 			if (score > round_high_score)
 			{
-				best_swap_one = current;
-				best_swap_two = other;
+				best_swap_index_one = current_index;
+				best_swap_index_two = other_index;
 				round_high_score = score;
 			}
 
-			swap_numbers(current, other);
+			swap_numbers(solution, current_index, other_index);
 
-			other++;
+			other_index++;
 		}
 
-		current++;
+		current_index++;
 	}
 
 	if (round_high_score > high_score)
 	{
-		swap_numbers(best_swap_one, best_swap_two);
+		swap_numbers(solution, best_swap_index_one, best_swap_index_two);
 		high_score = process_deriviate_solutions(board, solution, round_high_score);
 	}
 
 	return high_score;
 }
 
-struct Coordinate *find_number_to_swap(
+int find_number_to_swap(
 	struct Board *board,
 	struct Num_Coordinates *solution,
-	struct Coordinate *number)
+	int index)
 {
 	while ((
-		board->grid[number->row][number->col] == FIXED ||
-		board->grid[number->row][number->col] == BLOCKED) &&
-		number < solution->coordinates + solution->count)
+		board->grid[solution->coordinates[index].row][solution->coordinates[index].col] == FIXED ||
+		board->grid[solution->coordinates[index].row][solution->coordinates[index].col] == BLOCKED) &&
+		index < solution->count)
 	{
-		number++;
+		index++;
 	}
 
-	return number;
+	return index;
 }
 
+
+void swap_numbers(
+	struct Num_Coordinates *solution,
+	int index_one,
+	int index_two)
+{
+	struct Coordinate temp;
+
+	temp.row = solution->coordinates[index_one].row;
+	temp.col = solution->coordinates[index_one].col;
+
+	solution->coordinates[index_one].row = solution->coordinates[index_two].row;
+	solution->coordinates[index_one].col = solution->coordinates[index_two].col;
+
+	solution->coordinates[index_two].row = temp.row;
+	solution->coordinates[index_two].col = temp.col;
+}
+
+/*
 void swap_numbers(
 	struct Coordinate *first,
 	struct Coordinate *second)
@@ -141,6 +160,26 @@ void swap_numbers(
 	second->row = temp.row;
 	second->col = temp.col;
 }
+*/
+
+/*
+struct Coordinate *find_number_to_swap(
+struct Board *board,
+struct Num_Coordinates *solution,
+struct Coordinate *number)
+{
+while ((
+board->grid[number->row][number->col] == FIXED ||
+board->grid[number->row][number->col] == BLOCKED) &&
+number < solution->coordinates + solution->count)
+{
+number++;
+}
+
+return number;
+}
+*/
+
 
 /*
 void produce_predictable_solution(

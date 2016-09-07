@@ -30,12 +30,13 @@ int process_deriviate_solutions(
 	int high_score);
 
 void swap_numbers(
-	struct Coordinate *first,
-	struct Coordinate *second);
+	struct Num_Coordinates *solution,
+	int index_one,
+	int index_two);
 
-struct Coordinate *find_number_to_swap(
+int find_number_to_swap(
 	struct Board *board,
-	struct Num_Coordinates *numbers,
-	struct Coordinate *number);
+	struct Num_Coordinates *solution,
+	int index);
 
 #endif
