@@ -60,43 +60,48 @@ void process_deriviate_solutions(
 {
 	int current_index;
 	int other_index;
-	int best_swap_index_one = NONE;
-	int best_swap_index_two = NONE;
-	int score_change = 0;
+	int best_swap_index_one;
+	int best_swap_index_two;
+	int score_change;
 
-	current_index = 0;
-
-	while (current_index < solution->count)
+	do
 	{
-		current_index = find_number_to_swap(board, solution, current_index);
-
-		other_index = current_index + 1;
-
-		while (other_index < solution->count)
+		best_swap_index_one = NONE;
+		best_swap_index_two = NONE;
+		score_change = 0;
+		current_index = 0;
+		while (current_index < solution->count)
 		{
-			other_index = find_number_to_swap(board, solution, other_index);
+			current_index = find_number_to_swap(board, solution, current_index);
 
-			score_change = assess_deriviate(solution, points, current_index, other_index);
+			other_index = current_index + 1;
 
-			if (score_change > 0)
+			while (other_index < solution->count)
 			{
-				best_swap_index_one = current_index;
-				best_swap_index_two = other_index;
+				other_index = find_number_to_swap(board, solution, other_index);
+
+				score_change = assess_deriviate(solution, points, current_index, other_index);
+
+				if (score_change > 0)
+				{
+					best_swap_index_one = current_index;
+					best_swap_index_two = other_index;
+				}
+
+				other_index++;
 			}
 
-			other_index++;
+			current_index++;
 		}
 
-		current_index++;
-	}
+		if (best_swap_index_one != NONE)
+		{
+			swap_numbers(solution, best_swap_index_one, best_swap_index_two);
+			assess_solution(solution, points);
+		}
 
-	if (best_swap_index_one != NONE)
-	{
-		swap_numbers(solution, best_swap_index_one, best_swap_index_two);
-		assess_solution(solution, points);
-		process_deriviate_solutions(board, solution, points);
-	}
-}
+	} while (best_swap_index_one != NONE);
+} 
 
 int assess_deriviate(
 	struct Num_Coordinates *solution,
