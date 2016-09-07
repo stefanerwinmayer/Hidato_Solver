@@ -109,25 +109,25 @@ void process_deriviate_solutions(
 int assess_deriviate(
 	struct Num_Coordinates *solution,
 	int *points,
-	int first,
-	int second)
+	int i,
+	int j)
 {
 	int after_points = 0;
-	int initial_points = points[first - 1] + points[first] + points[second - 1] + points[second];
+	int initial_points = points[i - 1] + points[i] + points[j - 1] + points[j];
 	
-	if (distance(&solution->coordinates[first - 1], &solution->coordinates[second]) == 1)
+	if (distance(&solution->coordinates[i - 1], &solution->coordinates[j]) == 1)
 	{
 		after_points++;
 	}
-	if (distance(&solution->coordinates[second], &solution->coordinates[first + 1]) == 1)
+	if (distance(&solution->coordinates[j], &solution->coordinates[i + 1]) == 1)
 	{
 		after_points++;
 	}
-	if (distance(&solution->coordinates[second - 1], &solution->coordinates[first]) == 1)
+	if (distance(&solution->coordinates[j - 1], &solution->coordinates[i]) == 1)
 	{
 		after_points++;
 	}
-	if (distance(&solution->coordinates[first], &solution->coordinates[second + 1]) == 1)
+	if (distance(&solution->coordinates[i], &solution->coordinates[j + 1]) == 1)
 	{
 		after_points++;
 	}
