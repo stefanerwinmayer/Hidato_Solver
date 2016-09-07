@@ -21,7 +21,9 @@ void produce_random_solution(
 
 void assess_solution(
 	struct Num_Coordinates *solution,
-	int *points);
+	int *points,
+	int i,
+	int end);
 
 void climb_hills(
 	struct Board *board,
