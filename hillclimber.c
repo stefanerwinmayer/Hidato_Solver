@@ -61,15 +61,14 @@ void process_deriviate_solutions(
 	int *points)
 {
 	int i, j, best_i, best_j;
-	int improvement;
-	int score_change;
+	int best_change, current_change;
 
 	do
 	{
 		best_i = NONE;
 		best_j = NONE;
 
-		improvement = i = 0;
+		i = best_change = 0;
 
 		while (i < solution->count)
 		{
@@ -81,13 +80,13 @@ void process_deriviate_solutions(
 			{
 				j = find_number_to_swap(board, solution, j);
 
-				score_change = assess_deriviate(solution, points, i, j);
+				current_change = assess_deriviate(solution, points, i, j);
 
-				if (score_change > improvement)
+				if (current_change > best_change)
 				{
 					best_i = i;
 					best_j = j;
-					improvement = score_change;
+					best_change = current_change;
 				}
 
 				j++;
@@ -96,14 +95,14 @@ void process_deriviate_solutions(
 			i++;
 		}
 
-		if (improvement > 0)
+		if (best_change > 0)
 		{
 			swap_numbers(solution, best_i, best_j);
 			assess_solution(solution, points, best_i - 1, best_i + 1);
 			assess_solution(solution, points, best_j - 1, best_j + 1);
 		}
 
-	} while (improvement > 0);
+	} while (best_change > 0);
 } 
 
 int assess_deriviate(
