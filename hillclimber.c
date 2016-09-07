@@ -68,8 +68,9 @@ void process_deriviate_solutions(
 	{
 		best_swap_index_one = NONE;
 		best_swap_index_two = NONE;
-		score_change = 0;
+
 		current_index = 0;
+
 		while (current_index < solution->count)
 		{
 			current_index = find_number_to_swap(board, solution, current_index);
