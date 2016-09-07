@@ -42,7 +42,7 @@ int find_number_to_swap(
 	struct Num_Coordinates *solution,
 	int index);
 
-BOOL is_better(
+int assess_deriviate(
 	struct Num_Coordinates *solution,
 	int *points,
 	int index_one,

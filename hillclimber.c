@@ -90,8 +90,10 @@ int process_deriviate_solutions(
 
 			//score = assess_solution(solution, points);
 
-			//if (score > round_high_score)
-			if (is_better(solution, points, current_index, other_index))
+			score = round_high_score + assess_deriviate(solution, points, current_index, other_index);
+
+			if (score > round_high_score)
+			//if (is_better(solution, points, current_index, other_index))
 			{
 				best_swap_index_one = current_index;
 				best_swap_index_two = other_index;
@@ -117,16 +119,14 @@ int process_deriviate_solutions(
 	return high_score;
 }
 
-BOOL is_better(
+int assess_deriviate(
 	struct Num_Coordinates *solution,
 	int *points,
 	int first,
 	int second)
 {
-	int i, j, after_points = 0;
-	int initial_points =
-		points[first - 1] + points[first] +
-		points[second - 1] + points[second];
+	int after_points = 0;
+	int initial_points = points[first - 1] + points[first] + points[second - 1] + points[second];
 	
 	if (distance(&solution->coordinates[first - 1], &solution->coordinates[second]) == 1)
 	{
@@ -145,8 +145,14 @@ BOOL is_better(
 		after_points++;
 	}
 
-	return after_points > initial_points;
-
+	if (after_points > initial_points)
+	{
+		return after_points - initial_points;
+	}
+	else
+	{
+		return 0;
+	}
 }
 
 int find_number_to_swap(
