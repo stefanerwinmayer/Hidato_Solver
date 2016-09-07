@@ -30,7 +30,6 @@ void climb_hills(
 void process_deriviate_solutions(
 	struct Board *board,
 	struct Num_Coordinates *initial,
-	//int high_score,
 	int *points);
 
 void swap_numbers(

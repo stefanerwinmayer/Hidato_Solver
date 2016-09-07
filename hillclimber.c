@@ -30,18 +30,15 @@ void assess_solution(
 	struct Num_Coordinates *solution,
 	int *points)
 {
-	int i; //score = 0;
+	int i;
 
 	for (i = 1; i < solution->count; i++)
 	{
 		if (distance(&solution->coordinates[i - 1], &solution->coordinates[i]) == 1)
 		{
 			points[i - 1] = 1;
-			//score++;
 		}
 	}
-
-	//return score;
 }
 
 void climb_hills(
@@ -49,29 +46,22 @@ void climb_hills(
 	struct Num_Coordinates *initial,
 	int *points)
 {
-	//int high_score;
-
 	produce_random_solution(board, initial);
 
 	assess_solution(initial, points);
 
 	process_deriviate_solutions(board, initial, points);
-
-	//return high_score;
 }
 
 void process_deriviate_solutions(
 	struct Board *board,
 	struct Num_Coordinates *solution,
-	//int high_score,
 	int *points)
 {
 	int current_index;
 	int other_index;
 	int best_swap_index_one = -1;
 	int best_swap_index_two = -1;
-
-	//int round_high_score = high_score;
 	int score_change = 0;
 
 	current_index = 0;
@@ -86,21 +76,13 @@ void process_deriviate_solutions(
 		{
 			other_index = find_number_to_swap(board, solution, other_index);
 
-			//swap_numbers(solution, current_index, other_index);
-
-			//score = assess_solution(solution, points);
-
 			score_change = assess_deriviate(solution, points, current_index, other_index);
 
 			if (score_change > 0)
-			//if (is_better(solution, points, current_index, other_index))
 			{
 				best_swap_index_one = current_index;
 				best_swap_index_two = other_index;
-				//round_high_score = score;
 			}
-
-			//swap_numbers(solution, current_index, other_index);
 
 			other_index++;
 		}
@@ -108,15 +90,12 @@ void process_deriviate_solutions(
 		current_index++;
 	}
 
-	//if (round_high_score > high_score)
 	if (best_swap_index_one != -1)
 	{
 		swap_numbers(solution, best_swap_index_one, best_swap_index_two);
 		assess_solution(solution, points);
 		process_deriviate_solutions(board, solution, points);
 	}
-
-	//return high_score;
 }
 
 int assess_deriviate(
