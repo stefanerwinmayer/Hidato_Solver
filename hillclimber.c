@@ -138,17 +138,17 @@ int assess_deriviate(
 int find_number_to_swap(
 	struct Board *board,
 	struct Num_Coordinates *solution,
-	int index)
+	int i)
 {
 	while ((
-		board->grid[solution->coordinates[index].row][solution->coordinates[index].col] == FIXED ||
-		board->grid[solution->coordinates[index].row][solution->coordinates[index].col] == BLOCKED) &&
-		index < solution->count)
+		board->grid[solution->coordinates[i].row][solution->coordinates[i].col] == FIXED ||
+		board->grid[solution->coordinates[i].row][solution->coordinates[i].col] == BLOCKED) &&
+		i < solution->count)
 	{
-		index++;
+		i++;
 	}
 
-	return index;
+	return i;
 }
 
 
