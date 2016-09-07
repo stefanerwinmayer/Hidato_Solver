@@ -125,14 +125,9 @@ BOOL is_better(
 {
 	int i, j, after_points = 0;
 	int initial_points =
-		points[first - 1] + points[first] + points[first + 1] +
+		points[first - 1] + points[first] +
 		points[second - 1] + points[second];
 	
-	if (second < solution->count - 1)
-	{
-		initial_points += points[second + 1];
-	}
-
 	if (distance(&solution->coordinates[first - 1], &solution->coordinates[second]) == 1)
 	{
 		after_points++;
