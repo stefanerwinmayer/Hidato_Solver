@@ -18,7 +18,9 @@ void produce_random_solution(
 	struct Board *board,
 	struct Num_Coordinates *numbers);
 
-int assess_solution(struct Num_Coordinates *numbers);
+int assess_solution(
+	struct Num_Coordinates *solution,
+	int *points);
 
 int climb_hills(
 	struct Board *board,
@@ -27,7 +29,8 @@ int climb_hills(
 int process_deriviate_solutions(
 	struct Board *board,
 	struct Num_Coordinates *initial,
-	int high_score);
+	int high_score,
+	int *points);
 
 void swap_numbers(
 	struct Num_Coordinates *solution,

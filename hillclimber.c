@@ -26,15 +26,17 @@ void produce_random_solution(
 	}
 }
 
-int assess_solution(struct Num_Coordinates *solution)
+int assess_solution(
+	struct Num_Coordinates *solution,
+	int *points)
 {
-	struct Coordinate *current;
-	int score = 0;
+	int i, score = 0;
 
-	for (current = solution->coordinates; current < solution->coordinates + solution->count - 1; current++)
+	for (i = 1; i < solution->count; i++)
 	{
-		if (distance(current, current + 1) == 1)
+		if (distance(&solution->coordinates[i-1], &solution->coordinates[i]) == 1)
 		{
+			points[i-1] = 1;
 			score++;
 		}
 	}
@@ -42,19 +44,18 @@ int assess_solution(struct Num_Coordinates *solution)
 	return score;
 }
 
-
-
 int climb_hills(
 	struct Board *board,
 	struct Num_Coordinates *initial)
 {
 	int high_score;
+	int points[MAX_NUMS] = { 0 };
 
 	produce_random_solution(board, initial);
 
-	high_score = assess_solution(initial);
+	high_score = assess_solution(initial, points);
 
-	high_score = process_deriviate_solutions(board, initial, high_score);
+	high_score = process_deriviate_solutions(board, initial, high_score, points);
 
 	return high_score;
 }
@@ -62,7 +63,8 @@ int climb_hills(
 int process_deriviate_solutions(
 	struct Board *board,
 	struct Num_Coordinates *solution,
-	int high_score)
+	int high_score,
+	int *points)
 {
 	int current_index;
 	int other_index;
@@ -86,7 +88,7 @@ int process_deriviate_solutions(
 
 			swap_numbers(solution, current_index, other_index);
 
-			score = assess_solution(solution);
+			score = assess_solution(solution, points);
 
 			if (score > round_high_score)
 			{
@@ -106,7 +108,7 @@ int process_deriviate_solutions(
 	if (round_high_score > high_score)
 	{
 		swap_numbers(solution, best_swap_index_one, best_swap_index_two);
-		high_score = process_deriviate_solutions(board, solution, round_high_score);
+		high_score = process_deriviate_solutions(board, solution, round_high_score, points);
 	}
 
 	return high_score;
@@ -145,6 +147,25 @@ void swap_numbers(
 	solution->coordinates[index_two].row = temp.row;
 	solution->coordinates[index_two].col = temp.col;
 }
+
+/*
+int assess_solution(struct Num_Coordinates *solution)
+{
+	struct Coordinate *current;
+	int score = 0;
+
+	for (current = solution->coordinates; current < solution->coordinates + solution->count - 1; current++)
+	{
+		if (distance(current, current + 1) == 1)
+		{
+			score++;
+		}
+	}
+
+	return score;
+}
+*/
+
 
 /*
 void swap_numbers(
