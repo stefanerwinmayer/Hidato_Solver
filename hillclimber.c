@@ -60,8 +60,8 @@ void process_deriviate_solutions(
 {
 	int current_index;
 	int other_index;
-	int best_swap_index_one = -1;
-	int best_swap_index_two = -1;
+	int best_swap_index_one = NONE;
+	int best_swap_index_two = NONE;
 	int score_change = 0;
 
 	current_index = 0;
@@ -90,7 +90,7 @@ void process_deriviate_solutions(
 		current_index++;
 	}
 
-	if (best_swap_index_one != -1)
+	if (best_swap_index_one != NONE)
 	{
 		swap_numbers(solution, best_swap_index_one, best_swap_index_two);
 		assess_solution(solution, points);

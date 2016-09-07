@@ -13,6 +13,7 @@
 #include "backtracker.h"
 
 #define NUMBER_OF_MOVES 8
+#define NONE -9
 
 void produce_random_solution(
 	struct Board *board,
