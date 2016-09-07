@@ -26,44 +26,44 @@ void produce_random_solution(
 	}
 }
 
-int assess_solution(
+void assess_solution(
 	struct Num_Coordinates *solution,
 	int *points)
 {
-	int i, score = 0;
+	int i; //score = 0;
 
 	for (i = 1; i < solution->count; i++)
 	{
 		if (distance(&solution->coordinates[i - 1], &solution->coordinates[i]) == 1)
 		{
 			points[i - 1] = 1;
-			score++;
+			//score++;
 		}
 	}
 
-	return score;
+	//return score;
 }
 
-int climb_hills(
+void climb_hills(
 	struct Board *board,
 	struct Num_Coordinates *initial,
 	int *points)
 {
-	int high_score;
+	//int high_score;
 
 	produce_random_solution(board, initial);
 
-	high_score = assess_solution(initial, points);
+	assess_solution(initial, points);
 
-	high_score = process_deriviate_solutions(board, initial, high_score, points);
+	process_deriviate_solutions(board, initial, points);
 
-	return high_score;
+	//return high_score;
 }
 
-int process_deriviate_solutions(
+void process_deriviate_solutions(
 	struct Board *board,
 	struct Num_Coordinates *solution,
-	int high_score,
+	//int high_score,
 	int *points)
 {
 	int current_index;
@@ -71,8 +71,8 @@ int process_deriviate_solutions(
 	int best_swap_index_one = -1;
 	int best_swap_index_two = -1;
 
-	int round_high_score = high_score;
-	int score = 0;
+	//int round_high_score = high_score;
+	int score_change = 0;
 
 	current_index = 0;
 
@@ -90,9 +90,9 @@ int process_deriviate_solutions(
 
 			//score = assess_solution(solution, points);
 
-			score = round_high_score + assess_deriviate(solution, points, current_index, other_index);
+			score_change = assess_deriviate(solution, points, current_index, other_index);
 
-			if (score > round_high_score)
+			if (score_change > 0)
 			//if (is_better(solution, points, current_index, other_index))
 			{
 				best_swap_index_one = current_index;
@@ -112,11 +112,11 @@ int process_deriviate_solutions(
 	if (best_swap_index_one != -1)
 	{
 		swap_numbers(solution, best_swap_index_one, best_swap_index_two);
-		round_high_score = assess_solution(solution, points);
-		high_score = process_deriviate_solutions(board, solution, round_high_score, points);
+		assess_solution(solution, points);
+		process_deriviate_solutions(board, solution, points);
 	}
 
-	return high_score;
+	//return high_score;
 }
 
 int assess_deriviate(
@@ -145,14 +145,7 @@ int assess_deriviate(
 		after_points++;
 	}
 
-	if (after_points > initial_points)
-	{
-		return after_points - initial_points;
-	}
-	else
-	{
-		return 0;
-	}
+	return after_points - initial_points;
 }
 
 int find_number_to_swap(
