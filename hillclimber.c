@@ -51,6 +51,7 @@ void climb_hills(
 	assess_solution(initial, points);
 
 	process_deriviate_solutions(board, initial, points);
+
 }
 
 void process_deriviate_solutions(
@@ -97,12 +98,13 @@ void process_deriviate_solutions(
 			current_index++;
 		}
 
-		if (best_swap_index_one != NONE)
+		if (improvement > 0)
 		{
 			swap_numbers(solution, best_swap_index_one, best_swap_index_two);
 			assess_solution(solution, points);
 		}
-
+		//printf("INTERIM SOLUTION\n\n");
+		//print_board(board, solution);
 	} while (improvement > 0);
 } 
 
