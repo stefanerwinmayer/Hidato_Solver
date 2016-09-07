@@ -24,7 +24,8 @@ int assess_solution(
 
 int climb_hills(
 	struct Board *board,
-	struct Num_Coordinates *initial);
+	struct Num_Coordinates *initial,
+	int *points);
 
 int process_deriviate_solutions(
 	struct Board *board,

@@ -46,10 +46,10 @@ int assess_solution(
 
 int climb_hills(
 	struct Board *board,
-	struct Num_Coordinates *initial)
+	struct Num_Coordinates *initial,
+	int *points)
 {
 	int high_score;
-	int points[MAX_NUMS] = { 0 };
 
 	produce_random_solution(board, initial);
 
