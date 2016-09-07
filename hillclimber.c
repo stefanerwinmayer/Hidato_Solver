@@ -34,9 +34,9 @@ int assess_solution(
 
 	for (i = 1; i < solution->count; i++)
 	{
-		if (distance(&solution->coordinates[i-1], &solution->coordinates[i]) == 1)
+		if (distance(&solution->coordinates[i - 1], &solution->coordinates[i]) == 1)
 		{
-			points[i-1] = 1;
+			points[i - 1] = 1;
 			score++;
 		}
 	}
@@ -68,8 +68,8 @@ int process_deriviate_solutions(
 {
 	int current_index;
 	int other_index;
-	int best_swap_index_one;
-	int best_swap_index_two;
+	int best_swap_index_one = -1;
+	int best_swap_index_two = -1;
 
 	int round_high_score = high_score;
 	int score = 0;
@@ -86,18 +86,19 @@ int process_deriviate_solutions(
 		{
 			other_index = find_number_to_swap(board, solution, other_index);
 
-			swap_numbers(solution, current_index, other_index);
+			//swap_numbers(solution, current_index, other_index);
 
-			score = assess_solution(solution, points);
+			//score = assess_solution(solution, points);
 
-			if (score > round_high_score)
+			//if (score > round_high_score)
+			if (is_better(solution, points, current_index, other_index))
 			{
 				best_swap_index_one = current_index;
 				best_swap_index_two = other_index;
-				round_high_score = score;
+				//round_high_score = score;
 			}
 
-			swap_numbers(solution, current_index, other_index);
+			//swap_numbers(solution, current_index, other_index);
 
 			other_index++;
 		}
@@ -105,13 +106,52 @@ int process_deriviate_solutions(
 		current_index++;
 	}
 
-	if (round_high_score > high_score)
+	//if (round_high_score > high_score)
+	if (best_swap_index_one != -1)
 	{
 		swap_numbers(solution, best_swap_index_one, best_swap_index_two);
+		round_high_score = assess_solution(solution, points);
 		high_score = process_deriviate_solutions(board, solution, round_high_score, points);
 	}
 
 	return high_score;
+}
+
+BOOL is_better(
+	struct Num_Coordinates *solution,
+	int *points,
+	int first,
+	int second)
+{
+	int i, j, after_points = 0;
+	int initial_points =
+		points[first - 1] + points[first] + points[first + 1] +
+		points[second - 1] + points[second];
+	
+	if (second < solution->count - 1)
+	{
+		initial_points += points[second + 1];
+	}
+
+	if (distance(&solution->coordinates[first - 1], &solution->coordinates[second]) == 1)
+	{
+		after_points++;
+	}
+	if (distance(&solution->coordinates[second], &solution->coordinates[first + 1]) == 1)
+	{
+		after_points++;
+	}
+	if (distance(&solution->coordinates[second - 1], &solution->coordinates[first]) == 1)
+	{
+		after_points++;
+	}
+	if (distance(&solution->coordinates[first], &solution->coordinates[second + 1]) == 1)
+	{
+		after_points++;
+	}
+
+	return after_points > initial_points;
+
 }
 
 int find_number_to_swap(
