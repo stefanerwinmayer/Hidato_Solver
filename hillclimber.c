@@ -139,10 +139,9 @@ int find_number_to_swap(
 	struct Num_Coordinates *solution,
 	int i)
 {
-	while ((
-		board->grid[solution->coordinates[i].row][solution->coordinates[i].col] == FIXED ||
-		board->grid[solution->coordinates[i].row][solution->coordinates[i].col] == BLOCKED) &&
-		i < solution->count)
+	while (
+		i < solution->count &&
+		board->grid[solution->coordinates[i].row][solution->coordinates[i].col] != TAKEN)
 	{
 		i++;
 	}
