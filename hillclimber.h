@@ -19,7 +19,7 @@ void produce_random_solution(
 	struct Board *board,
 	struct Num_Coordinates *numbers);
 
-void assess_solution(
+void update_points(
 	struct Num_Coordinates *solution,
 	int *points,
 	int i,

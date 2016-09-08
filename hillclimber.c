@@ -26,7 +26,7 @@ void produce_random_solution(
 	}
 }
 
-void assess_solution(
+void update_points(
 	struct Num_Coordinates *solution,
 	int *points,
 	int i,
@@ -49,7 +49,7 @@ void climb_hills(
 {
 	produce_random_solution(board, initial);
 
-	assess_solution(initial, points, 0, initial->count);
+	update_points(initial, points, 0, initial->count);
 
 	process_deriviate_solutions(board, initial, points);
 
@@ -98,8 +98,8 @@ void process_deriviate_solutions(
 		if (best_change > 0)
 		{
 			swap_numbers(solution, best_i, best_j);
-			assess_solution(solution, points, best_i - 1, best_i + 1);
-			assess_solution(solution, points, best_j - 1, best_j + 1);
+			update_points(solution, points, best_i - 1, best_i + 1);
+			update_points(solution, points, best_j - 1, best_j + 1);
 		}
 
 	} while (best_change > 0);
