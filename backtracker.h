@@ -42,7 +42,6 @@ void revert_hamiltonian(
 	struct Coordinate *current);
 
 void revert_next_fixed(
-	const struct Board *board,
 	struct Num_Coordinates *numbers,
 	const struct Coordinate *current);
 

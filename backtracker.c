@@ -59,7 +59,7 @@ BOOL backtrack(
 
 		if (smart)
 		{
-			revert_next_fixed(board, numbers, current);
+			revert_next_fixed(numbers, current);
 		}
 
 		return FALSE;
@@ -164,11 +164,10 @@ void revert_hamiltonian(
 }
 
 void revert_next_fixed(
-	const struct Board *board,
 	struct Num_Coordinates *numbers,
 	const struct Coordinate *current)
 {
-	if (board->grid[current->row][current->col] == FIXED)
+	if (current->row != UNKNOWN)
 	{
 		numbers->next_fixed = current;
 	}
