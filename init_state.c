@@ -10,6 +10,8 @@ void initialise_state(
 	BOOL processing[NUM_VALID_INPUTS] = { FALSE };
 	BOOL seen[MAX_NUMS] = { FALSE };
 
+	numbers->next_fixed = numbers->coordinates;
+
 	board->rows = board->cols = numbers->count = 0;
 
 	for (row = 0; row < MAX_ROWS; row++)

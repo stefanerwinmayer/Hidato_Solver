@@ -25,7 +25,6 @@ void update_hamiltonian(
 	const struct Coordinate *neighbour);
 
 void update_next_fixed(
-	const struct Board *board,
 	struct Num_Coordinates *numbers,
 	const struct Coordinate *current);
 
