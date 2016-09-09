@@ -8,6 +8,8 @@
 #include "hillclimber.h"
 #include "output.h"
 
-void run_hillclimber(char *input);
+void run_hillclimber(
+	struct Board *board,
+	struct Num_Coordinates *numbers);
 
 #endif
