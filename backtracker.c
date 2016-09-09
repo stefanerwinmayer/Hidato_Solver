@@ -105,11 +105,9 @@ void update_next_fixed(
 {
 	if (current == numbers->next_fixed)
 	{
-		(numbers->next_fixed)++;
-		while (numbers->next_fixed->row == UNKNOWN)
-		{
+		do {
 			(numbers->next_fixed)++;
-		}
+		} while (numbers->next_fixed->row == UNKNOWN);
 	}
 }
 
