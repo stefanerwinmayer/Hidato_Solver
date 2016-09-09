@@ -45,23 +45,27 @@ void update_points(
 void climb_hills(
 	struct Board *board,
 	struct Num_Coordinates *initial,
-	int *points)
+	int *points,
+	int *iterations)
 {
 	produce_random_solution(board, initial);
 
 	update_points(initial, points, 0, initial->count);
 
-	process_deriviate_solutions(board, initial, points);
+	process_deriviate_solutions(board, initial, points, iterations);
 
 }
 
 void process_deriviate_solutions(
 	struct Board *board,
 	struct Num_Coordinates *solution,
-	int *points)
+	int *points,
+	int *iterations)
 {
 	int i, j, best_i, best_j;
 	int best_change, current_change;
+
+	(*iterations)++;
 
 	do
 	{

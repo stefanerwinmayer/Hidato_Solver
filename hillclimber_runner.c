@@ -9,6 +9,7 @@ void run_hillclimber(
 	struct Num_Coordinates *initial)
 {
 	int i, high_score = 0;
+	int iterations = 0;
 	int optimum_score;
 	int points[MAX_NUMS] = { 0 };
 
@@ -31,7 +32,7 @@ void run_hillclimber(
 	QueryPerformanceCounter(&t1);
 #endif
 
-	climb_hills(board, initial, points);
+	climb_hills(board, initial, points, &iterations);
 
 #ifdef _WIN32
 	QueryPerformanceCounter(&t2);

@@ -28,12 +28,14 @@ void update_points(
 void climb_hills(
 	struct Board *board,
 	struct Num_Coordinates *initial,
-	int *points);
+	int *points,
+	int *iterations);
 
 void process_deriviate_solutions(
 	struct Board *board,
 	struct Num_Coordinates *initial,
-	int *points);
+	int *points,
+	int *iterations);
 
 void swap_numbers(
 	struct Num_Coordinates *solution,
