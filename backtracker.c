@@ -3,7 +3,7 @@
 BOOL backtrack(
 	struct Board *board,
 	struct Num_Coordinates *numbers,
-	const struct Coordinate *current,
+	struct Coordinate *current,
 	int *iterations,
 	const BOOL smart)
 {
