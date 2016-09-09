@@ -10,7 +10,7 @@
 #include "num_coordinates.h"
 
 #include "output.h"
-#include "backtracker.h"
+#include "distance.h"
 
 #define NUMBER_OF_MOVES 8
 #define NONE -9

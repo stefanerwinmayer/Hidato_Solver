@@ -6,6 +6,7 @@
 #include "coordinate_struct.h"
 #include "board.h"
 #include "num_coordinates.h"
+#include "distance.h"
 
 #define NUMBER_OF_MOVES 8
 
@@ -44,10 +45,6 @@ void revert_hamiltonian(
 void revert_next_fixed(
 	struct Num_Coordinates *numbers,
 	struct Coordinate *current);
-
-int distance(
-	const struct Coordinate *first,
-	const struct Coordinate *second);
 
 BOOL sensible_move(
 	const struct Num_Coordinates *numbers,

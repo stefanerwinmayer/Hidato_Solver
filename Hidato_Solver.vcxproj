@@ -158,6 +158,7 @@
   <ItemGroup>
     <ClCompile Include="backtracker.c" />
     <ClCompile Include="backtracker_runner.c" />
+    <ClCompile Include="distance.c" />
     <ClCompile Include="file_reader.c" />
     <ClCompile Include="hidato_solver.c" />
     <ClCompile Include="hillclimber.c" />
@@ -171,6 +172,7 @@
     <ClInclude Include="board.h" />
     <ClInclude Include="boolean.h" />
     <ClInclude Include="coordinate_struct.h" />
+    <ClInclude Include="distance.h" />
     <ClInclude Include="file_reader.h" />
     <ClInclude Include="hidato_limits.h" />
     <ClInclude Include="hidato_solver.h" />
