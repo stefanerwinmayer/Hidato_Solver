@@ -10,7 +10,8 @@
 #include "output.h"
 
 void run_backtracker(
-	char *input,
+	struct Board *board,
+	struct Num_Coordinates *numbers,
 	BOOL smart);
 
 #endif
