@@ -51,7 +51,7 @@ void run_hillclimber(
 		high_score += points[i];
 	}
 
-
+	printf("Number of iterations: %d\n", iterations);
 	printf("Achieved Score: %d\n", high_score);
 	printf("Quality of solution: %.2lf %%\n", ((double)high_score / optimum_score) * 100);
 
