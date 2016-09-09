@@ -43,8 +43,8 @@ void swap_numbers(
 	int index_two);
 
 int find_number_to_swap(
-	struct Board *board,
-	struct Num_Coordinates *solution,
+	const struct Board *board,
+	const struct Num_Coordinates *solution,
 	int index);
 
 int assess_deriviate(

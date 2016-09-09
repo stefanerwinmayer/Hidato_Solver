@@ -139,8 +139,8 @@ int assess_deriviate(
 }
 
 int find_number_to_swap(
-	struct Board *board,
-	struct Num_Coordinates *solution,
+	const struct Board *board,
+	const struct Num_Coordinates *solution,
 	int i)
 {
 	while (
