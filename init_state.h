@@ -16,16 +16,16 @@
 #define NUM_VALID_INPUTS 3
 #define ONE 0
 
-void initialise_state(
+BOOL initialise_state(
 	char *input,
 	struct Board *board,
 	struct Num_Coordinates *numbers);
 
 /*
 void initialise_hillclimber(
-	char *input,
-	struct Num_Coordinates *numbers,
-	struct Board *initial);
+char *input,
+struct Num_Coordinates *numbers,
+struct Board *initial);
 */
 
 #endif
