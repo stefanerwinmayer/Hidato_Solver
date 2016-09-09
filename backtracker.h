@@ -43,7 +43,7 @@ void revert_hamiltonian(
 
 void revert_next_fixed(
 	struct Num_Coordinates *numbers,
-	const struct Coordinate *current);
+	struct Coordinate *current);
 
 int distance(
 	const struct Coordinate *first,
