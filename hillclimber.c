@@ -110,10 +110,10 @@ void process_deriviate_solutions(
 } 
 
 int assess_deriviate(
-	struct Num_Coordinates *solution,
-	int *points,
-	int i,
-	int j)
+	const struct Num_Coordinates *solution,
+	const int *points,
+	const int i,
+	const int j)
 {
 	int after_points = 0;
 	int initial_points = points[i - 1] + points[i] + points[j - 1] + points[j];

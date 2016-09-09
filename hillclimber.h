@@ -48,9 +48,9 @@ int find_number_to_swap(
 	int index);
 
 int assess_deriviate(
-	struct Num_Coordinates *solution,
-	int *points,
-	int index_one,
-	int index_two);
+	const struct Num_Coordinates *solution,
+	const int *points,
+	const int index_one,
+	const int index_two);
 
 #endif
