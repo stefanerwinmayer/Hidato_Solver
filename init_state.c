@@ -1,6 +1,6 @@
 #include "init_state.h"
 
-void initialise_state(
+BOOL initialise_state(
 	char *input,
 	struct Board *board,
 	struct Num_Coordinates *numbers)
@@ -53,8 +53,7 @@ void initialise_state(
 				if (seen[number - 1])
 				{
 					printf("Invalid input: Number %d is present multiple times.", number);
-					(void)getchar();
-					exit(EXIT_FAILURE);
+					return FALSE;
 				}
 
 				seen[number - 1] = TRUE;
@@ -116,7 +115,8 @@ void initialise_state(
 	if (!seen[ONE])
 	{
 		printf("Invalid input: Number 1 must be present.");
-		(void)getchar();
-		exit(EXIT_FAILURE);
+		return FALSE;
 	}
+
+	return TRUE;
 }
