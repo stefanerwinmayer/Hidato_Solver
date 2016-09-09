@@ -4,6 +4,8 @@ int main(int argc, char *argv[])
 {
 	BOOL backtracking, smart, hillclimbing;
 	char input[MAX_FILE_LENGTH];
+	struct Board board;
+	struct Num_Coordinates numbers;
 
 	backtracking = smart = hillclimbing = FALSE;
 
@@ -37,13 +39,16 @@ int main(int argc, char *argv[])
 		file_to_string(argv[FILE_NAME], input);
 	}
 
-	if (backtracking)
+	if (initialise_state(input, &board, &numbers))
 	{
-		run_backtracker(input, smart);
-	}
-	else if (hillclimbing)
-	{
-		run_hillclimber(input);
+		if (backtracking)
+		{
+			run_backtracker(&board, &numbers, smart);
+		}
+		else if (hillclimbing)
+		{
+			run_hillclimber(&board, &numbers);
+		}
 	}
 
 	(void)getchar();
