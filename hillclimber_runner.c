@@ -8,8 +8,9 @@ void run_hillclimber(
 	struct Board *board,
 	struct Num_Coordinates *initial)
 {
-	int high_score;
+	int i, high_score = 0;
 	int optimum_score;
+	int points[MAX_NUMS] = { 0 };
 
 	time_t t;
 	srand((unsigned)time(&t));
@@ -19,8 +20,6 @@ void run_hillclimber(
 	LARGE_INTEGER t1, t2;
 	double elapsedTime;
 #endif
-
-	optimum_score = initial->count - 1;
 
 	printf("Input Hidato:\n\n");
 	print_board(board, initial);
@@ -32,7 +31,7 @@ void run_hillclimber(
 	QueryPerformanceCounter(&t1);
 #endif
 
-	high_score = climb_hills(board, initial);
+	climb_hills(board, initial, points);
 
 #ifdef _WIN32
 	QueryPerformanceCounter(&t2);
@@ -42,7 +41,16 @@ void run_hillclimber(
 	printf("Best solution:\n\n");
 	print_board(board, initial);
 
+	optimum_score = initial->count - 1;
+
 	printf("Best possible score: %d\n", optimum_score);
+
+	for (i = 0; i < initial->count; i++)
+	{
+		high_score += points[i];
+	}
+
+
 	printf("Achieved Score: %d\n", high_score);
 	printf("Quality of solution: %.2lf %%\n", ((double)high_score / optimum_score) * 100);
 
