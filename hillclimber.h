@@ -39,8 +39,8 @@ void process_deriviate_solutions(
 
 void swap_numbers(
 	struct Num_Coordinates *solution,
-	int index_one,
-	int index_two);
+	const int index_one,
+	const int index_two);
 
 int find_number_to_swap(
 	const struct Board *board,

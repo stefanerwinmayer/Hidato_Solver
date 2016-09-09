@@ -156,8 +156,8 @@ int find_number_to_swap(
 
 void swap_numbers(
 	struct Num_Coordinates *solution,
-	int i,
-	int j)
+	const int i,
+	const int j)
 {
 	struct Coordinate temp;
 
