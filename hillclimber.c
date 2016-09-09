@@ -84,13 +84,16 @@ void process_deriviate_solutions(
 			{
 				j = find_number_to_swap(board, solution, j);
 
-				current_change = assess_deriviate(solution, points, i, j);
-
-				if (current_change > best_change)
+				if (j < solution->count)
 				{
-					best_i = i;
-					best_j = j;
-					best_change = current_change;
+					current_change = assess_deriviate(solution, points, i, j);
+
+					if (current_change > best_change)
+					{
+						best_i = i;
+						best_j = j;
+						best_change = current_change;
+					}
 				}
 
 				j++;
