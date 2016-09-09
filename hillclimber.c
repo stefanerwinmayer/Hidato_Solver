@@ -65,10 +65,10 @@ void process_deriviate_solutions(
 	int i, j, best_i, best_j;
 	int best_change, current_change;
 
-	(*iterations)++;
-
 	do
 	{
+		(*iterations)++;
+
 		best_i = NONE;
 		best_j = NONE;
 
