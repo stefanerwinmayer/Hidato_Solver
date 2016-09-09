@@ -9,7 +9,7 @@ void run_backtracker(
 	struct Num_Coordinates *numbers,
 	BOOL smart)
 {
-	int counter = 0;
+	int iterations = 0;
 
 #ifdef _WIN32
 	LARGE_INTEGER frequency;
@@ -30,7 +30,7 @@ void run_backtracker(
 	QueryPerformanceCounter(&t1);
 #endif
 
-	backtrack(board, numbers, numbers->coordinates, &counter, smart);
+	backtrack(board, numbers, numbers->coordinates, &iterations, smart);
 
 #ifdef _WIN32
 	QueryPerformanceCounter(&t2);
@@ -44,7 +44,7 @@ void run_backtracker(
 
 	printf("Number of calls to the ");
 	(smart) ? printf("smart ") : printf("regular ");
-	printf("backtracker: %d\n", counter);
+	printf("backtracker: %d\n", iterations);
 
 #ifdef _WIN32
 	printf("Runtime: %lf ms", elapsedTime);

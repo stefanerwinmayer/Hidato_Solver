@@ -4,7 +4,7 @@ BOOL backtrack(
 	struct Board *board,
 	struct Num_Coordinates *numbers,
 	const struct Coordinate *current,
-	int *counter,
+	int *iterations,
 	const BOOL smart)
 {
 	int i;
@@ -18,7 +18,7 @@ BOOL backtrack(
 		{  1, -1 },{  1, 0 },{  1, 1 }
 	};
 
-	(*counter)++;
+	(*iterations)++;
 
 	update_board(board, current);
 
@@ -41,7 +41,7 @@ BOOL backtrack(
 
 			update_hamiltonian(next, &neighbour);
 
-			if (!backtrack(board, numbers, next, counter, smart))
+			if (!backtrack(board, numbers, next, iterations, smart))
 			{
 				continue;
 			}
