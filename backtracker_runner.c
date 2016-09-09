@@ -5,11 +5,10 @@
 #include "backtracker_runner.h"
 
 void run_backtracker(
-	char *input,
+	struct Board *board,
+	struct Num_Coordinates *numbers,
 	BOOL smart)
 {
-	struct Board board;
-	struct Num_Coordinates numbers;
 	int counter = 0;
 
 #ifdef _WIN32
@@ -18,10 +17,10 @@ void run_backtracker(
 	double elapsedTime;
 #endif
 
-	initialise_state(input, &board, &numbers);
+	//initialise_state(input, &board, &numbers);
 
 	printf("Input Hidato:\n\n");
-	print_board(&board, &numbers);
+	print_board(board, numbers);
 	printf("Solving the puzzle with the ");
 	(smart) ? printf("smart ") : printf("regular ");
 	printf("backtracker:\n\n");
@@ -31,17 +30,17 @@ void run_backtracker(
 	QueryPerformanceCounter(&t1);
 #endif
 
-	backtrack(&board, &numbers, numbers.coordinates, &counter, smart);
+	backtrack(board, numbers, numbers->coordinates, &counter, smart);
 
 #ifdef _WIN32
 	QueryPerformanceCounter(&t2);
 	elapsedTime = (t2.QuadPart - t1.QuadPart) * 1000.0 / frequency.QuadPart;
 #endif
 
-	print_board(&board, &numbers);
+	print_board(board, numbers);
 
 	printf("Hamiltonian Path:\n\n");
-	print_hamiltonian_path(&numbers);
+	print_hamiltonian_path(numbers);
 
 	printf("Number of calls to the ");
 	(smart) ? printf("smart ") : printf("regular ");
