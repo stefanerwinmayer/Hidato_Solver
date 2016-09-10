@@ -59,7 +59,6 @@ BOOL initialise_state(
 				seen[number - 1] = TRUE;
 
 				board->grid[row][col] = FIXED;
-				(board->cols)++;
 
 				numbers->coordinates[number - 1].row = row;
 				numbers->coordinates[number - 1].col = col;
@@ -77,7 +76,6 @@ BOOL initialise_state(
 			else if (processing[QUESTION_MARK])
 			{
 				board->grid[row][col] = FREE;
-				(board->cols)++;
 
 				(numbers->count)++;
 
@@ -92,7 +90,6 @@ BOOL initialise_state(
 			else if (processing[X])
 			{
 				board->grid[row][col] = BLOCKED;
-				(board->cols)++;
 
 				if (*p != '\n')
 				{
@@ -104,8 +101,8 @@ BOOL initialise_state(
 
 			if (*p == '\n')
 			{
+				(board->cols) = col;
 				col = 0;
-				(board->cols) = 0;
 				(board->rows)++;
 				row++;
 			}
