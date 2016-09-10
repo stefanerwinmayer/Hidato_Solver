@@ -7,7 +7,7 @@ BOOL initialise_state(
 {
 	int row, col, number;
 	char *p;
-	BOOL processing[NUM_VALID_INPUTS] = { FALSE };
+	BOOL processing[VALID_INPUTS] = { FALSE };
 	BOOL seen[MAX_NUMS] = { FALSE };
 
 	numbers->next_fixed = numbers->coordinates;

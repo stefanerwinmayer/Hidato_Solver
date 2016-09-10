@@ -13,7 +13,7 @@
 #define NUMBER 0
 #define QUESTION_MARK 1
 #define X 2
-#define NUM_VALID_INPUTS 3
+#define VALID_INPUTS 3
 #define ONE 0
 
 BOOL initialise_state(
