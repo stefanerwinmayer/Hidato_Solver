@@ -59,12 +59,69 @@ static void test_initialise_test_puzzle_1()
 	);
 }
 
+static void test_initialise_test_puzzle_2()
+{
+	/* [7][6][X]
+	 * [?][?][X]
+	 * [4][?][1]
+	 */
+
+	char input[MAX_FILE_LENGTH];
+	struct Board board;
+	struct Num_Coordinates numbers;
+
+
+	file_to_string("test_puzzle_2.txt", input);
+
+	sput_fail_unless(
+		initialise_state(input, &board, &numbers) == TRUE,
+		"Valid puzzle -> initialise_state() = TRUE"
+	);
+
+	sput_fail_unless(
+		board.grid[0][0] == FIXED && board.grid[0][1] == FIXED && board.grid[0][2] == BLOCKED &&
+		board.grid[1][0] == FREE  && board.grid[1][1] == FREE  && board.grid[1][2] == BLOCKED &&
+		board.grid[2][0] == FIXED && board.grid[2][1] == FREE && board.grid[2][2] == FIXED,
+		"All nodes have the correct state"
+	);
+
+	sput_fail_unless(
+		board.rows == 3 && board.cols == 3,
+		"Rows = 3 and Columns = 3"
+	);
+
+	sput_fail_unless(
+		numbers.coordinates[0].row == 2       && numbers.coordinates[0].col == 2 &&
+		numbers.coordinates[1].row == UNKNOWN && numbers.coordinates[1].col == UNKNOWN &&
+		numbers.coordinates[2].row == UNKNOWN && numbers.coordinates[2].col == UNKNOWN &&
+		numbers.coordinates[3].row == 2       && numbers.coordinates[3].col == 0 &&
+		numbers.coordinates[4].row == UNKNOWN && numbers.coordinates[4].col == UNKNOWN &&
+		numbers.coordinates[5].row == 0       && numbers.coordinates[5].col == 1 &&
+		numbers.coordinates[6].row == 0       && numbers.coordinates[6].col == 0,
+		"All numbers have the correct coordinates"
+	);
+
+	sput_fail_unless(
+		numbers.count == 7,
+		"Numbers count = 7"
+	);
+
+	sput_fail_unless(
+		numbers.next_fixed == numbers.coordinates &&
+		numbers.next_fixed->row == 2 && numbers.next_fixed->col == 2,
+		"First initially reavealed number = 1 at (2, 2)"
+	);
+}
+
 int run_init_state_tests(void)
 {
 	sput_start_testing();
 
 	sput_enter_suite("test_initialise_test_puzzle_1()");
 	sput_run_test(test_initialise_test_puzzle_1);
+
+	sput_enter_suite("test_initialise_test_puzzle_2()");
+	sput_run_test(test_initialise_test_puzzle_2);
 
 	sput_finish_testing();
 
