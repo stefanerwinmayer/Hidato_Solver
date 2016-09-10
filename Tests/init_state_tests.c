@@ -342,6 +342,59 @@ static void test_initialise_test_puzzle_superflous_lines()
 	);
 }
 
+static void test_initialise_test_puzzle_variable_cols()
+{
+	/* [1][?]
+	 * [?][X][?]
+	 * [?][5]
+	*/
+
+	char input[MAX_FILE_LENGTH];
+	struct Board board;
+	struct Num_Coordinates numbers;
+
+
+	file_to_string("test_puzzle_variable_cols.txt", input);
+
+	sput_fail_unless(
+		initialise_state(input, &board, &numbers) == TRUE,
+		"Valid puzzle -> initialise_state() = TRUE"
+	);
+
+	sput_fail_unless(
+		board.grid[0][0] == FIXED && board.grid[0][1] == FREE    && board.grid[0][2] == BLOCKED &&
+		board.grid[1][0] == FREE  && board.grid[1][1] == BLOCKED && board.grid[1][2] == FREE &&
+		board.grid[2][0] == FREE  && board.grid[2][1] == FIXED   && board.grid[2][2] == BLOCKED,
+		"All nodes have the correct state"
+	);
+
+	sput_fail_unless(
+		board.rows == 3 && board.cols == 3,
+		"Rows = 3 and Columns = 3"
+	);
+
+	sput_fail_unless(
+		numbers.coordinates[0].row == 0 && numbers.coordinates[0].col == 0 &&
+		numbers.coordinates[1].row == UNKNOWN && numbers.coordinates[1].col == UNKNOWN &&
+		numbers.coordinates[2].row == UNKNOWN && numbers.coordinates[2].col == UNKNOWN &&
+		numbers.coordinates[3].row == UNKNOWN && numbers.coordinates[3].col == UNKNOWN &&
+		numbers.coordinates[4].row == 2 && numbers.coordinates[4].col == 1 &&
+		numbers.coordinates[5].row == UNKNOWN && numbers.coordinates[5].col == UNKNOWN, 
+		"All numbers have the correct coordinates"
+	);
+
+	sput_fail_unless(
+		numbers.count == 6,
+		"Numbers count = 6"
+	);
+
+	sput_fail_unless(
+		numbers.next_fixed == numbers.coordinates &&
+		numbers.next_fixed->row == 0 && numbers.next_fixed->col == 0,
+		"First initially reavealed number = 1 at (0, 0)"
+	);
+}
+
 int run_init_state_tests(void)
 {
 	sput_start_testing();
@@ -369,6 +422,9 @@ int run_init_state_tests(void)
 
 	sput_enter_suite("test_initialise_test_puzzle_superflous_lines()");
 	sput_run_test(test_initialise_test_puzzle_superflous_lines);
+
+	sput_enter_suite("test_initialise_test_puzzle_variable_cols()");
+	sput_run_test(test_initialise_test_puzzle_variable_cols);
 
 	sput_finish_testing();
 
