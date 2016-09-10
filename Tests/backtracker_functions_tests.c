@@ -238,7 +238,7 @@ static void test_distance()
 		"Distance between (0, 0) and (0, 2) should be 2.");
 }
 
-int run_backtracker_tests(void)
+int run_backtracker_functions_tests(void)
 {
 	setup();
 
