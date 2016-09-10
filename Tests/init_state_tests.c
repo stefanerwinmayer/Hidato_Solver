@@ -4,9 +4,7 @@
 #include "../init_state.h"
 #include "../coordinate_struct.h"
 
-char input[MAX_FILE_LENGTH];
-struct Board board;
-struct Num_Coordinates numbers;
+
 
 
 static void setup(void)
@@ -20,6 +18,11 @@ static void test_initialise_test_puzzle_1()
 	 * [?][X][6]
 	 * [?][4][?]
 	 */
+
+	char input[MAX_FILE_LENGTH];
+	struct Board board;
+	struct Num_Coordinates numbers;
+
 
 	file_to_string("test_puzzle_1.txt", input);
 
