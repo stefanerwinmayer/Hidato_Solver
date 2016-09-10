@@ -98,5 +98,8 @@
     <ClCompile Include="test_runner.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="init_state_tests.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
