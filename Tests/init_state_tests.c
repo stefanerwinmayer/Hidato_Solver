@@ -4,14 +4,6 @@
 #include "../init_state.h"
 #include "../coordinate_struct.h"
 
-
-
-
-static void setup(void)
-{
-
-}
-
 static void test_initialise_test_puzzle_1()
 {
 	/* [1][?][?]
@@ -35,7 +27,7 @@ static void test_initialise_test_puzzle_1()
 		board.grid[0][0] == FIXED && board.grid[0][1] == FREE    && board.grid[0][2] == FREE &&
 		board.grid[1][0] == FREE  && board.grid[1][1] == BLOCKED && board.grid[1][2] == FIXED &&
 		board.grid[2][0] == FREE  && board.grid[2][1] == FIXED   && board.grid[2][2] == FREE,
-		"Node states"
+		"All nodes have the correct state"
 	);
 
 	sput_fail_unless(
@@ -52,7 +44,7 @@ static void test_initialise_test_puzzle_1()
 		numbers.coordinates[5].row == 1       && numbers.coordinates[5].col == 2 &&
 		numbers.coordinates[6].row == UNKNOWN && numbers.coordinates[6].col == UNKNOWN &&
 		numbers.coordinates[7].row == UNKNOWN && numbers.coordinates[7].col == UNKNOWN,
-		"Number Coordinates"
+		"All numbers have the correct coordinates"
 	);
 
 	sput_fail_unless(
