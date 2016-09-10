@@ -113,6 +113,70 @@ static void test_initialise_test_puzzle_2()
 	);
 }
 
+static void test_initialise_test_puzzle_3()
+{
+	/* [X][4][?][X]
+	 * [?][1][?][X]
+	 * [2][?][?][X]
+	 * [X][X][X][X]
+	 */
+
+	char input[MAX_FILE_LENGTH];
+	struct Board board;
+	struct Num_Coordinates numbers;
+
+
+	file_to_string("test_puzzle_3.txt", input);
+
+	sput_fail_unless(
+		initialise_state(input, &board, &numbers) == TRUE,
+		"Valid puzzle -> initialise_state() = TRUE"
+	);
+
+	sput_fail_unless(
+		board.grid[0][0] == BLOCKED && board.grid[0][1] == FIXED &&
+		board.grid[0][2] == FREE    && board.grid[0][3] == BLOCKED &&
+
+		board.grid[1][0] == FREE    && board.grid[1][1] == FIXED &&
+		board.grid[1][2] == FREE    && board.grid[1][3] == BLOCKED &&
+
+		board.grid[2][0] == FIXED   && board.grid[2][1] == FREE &&
+		board.grid[2][2] == FREE    && board.grid[2][3] == BLOCKED &&
+
+		board.grid[3][0] == BLOCKED && board.grid[3][1] == BLOCKED &&
+		board.grid[3][2] == BLOCKED && board.grid[3][3] == BLOCKED,
+		"All nodes have the correct state"
+	);
+
+	sput_fail_unless(
+		board.rows == 4 && board.cols == 4,
+		"Rows = 4 and Columns = 4"
+	);
+
+	sput_fail_unless(
+		numbers.coordinates[0].row == 1       && numbers.coordinates[0].col == 1 &&
+		numbers.coordinates[1].row == 2       && numbers.coordinates[1].col == 0 &&
+		numbers.coordinates[2].row == UNKNOWN && numbers.coordinates[2].col == UNKNOWN &&
+		numbers.coordinates[3].row == 0       && numbers.coordinates[3].col == 1 &&
+		numbers.coordinates[4].row == UNKNOWN && numbers.coordinates[4].col == UNKNOWN &&
+		numbers.coordinates[5].row == UNKNOWN && numbers.coordinates[5].col == UNKNOWN &&
+		numbers.coordinates[6].row == UNKNOWN && numbers.coordinates[6].col == UNKNOWN &&
+		numbers.coordinates[7].row == UNKNOWN && numbers.coordinates[7].col == UNKNOWN,
+		"All numbers have the correct coordinates"
+	);
+
+	sput_fail_unless(
+		numbers.count == 8,
+		"Numbers count = 8"
+	);
+
+	sput_fail_unless(
+		numbers.next_fixed == numbers.coordinates &&
+		numbers.next_fixed->row == 1 && numbers.next_fixed->col == 1,
+		"First initially reavealed number = 1 at (2, 2)"
+	);
+}
+
 int run_init_state_tests(void)
 {
 	sput_start_testing();
@@ -122,6 +186,9 @@ int run_init_state_tests(void)
 
 	sput_enter_suite("test_initialise_test_puzzle_2()");
 	sput_run_test(test_initialise_test_puzzle_2);
+
+	sput_enter_suite("test_initialise_test_puzzle_3()");
+	sput_run_test(test_initialise_test_puzzle_3);
 
 	sput_finish_testing();
 
