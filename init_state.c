@@ -5,7 +5,7 @@ BOOL initialise_state(
 	struct Board *board,
 	struct Num_Coordinates *numbers)
 {
-	int row, col, highest_col, number;
+	int row, col, number;
 	char *p;
 	BOOL processing[VALID_INPUTS] = { FALSE };
 	BOOL seen[MAX_NUMS] = { FALSE };
@@ -28,7 +28,7 @@ BOOL initialise_state(
 		numbers->coordinates[number].col = UNKNOWN;
 	}
 
-	row = col = highest_col = number = 0;
+	row = col = number = 0;
 
 	(board->rows)++;
 	for (p = input; p < input + strlen(input); p++)
@@ -101,9 +101,9 @@ BOOL initialise_state(
 
 			if (*p == '\n')
 			{
-				if (col > highest_col)
+				if (col > board->cols)
 				{
-					highest_col = col;
+					board->cols = col;
 				}
 				col = 0;
 				(board->rows)++;
@@ -111,8 +111,6 @@ BOOL initialise_state(
 			}
 		}
 	}
-
-	(board->cols) = highest_col;
 
 	if (!seen[ONE])
 	{
