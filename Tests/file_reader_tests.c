@@ -20,12 +20,12 @@ static void test_file_to_string()
 	file_to_string("test_several_characters_one_line_file.txt", string);
 	sput_fail_unless(
 		strcmp(string, "xyz") == 0,
-		"File with characters 'xx' should should produce a string 'xyz'");
+		"File with characters 'xyz' should should produce a string 'xyz'");
 
 	file_to_string("test_several_characters_several_lines_file.txt", string);
 	sput_fail_unless(
 		strcmp(string, "abc\ndef\nghi") == 0,
-		"File with characters 'xx' on two lines should should produce a string 'abc\\ndef\\nghi'");
+		"File with characters 'abc\\ndef\\nghi' on two lines should should produce a string 'abc\\ndef\\nghi'");
 
 	file_to_string("test_line_break_at_file_end_file.txt", string);
 	sput_fail_unless(
