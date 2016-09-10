@@ -12,7 +12,7 @@ BOOL initialise_state(
 
 	numbers->next_fixed = numbers->coordinates;
 
-	board->rows = board->cols = numbers->count = 0;
+	numbers->count = 0;
 
 	for (row = 0; row < MAX_ROWS; row++)
 	{
@@ -30,7 +30,6 @@ BOOL initialise_state(
 
 	row = col = number = 0;
 
-	(board->rows)++;
 	for (p = input; p < input + strlen(input); p++)
 	{
 		if (isdigit(*p))
@@ -106,11 +105,12 @@ BOOL initialise_state(
 					board->cols = col;
 				}
 				col = 0;
-				(board->rows)++;
 				row++;
 			}
 		}
 	}
+
+	board->rows = row + 1;
 
 	if (!seen[ONE])
 	{
