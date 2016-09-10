@@ -9,6 +9,7 @@ BOOL initialise_state(
 	char *p;
 	BOOL processing[VALID_INPUTS] = { FALSE };
 	BOOL seen[MAX_NUMS] = { FALSE };
+	BOOL row_has_data = FALSE;
 
 	numbers->next_fixed = numbers->coordinates;
 
@@ -36,14 +37,17 @@ BOOL initialise_state(
 		{
 			number = (number * 10) + (*p - '0');
 			processing[NUMBER] = TRUE;
+			row_has_data = TRUE;
 		}
 		else if (*p == '?')
 		{
 			processing[QUESTION_MARK] = TRUE;
+			row_has_data = TRUE;
 		}
 		else if (toupper(*p) == 'X')
 		{
 			processing[X] = TRUE;
+			row_has_data = TRUE;
 		}
 		else
 		{
@@ -98,7 +102,7 @@ BOOL initialise_state(
 				processing[X] = FALSE;
 			}
 
-			if (*p == '\n')
+			if (*p == '\n' && row_has_data)
 			{
 				if (col > board->cols)
 				{
@@ -106,11 +110,19 @@ BOOL initialise_state(
 				}
 				col = 0;
 				row++;
+				row_has_data = FALSE;
 			}
 		}
 	}
 
-	board->rows = row + 1;
+	if (col == 0)
+	{
+		board->rows = row;
+	}
+	else
+	{
+		board->rows = row + 1;
+	}
 
 	if (!seen[ONE])
 	{
