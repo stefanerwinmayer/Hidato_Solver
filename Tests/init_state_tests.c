@@ -217,6 +217,58 @@ static void test_initialise_test_puzzle_duplicate_number()
 	);
 }
 
+static void test_initialise_test_ignore_irrelevant_chars_puzzle()
+{
+	/* fsdxsf1vc
+	* sf?sfsd3s
+	*
+	* contains valid puzzle:
+	* [X][1]
+	* [?][3]
+	*/
+
+	char input[MAX_FILE_LENGTH];
+	struct Board board;
+	struct Num_Coordinates numbers;
+
+
+	file_to_string("test_ignore_irrelevant_chars_puzzle.txt", input);
+
+	sput_fail_unless(
+		initialise_state(input, &board, &numbers) == TRUE,
+		"Valid puzzle -> initialise_state() = TRUE"
+	);
+
+	sput_fail_unless(
+		board.grid[0][0] == BLOCKED && board.grid[0][1] == FIXED &&
+		board.grid[1][0] == FREE    && board.grid[1][1] == FIXED,
+		"All nodes have the correct state"
+	);
+
+	sput_fail_unless(
+		board.rows == 2 && board.cols == 2,
+		"Rows = 2 and Columns = 2"
+	);
+
+	sput_fail_unless(
+		numbers.coordinates[0].row == 0 && numbers.coordinates[0].col == 1 &&
+		numbers.coordinates[1].row == UNKNOWN && numbers.coordinates[1].col == UNKNOWN &&
+		numbers.coordinates[2].row == 1 && numbers.coordinates[2].col == 1,
+		"All numbers have the correct coordinates"
+	);
+
+	sput_fail_unless(
+		numbers.count == 3,
+		"Numbers count = 3"
+	);
+
+	sput_fail_unless(
+		numbers.next_fixed == numbers.coordinates &&
+		numbers.next_fixed->row == 0 && numbers.next_fixed->col == 1,
+		"First initially reavealed number = 1 at (0, 1)"
+	);
+}
+
 int run_init_state_tests(void)
 {
 	sput_start_testing();
@@ -235,6 +287,9 @@ int run_init_state_tests(void)
 
 	sput_enter_suite("test_initialise_test_puzzle_duplicate_number()");
 	sput_run_test(test_initialise_test_puzzle_duplicate_number);
+
+	sput_enter_suite("test_initialise_test_ignore_irrelevant_chars_puzzle()");
+	sput_run_test(test_initialise_test_ignore_irrelevant_chars_puzzle);
 
 	sput_finish_testing();
 
