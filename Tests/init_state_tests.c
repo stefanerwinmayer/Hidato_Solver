@@ -269,6 +269,21 @@ static void test_initialise_test_ignore_irrelevant_chars_puzzle()
 	);
 }
 
+static void test_initialise_test_empty_file()
+{
+	char input[MAX_FILE_LENGTH];
+	struct Board board;
+	struct Num_Coordinates numbers;
+
+
+	file_to_string("test_empty_file.txt", input);
+
+	sput_fail_unless(
+		initialise_state(input, &board, &numbers) == FALSE,
+		"Invalid puzzle -> initialise_state() = FALSE"
+	);
+}
+
 int run_init_state_tests(void)
 {
 	sput_start_testing();
@@ -290,6 +305,9 @@ int run_init_state_tests(void)
 
 	sput_enter_suite("test_initialise_test_ignore_irrelevant_chars_puzzle()");
 	sput_run_test(test_initialise_test_ignore_irrelevant_chars_puzzle);
+
+	sput_enter_suite("test_initialise_test_empty_file()");
+	sput_run_test(test_initialise_test_empty_file);
 
 	sput_finish_testing();
 
