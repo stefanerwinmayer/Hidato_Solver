@@ -18,91 +18,85 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="test_runner.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="framework_tests.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="file_reader_tests.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\file_reader.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="init_state_tests.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\init_state.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="backtracker_tests.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\backtracker.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="backtracker_algorithm_tests.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\output.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\backtracker_runner.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\hillclimber_runner.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\hillclimber.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="sput.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="test_runner.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\file_reader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\init_state.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\state_struct.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\coordinate_struct.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\boolean.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\hidato_limits.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\backtracker.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\output.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\backtracker_runner.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\hillclimber_runner.h">
+    <ClInclude Include="..\board.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\boolean.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\coordinate_struct.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\distance.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\file_reader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\hidato_limits.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\hillclimber.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\board.h">
+    <ClInclude Include="..\hillclimber_runner.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Num_Coordinates.h">
+    <ClInclude Include="..\init_state.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\num_coordinates.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\output.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\backtracker.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\backtracker_runner.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\distance.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\file_reader.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\hillclimber.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\hillclimber_runner.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\init_state.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\output.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="file_reader_tests.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="framework_tests.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="test_runner.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
