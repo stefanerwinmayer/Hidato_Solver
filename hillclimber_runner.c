@@ -12,7 +12,7 @@ void run_hillclimber(
 	time_t t;
 	srand((unsigned)time(&t));
 
-	printf(" The Input Hidato:\n\n");
+	printf("  The Input Hidato:\n\n");
 	print_board(board, initial);
 
 	printf("\n Solving the puzzle with the hill-climber algorithm...\n\n");

@@ -7,9 +7,9 @@ void run_backtracker(
 {
 	int iterations = 0;
 
-	printf(" The Input Hidato:\n\n");
+	printf("  The Input Hidato:\n\n");
 	print_board(board, numbers);
-	printf("\n Solving the puzzle with the ");
+	printf("  Solving the puzzle with the ");
 	(smart) ? printf("smart ") : printf("regular ");
 	printf("backtracker...\n\n");
 
@@ -17,10 +17,10 @@ void run_backtracker(
 
 	print_board(board, numbers);
 
-	printf("\n Hamiltonian Path:\n\n");
+	printf("  Hamiltonian Path:\n\n");
 	print_hamiltonian_path(numbers);
 
-	printf(" Number Of ");
+	printf("  Number Of ");
 	(smart) ? printf("Smart ") : printf("Regular ");
 	printf("Backtracker Iterations: %d\n", iterations);
 }

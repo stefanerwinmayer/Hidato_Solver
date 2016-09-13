@@ -4,13 +4,13 @@ void print_hamiltonian_path(struct Num_Coordinates *numbers)
 {
 	int i;
 
-	printf("    (%2d, %2d)", numbers->coordinates[0].row, numbers->coordinates[0].col);
+	printf("     (%2d, %2d)", numbers->coordinates[0].row, numbers->coordinates[0].col);
 	for (i = 1; i < numbers->count; i++)
 	{
 		printf(" -> (%2d, %2d)", numbers->coordinates[i].row, numbers->coordinates[i].col);
 		if ((i + 1) % 9 == 0)
 		{
-			printf("\n");
+			printf("\n ");
 		}
 	}
 	printf("\n\n");
@@ -46,7 +46,7 @@ void print_board(
 		}
 	}
 
-	printf("    ");
+	printf("     ");
 	for (i = 0; i < board->cols; i++)
 	{
 		printf("  %2d ", i);
@@ -55,7 +55,7 @@ void print_board(
 
 	for (i = 0; i < board->rows; i++)
 	{
-		printf("%3d ", i);
+		printf("%4d ", i);
 		for (j = 0; j < board->cols; j++)
 		{
 			if (output[i][j] != BLOCKED && output[i][j] != FREE)

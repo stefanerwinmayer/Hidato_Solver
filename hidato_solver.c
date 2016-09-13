@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
 
 	backtracking = smart = hillclimbing = FALSE;
 
-	printf(" WELCOME TO HIDATO!\n\n");
+	printf("\n  WELCOME TO HIDATO!\n\n");
 
 	if (argc != 3)
 	{
