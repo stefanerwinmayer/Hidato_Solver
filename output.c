@@ -8,7 +8,7 @@ void print_hamiltonian_path(struct Num_Coordinates *numbers)
 	for (i = 1; i < numbers->count; i++)
 	{
 		printf(" -> (%2d, %2d)", numbers->coordinates[i].row, numbers->coordinates[i].col);
-		if ((i + 1) % 8 == 0)
+		if ((i + 1) % 9 == 0)
 		{
 			printf("\n");
 		}
