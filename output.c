@@ -4,10 +4,14 @@ void print_hamiltonian_path(struct Num_Coordinates *numbers)
 {
 	int i;
 
-	printf("(%d, %d)", numbers->coordinates[0].row, numbers->coordinates[0].col);
+	printf("    (%2d, %2d)", numbers->coordinates[0].row, numbers->coordinates[0].col);
 	for (i = 1; i < numbers->count; i++)
 	{
-		printf(" -> (%d, %d)", numbers->coordinates[i].row, numbers->coordinates[i].col);
+		printf(" -> (%2d, %2d)", numbers->coordinates[i].row, numbers->coordinates[i].col);
+		if ((i + 1) % 7 == 0)
+		{
+			printf("\n");
+		}
 	}
 	printf("\n\n");
 }
