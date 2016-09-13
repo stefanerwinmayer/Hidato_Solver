@@ -46,30 +46,30 @@ void print_board(
 		}
 	}
 
-	printf("     0");
+	printf("      0  ");
 	for (j = 1; j < board->cols; j++)
 	{
-		printf("%4.d", j);
+		printf("  %2d ", j);
 	}
 	printf("\n");
 
 	//printf(" 0");
 	for (i = 0; i < board->rows; i++)
 	{
-		printf("%2d ", i);
+		printf("%3d ", i);
 		for (j = 0; j < board->cols; j++)
 		{
 			if (output[i][j] != BLOCKED && output[i][j] != FREE)
 			{
-				printf("[%2d]", output[i][j]);
+				printf("[%3d]", output[i][j]);
 			}
 			else if (output[i][j] == BLOCKED)
 			{
-				printf("    ");
+				printf("     ");
 			}
 			else
 			{
-				printf("[  ]");
+				printf("[   ]");
 			}
 		}
 		printf("\n");
