@@ -20,7 +20,7 @@ void run_backtracker(
 	printf("Hamiltonian Path:\n\n");
 	print_hamiltonian_path(numbers);
 
-	printf("Number of calls to the ");
+	printf("Number of iterations by the ");
 	(smart) ? printf("smart ") : printf("regular ");
 	printf("backtracker: %d\n", iterations);
 }
