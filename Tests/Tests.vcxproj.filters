@@ -101,5 +101,8 @@
     <ClCompile Include="init_state_tests.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="backtracker_functions_tests.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
