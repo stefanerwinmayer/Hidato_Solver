@@ -8,7 +8,7 @@ void print_hamiltonian_path(struct Num_Coordinates *numbers)
 	for (i = 1; i < numbers->count; i++)
 	{
 		printf(" -> (%2d, %2d)", numbers->coordinates[i].row, numbers->coordinates[i].col);
-		if ((i + 1) % 7 == 0)
+		if ((i + 1) % 8 == 0)
 		{
 			printf("\n");
 		}
@@ -46,14 +46,13 @@ void print_board(
 		}
 	}
 
-	printf("      0  ");
-	for (j = 1; j < board->cols; j++)
+	printf("    ");
+	for (i = 0; i < board->cols; i++)
 	{
-		printf("  %2d ", j);
+		printf("  %2d ", i);
 	}
 	printf("\n");
 
-	//printf(" 0");
 	for (i = 0; i < board->rows; i++)
 	{
 		printf("%3d ", i);
