@@ -56,12 +56,12 @@ void print_board(
 	//printf(" 0");
 	for (i = 0; i < board->rows; i++)
 	{
-		printf("%2.d ", i);
+		printf("%2d ", i);
 		for (j = 0; j < board->cols; j++)
 		{
 			if (output[i][j] != BLOCKED && output[i][j] != FREE)
 			{
-				printf("[%2.d]", output[i][j]);
+				printf("[%2d]", output[i][j]);
 			}
 			else if (output[i][j] == BLOCKED)
 			{
