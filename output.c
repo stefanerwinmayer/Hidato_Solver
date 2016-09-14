@@ -21,13 +21,13 @@ void print_board(
 	const struct Num_Coordinates *numbers)
 {
 	int i, j;
-	char output[MAX_ROWS][MAX_COLS];
+	int output[MAX_ROWS][MAX_COLS];
 
 	for (i = 0; i < numbers->count; i++)
 	{
 		if (numbers->coordinates[i].row >= 0 && numbers->coordinates[i].col >= 0)
 		{
-			output[numbers->coordinates[i].row][numbers->coordinates[i].col] = (char)(i + 1);
+			output[numbers->coordinates[i].row][numbers->coordinates[i].col] = i + 1;
 		}
 	}
 
