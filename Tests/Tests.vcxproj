@@ -176,6 +176,7 @@
     <ClCompile Include="..\hillclimber_runner.c" />
     <ClCompile Include="..\init_state.c" />
     <ClCompile Include="..\output.c" />
+    <ClCompile Include="backtracker_algorithm_tests.c" />
     <ClCompile Include="backtracker_functions_tests.c" />
     <ClCompile Include="file_reader_tests.c" />
     <ClCompile Include="framework_tests.c" />
