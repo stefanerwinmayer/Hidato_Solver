@@ -221,6 +221,22 @@ static void test_smart_backtrack_test_puzzle_3()
 	);
 }
 
+static void test_backtrack_invalid_puzzle_1()
+{
+	char input[MAX_FILE_LENGTH];
+	struct Board board;
+	struct Num_Coordinates numbers;
+	int iterations = 0;
+
+	file_to_string("test_invalid_puzzle_1.txt", input);
+	initialise_state(input, &board, &numbers);
+
+	sput_fail_unless(
+		backtrack(&board, &numbers, numbers.coordinates, &iterations, FALSE) == FALSE,
+		"Number 2 at (2, 2) is not a neighbour of number 1 at (0,0)"
+	);
+}
+
 int run_backtracker_algorithm_tests(void)
 {
 	sput_start_testing();
@@ -242,6 +258,9 @@ int run_backtracker_algorithm_tests(void)
 
 	sput_enter_suite("test_smart_backtrack_test_puzzle_3");
 	sput_run_test(test_smart_backtrack_test_puzzle_3);
+
+	sput_enter_suite("test_backtrack_invalid_puzzle_1");
+	sput_run_test(test_backtrack_invalid_puzzle_1);
 
 	sput_finish_testing();
 
