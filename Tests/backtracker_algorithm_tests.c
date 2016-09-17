@@ -237,6 +237,22 @@ static void test_backtrack_invalid_puzzle_1()
 	);
 }
 
+static void test_backtrack_invalid_puzzle_2()
+{
+	char input[MAX_FILE_LENGTH];
+	struct Board board;
+	struct Num_Coordinates numbers;
+	int iterations = 0;
+
+	file_to_string("test_invalid_puzzle_2.txt", input);
+	initialise_state(input, &board, &numbers);
+
+	sput_fail_unless(
+		backtrack(&board, &numbers, numbers.coordinates, &iterations, FALSE) == FALSE,
+		"Puzzle contains 8 numbers but has Number 9 in it"
+	);
+}
+
 int run_backtracker_algorithm_tests(void)
 {
 	sput_start_testing();
@@ -261,6 +277,9 @@ int run_backtracker_algorithm_tests(void)
 
 	sput_enter_suite("test_backtrack_invalid_puzzle_1");
 	sput_run_test(test_backtrack_invalid_puzzle_1);
+
+	sput_enter_suite("test_backtrack_invalid_puzzle_2");
+	sput_run_test(test_backtrack_invalid_puzzle_2);
 
 	sput_finish_testing();
 
