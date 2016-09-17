@@ -8,7 +8,7 @@ static void test_update_board()
 
 	board.grid[2][2] = FIXED;
 	numbers.coordinates[0].row = 2; numbers.coordinates[0].col = 2;
-	
+
 	board.grid[3][3] = FREE;
 	numbers.coordinates[1].row = 3; numbers.coordinates[1].col = 3;
 
@@ -58,7 +58,7 @@ static void test_update_hamiltonian()
 	sput_fail_unless(
 		numbers.coordinates[1].row == 2 &&
 		numbers.coordinates[1].col == 2 &&
-		numbers.coordinates[2].row == 3 && 
+		numbers.coordinates[2].row == 3 &&
 		numbers.coordinates[2].col == 3,
 		"UNKNOWN -> (2, 2), fixed (3, 3) should stay as is"
 	);
@@ -83,7 +83,65 @@ static void test_revert_hamiltonian()
 		numbers.coordinates[0].col == 2 &&
 		numbers.coordinates[1].row == UNKNOWN &&
 		numbers.coordinates[1].col == UNKNOWN,
-		"Fixed (0, 0) should stay as is, (0, 1) -> UNKNOWN"
+		"Fixed (2, 2) should stay as is, (3, 3) -> UNKNOWN"
+	);
+}
+
+static void test_valid_move()
+{
+	struct Board board;
+	struct Num_Coordinates numbers;
+	struct Coordinate neighbour_ofb_1 = { -1, -1 };
+	struct Coordinate neighbour_ofb_2 = { 2, 2 };
+	struct Coordinate neighbour_visited_fixed = { 0, 0 };
+	struct Coordinate neighbour_taken = { 0, 1 };
+	struct Coordinate neighbour_free = { 1, 0 };
+	struct Coordinate neighbour_blocked = { 2, 1 };
+	struct Coordinate neighbour_fixed = { 2, 0 };
+	struct Coordinate *next;
+
+	board.rows = 3; board.cols = 2;
+	board.grid[0][0] = VISITED_FIXED; board.grid[0][1] = TAKEN;
+	board.grid[1][0] = FREE; board.grid[1][1] = TAKEN;
+	board.grid[2][0] = FIXED; board.grid[2][1] = BLOCKED;
+
+	numbers.coordinates[0].row = 0; numbers.coordinates[0].col = 0;
+	numbers.coordinates[1].row = 0; numbers.coordinates[1].col = 1;
+	numbers.coordinates[2].row = 1; numbers.coordinates[2].col = 1;
+	numbers.coordinates[3].row = UNKNOWN; numbers.coordinates[3].col = UNKNOWN;
+	numbers.coordinates[4].row = 2; numbers.coordinates[4].col = 0;
+
+	next = &numbers.coordinates[3];
+
+	sput_fail_unless(
+		valid_move(&board, next, &neighbour_ofb_1) == FALSE &&
+		valid_move(&board, next, &neighbour_ofb_2) == FALSE,
+		"(-1, -1) and (2, 2) are out of bounds -> invalid move"
+	);
+
+	sput_fail_unless(
+		valid_move(&board, next, &neighbour_visited_fixed) == FALSE &&
+		valid_move(&board, next, &neighbour_taken) == FALSE &&
+		valid_move(&board, next, &neighbour_fixed) == FALSE &&
+		valid_move(&board, next, &neighbour_blocked) == FALSE,
+		"VISITED_FIXED, TAKEN, FIXED, BLOCKED nodes are not valid moves for guesses"
+	);
+
+	sput_fail_unless(
+		valid_move(&board, next, &neighbour_free) == TRUE,
+		"A FREE node is a valid move for a guess"
+	);
+
+	next = &numbers.coordinates[4];
+
+	sput_fail_unless(
+		valid_move(&board, next, &neighbour_blocked) == FALSE,
+		"(2, 1) not the node of the next fixed number -> invalid move"
+	);
+
+	sput_fail_unless(
+		valid_move(&board, next, &neighbour_fixed) == TRUE,
+		"(2, 0) is the node of the next fixed number -> valid move"
 	);
 }
 
@@ -102,6 +160,9 @@ int run_backtracker_functions_tests(void)
 
 	sput_enter_suite("test_revert_hamiltonian()");
 	sput_run_test(test_revert_hamiltonian);
+
+	sput_enter_suite("test_valid_move()");
+	sput_run_test(test_valid_move);
 
 	sput_finish_testing();
 
