@@ -145,6 +145,32 @@ static void test_valid_move()
 	);
 }
 
+static void test_update_next_fixed()
+{
+	struct Num_Coordinates numbers;
+
+	numbers.coordinates[0].row = 2; numbers.coordinates[1].col = 2;
+	numbers.coordinates[1].row = UNKNOWN; numbers.coordinates[1].col = UNKNOWN;
+	numbers.coordinates[2].row = 3; numbers.coordinates[2].col = 3;
+
+	numbers.next_fixed = numbers.coordinates;
+	update_next_fixed(&numbers, numbers.coordinates);
+
+	sput_fail_unless(
+		numbers.next_fixed == numbers.coordinates + 2 &&
+		numbers.next_fixed->row == 3 && numbers.next_fixed->col == 3,
+		"Next fixed should be number 3 at (3, 3)"
+	);
+
+	update_next_fixed(&numbers, numbers.coordinates + 1);
+
+	sput_fail_unless(
+		numbers.next_fixed == numbers.coordinates + 2 &&
+		numbers.next_fixed->row == 3 && numbers.next_fixed->col == 3,
+		"Next fixed should be number 3 at (3, 3)"
+	);
+}
+
 int run_backtracker_functions_tests(void)
 {
 	sput_start_testing();
@@ -163,6 +189,9 @@ int run_backtracker_functions_tests(void)
 
 	sput_enter_suite("test_valid_move()");
 	sput_run_test(test_valid_move);
+
+	sput_enter_suite("test_update_next_fixed()");
+	sput_run_test(test_update_next_fixed);
 
 	sput_finish_testing();
 
