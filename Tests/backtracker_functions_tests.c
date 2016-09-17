@@ -159,7 +159,7 @@ static void test_update_next_fixed()
 	sput_fail_unless(
 		numbers.next_fixed == numbers.coordinates + 2 &&
 		numbers.next_fixed->row == 3 && numbers.next_fixed->col == 3,
-		"Next fixed should be number 3 at (3, 3)"
+		"Number 1 is a fixed number so next fixed should be number 3 at (3, 3)"
 	);
 
 	update_next_fixed(&numbers, numbers.coordinates + 1);
@@ -167,8 +167,45 @@ static void test_update_next_fixed()
 	sput_fail_unless(
 		numbers.next_fixed == numbers.coordinates + 2 &&
 		numbers.next_fixed->row == 3 && numbers.next_fixed->col == 3,
-		"Next fixed should be number 3 at (3, 3)"
+		"Number 2 is a guess so next fixed should still be number 3 at (3, 3)"
 	);
+}
+/*void revert_next_fixed(
+	struct Num_Coordinates *numbers,
+	struct Coordinate *current)
+{
+	if (current->row != UNKNOWN)
+	{
+		numbers->next_fixed = current;
+	}
+
+*/
+
+static void test_revert_next_fixed()
+{
+	struct Num_Coordinates numbers;
+
+	numbers.coordinates[0].row = 2; numbers.coordinates[0].col = 2;
+	numbers.coordinates[1].row = UNKNOWN; numbers.coordinates[1].col = UNKNOWN;
+	numbers.coordinates[2].row = 3; numbers.coordinates[2].col = 3;
+
+	numbers.next_fixed = numbers.coordinates + 2;
+
+	revert_next_fixed(&numbers, numbers.coordinates + 1);
+
+	sput_fail_unless(
+		numbers.next_fixed == numbers.coordinates + 2 &&
+		numbers.next_fixed->row == 3 && numbers.next_fixed->col == 3,
+		"Number 2 is a guess so last fixed should still be number 3 at (3, 3)"
+	);
+
+	revert_next_fixed(&numbers, numbers.coordinates);
+
+	sput_fail_unless(
+		numbers.next_fixed == numbers.coordinates &&
+		numbers.next_fixed->row == 2 && numbers.next_fixed->col == 2,
+		"Number 1 is a fixed number so last fixed should now be number 1 at (2, 2)"
+	);	
 }
 
 int run_backtracker_functions_tests(void)
@@ -192,6 +229,9 @@ int run_backtracker_functions_tests(void)
 
 	sput_enter_suite("test_update_next_fixed()");
 	sput_run_test(test_update_next_fixed);
+
+	sput_enter_suite("test_revert_next_fixed()");
+	sput_run_test(test_revert_next_fixed);
 
 	sput_finish_testing();
 
