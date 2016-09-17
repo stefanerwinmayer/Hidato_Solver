@@ -62,6 +62,40 @@ static void test_update_hamiltonian()
 	);
 }
 
+/*void revert_hamiltonian(
+	const struct Board *board,
+	struct Coordinate *current)
+{
+	if (board->grid[current->row][current->col] == FREE)
+	{
+		current->row = UNKNOWN;
+		current->col = UNKNOWN;
+	}
+*/
+
+static void test_revert_hamiltonian()
+{
+	struct Board board;
+	struct Num_Coordinates numbers;
+
+	board.grid[0][0] = FIXED;
+	board.grid[0][1] = FREE;
+
+	numbers.coordinates[0].row = 0; numbers.coordinates[0].col = 0;
+	numbers.coordinates[1].row = 0; numbers.coordinates[1].col = 1;
+
+	revert_hamiltonian(&board, numbers.coordinates);
+	revert_hamiltonian(&board, numbers.coordinates + 1);
+
+	sput_fail_unless(
+		numbers.coordinates[0].row == 0 &&
+		numbers.coordinates[0].col == 0 &&
+		numbers.coordinates[1].row == UNKNOWN &&
+		numbers.coordinates[1].col == UNKNOWN,
+		"Fixed (0, 0) should stay as is, (0, 1) -> UNKNOWN"
+	);
+}
+
 int run_backtracker_functions_tests(void)
 {
 	sput_start_testing();
@@ -74,6 +108,9 @@ int run_backtracker_functions_tests(void)
 
 	sput_enter_suite("test_update_hamiltonian()");
 	sput_run_test(test_update_hamiltonian);
+
+	sput_enter_suite("test_revert_hamiltonian()");
+	sput_run_test(test_revert_hamiltonian);
 
 	sput_finish_testing();
 
