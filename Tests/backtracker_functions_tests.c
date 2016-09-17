@@ -170,16 +170,6 @@ static void test_update_next_fixed()
 		"Number 2 is a guess so next fixed should still be number 3 at (3, 3)"
 	);
 }
-/*void revert_next_fixed(
-	struct Num_Coordinates *numbers,
-	struct Coordinate *current)
-{
-	if (current->row != UNKNOWN)
-	{
-		numbers->next_fixed = current;
-	}
-
-*/
 
 static void test_revert_next_fixed()
 {
@@ -205,7 +195,62 @@ static void test_revert_next_fixed()
 		numbers.next_fixed == numbers.coordinates &&
 		numbers.next_fixed->row == 2 && numbers.next_fixed->col == 2,
 		"Number 1 is a fixed number so last fixed should now be number 1 at (2, 2)"
-	);	
+	);
+}
+
+/*
+BOOL sensible_move(
+	const struct Num_Coordinates *numbers,
+	const struct Coordinate *next,
+	const struct Coordinate *neighbour)
+{
+	int dist, available_steps;
+
+	if (numbers->next_fixed < numbers->coordinates + numbers->count - 1)
+	{
+		dist = distance(neighbour, numbers->next_fixed);
+		available_steps = numbers->next_fixed - next;
+		return dist <= available_steps;
+	}
+	else
+	{
+		return TRUE;
+	}
+*/
+
+static void test_sensible_move()
+{
+	struct Board board;
+	struct Num_Coordinates numbers;
+	struct Coordinate neighbour_1 = { 0, 1 };
+	struct Coordinate neighbour_2 = { 1, 0 };
+	struct Coordinate neighbour_3 = { 1, 1 };
+	struct Coordinate *next;
+
+	board.rows = 3; board.cols = 3;
+	board.grid[0][0] = VISITED_FIXED; board.grid[0][1] = FREE;
+	board.grid[1][0] = FREE; board.grid[1][1] = FREE;
+	board.grid[2][0] = FREE; board.grid[2][1] = FIXED;
+
+	numbers.coordinates[0].row = 0; numbers.coordinates[0].col = 0;
+	numbers.coordinates[1].row = UNKNOWN; numbers.coordinates[1].col = UNKNOWN;
+	numbers.coordinates[2].row = 2; numbers.coordinates[2].col = 2;
+	numbers.coordinates[3].row = UNKNOWN; numbers.coordinates[3].col = UNKNOWN;
+	numbers.coordinates[4].row = UNKNOWN; numbers.coordinates[4].col = UNKNOWN;
+	numbers.next_fixed = numbers.coordinates + 2;
+
+	next = &numbers.coordinates[1];
+
+	sput_fail_unless(
+		sensible_move(&numbers, next, &neighbour_1) == FALSE &&
+		sensible_move(&numbers, next, &neighbour_2) == FALSE,
+		"Number 3 at (2, 2) can't be reached from (0, 1) and (1, 0) -> no sensible move"
+	);
+
+	sput_fail_unless(
+		sensible_move(&numbers, next, &neighbour_3) == TRUE,
+		"Number 3 at (2, 2) can be reached from (1, 1) -> sensible sensible move"
+	);
 }
 
 int run_backtracker_functions_tests(void)
@@ -232,6 +277,9 @@ int run_backtracker_functions_tests(void)
 
 	sput_enter_suite("test_revert_next_fixed()");
 	sput_run_test(test_revert_next_fixed);
+
+	sput_enter_suite("test_sensible_move()");
+	sput_run_test(test_sensible_move);
 
 	sput_finish_testing();
 
