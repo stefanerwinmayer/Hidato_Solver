@@ -41,6 +41,27 @@ static void test_revert_board()
 	);
 }
 
+static void test_update_hamiltonian()
+{
+	struct Num_Coordinates numbers;
+	struct Coordinate neighbour_guess = { 2, 2 };
+	struct Coordinate neighbour_fixed = { 3, 3 };
+
+	numbers.coordinates[1].row = UNKNOWN; numbers.coordinates[1].col = UNKNOWN;
+	numbers.coordinates[2].row = 3; numbers.coordinates[2].col = 3;
+
+	update_hamiltonian(numbers.coordinates + 1, &neighbour_guess);
+	update_hamiltonian(numbers.coordinates + 2, &neighbour_fixed);
+
+	sput_fail_unless(
+		numbers.coordinates[1].row == 2 &&
+		numbers.coordinates[1].col == 2 &&
+		numbers.coordinates[2].row == 3 && 
+		numbers.coordinates[2].col == 3,
+		"UNKNOWN -> (2, 2), fixed (3, 3) should stay as is"
+	);
+}
+
 int run_backtracker_functions_tests(void)
 {
 	sput_start_testing();
@@ -50,6 +71,9 @@ int run_backtracker_functions_tests(void)
 
 	sput_enter_suite("test_revert_board()");
 	sput_run_test(test_revert_board);
+
+	sput_enter_suite("test_update_hamiltonian()");
+	sput_run_test(test_update_hamiltonian);
 
 	sput_finish_testing();
 
