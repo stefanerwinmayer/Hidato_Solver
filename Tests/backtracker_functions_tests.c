@@ -21,12 +21,35 @@ static void test_update_board()
 	);
 }
 
+static void test_revert_board()
+{
+	struct Board board;
+	struct Num_Coordinates numbers;
+
+	board.grid[0][0] = VISITED_FIXED;
+	board.grid[0][1] = TAKEN;
+	numbers.coordinates[0].row = 0; numbers.coordinates[0].col = 0;
+	numbers.coordinates[1].row = 0; numbers.coordinates[1].col = 1;
+
+	revert_board(&board, numbers.coordinates);
+	revert_board(&board, numbers.coordinates + 1);
+
+	sput_fail_unless(
+		board.grid[0][0] == FIXED &&
+		board.grid[0][1] == FREE,
+		"VISITED_FIXED -> FIXED, TAKEN -> FREE"
+	);
+}
+
 int run_backtracker_functions_tests(void)
 {
 	sput_start_testing();
 
 	sput_enter_suite("test_update_board()");
 	sput_run_test(test_update_board);
+
+	sput_enter_suite("test_revert_board()");
+	sput_run_test(test_revert_board);
 
 	sput_finish_testing();
 
