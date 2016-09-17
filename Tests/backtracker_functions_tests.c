@@ -62,17 +62,6 @@ static void test_update_hamiltonian()
 	);
 }
 
-/*void revert_hamiltonian(
-	const struct Board *board,
-	struct Coordinate *current)
-{
-	if (board->grid[current->row][current->col] == FREE)
-	{
-		current->row = UNKNOWN;
-		current->col = UNKNOWN;
-	}
-*/
-
 static void test_revert_hamiltonian()
 {
 	struct Board board;
@@ -80,7 +69,6 @@ static void test_revert_hamiltonian()
 
 	board.grid[0][0] = FIXED;
 	board.grid[0][1] = FREE;
-
 	numbers.coordinates[0].row = 0; numbers.coordinates[0].col = 0;
 	numbers.coordinates[1].row = 0; numbers.coordinates[1].col = 1;
 
