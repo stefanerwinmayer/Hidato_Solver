@@ -198,26 +198,6 @@ static void test_revert_next_fixed()
 	);
 }
 
-/*
-BOOL sensible_move(
-	const struct Num_Coordinates *numbers,
-	const struct Coordinate *next,
-	const struct Coordinate *neighbour)
-{
-	int dist, available_steps;
-
-	if (numbers->next_fixed < numbers->coordinates + numbers->count - 1)
-	{
-		dist = distance(neighbour, numbers->next_fixed);
-		available_steps = numbers->next_fixed - next;
-		return dist <= available_steps;
-	}
-	else
-	{
-		return TRUE;
-	}
-*/
-
 static void test_sensible_move()
 {
 	struct Board board;
