@@ -182,7 +182,7 @@
     <ClCompile Include="backtracker_functions_tests.c" />
     <ClCompile Include="file_reader_tests.c" />
     <ClCompile Include="framework_tests.c" />
-    <ClCompile Include="hill_climber_functions_tests.c" />
+    <ClCompile Include="hillclimber_functions_tests.c" />
     <ClCompile Include="init_state_tests.c" />
     <ClCompile Include="test_runner.c" />
   </ItemGroup>

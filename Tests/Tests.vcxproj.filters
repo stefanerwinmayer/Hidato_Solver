@@ -107,7 +107,7 @@
     <ClCompile Include="backtracker_algorithm_tests.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="hill_climber_functions_tests.c">
+    <ClCompile Include="hillclimber_functions_tests.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
