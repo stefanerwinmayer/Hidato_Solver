@@ -75,39 +75,3 @@ void print_board(
 	}
 	printf("\n");
 }
-
-/*
-void print_solution(struct Board *board)
-{
-	int row, col;
-
-	printf(" ");
-	for (col = 0; col < board->cols; col++)
-	{
-		printf("   %d", col);
-	}
-	printf("\n");
-
-	for (row = 0; row < board->rows; row++)
-	{
-		printf("%d ", row);
-		for (col = 0; col < board->cols; col++)
-		{
-			if (board->grid[row][col] != BLOCKED && board->grid[row][col] != UNKNOWN)
-			{
-				printf("[%2.d]", board->grid[row][col]);
-			}
-			else if (board->grid[row][col] == BLOCKED)
-			{
-				printf("[XX]");
-			}
-			else
-			{
-				printf("[  ]");
-			}
-		}
-		printf("\n");
-	}
-	printf("\n");
-}
-*/

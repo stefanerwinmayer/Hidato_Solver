@@ -21,11 +21,4 @@ BOOL initialise_state(
 	struct Board *board,
 	struct Num_Coordinates *numbers);
 
-/*
-void initialise_hillclimber(
-char *input,
-struct Num_Coordinates *numbers,
-struct Board *initial);
-*/
-
 #endif
