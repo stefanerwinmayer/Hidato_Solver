@@ -136,7 +136,19 @@ static void test_update_points()
 
 static void test_assess_derivate()
 {
+	struct Num_Coordinates solution;
+	int points[MAX_NUMS] = { 0 };
 
+	solution.coordinates[0].row = 0; solution.coordinates[0].col = 0;
+	solution.coordinates[1].row = UNKNOWN; solution.coordinates[1].col = UNKNOWN;
+	solution.coordinates[2].row = 1; solution.coordinates[2].col = 1;
+
+	points[0] = 0; points[1] = 0; points[2] = 0;
+
+	sput_fail_unless(
+		assess_deriviate(&solution, points, 1, 2) == 1,
+		""
+	);
 }
 
 int run_hillclimber_functions_tests(void)
