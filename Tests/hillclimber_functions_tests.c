@@ -143,8 +143,6 @@ static void test_assess_derivate()
 	solution.coordinates[1].row = UNKNOWN; solution.coordinates[1].col = UNKNOWN;
 	solution.coordinates[2].row = 1; solution.coordinates[2].col = 1;
 
-	points[0] = 0; points[1] = 0; points[2] = 0;
-
 	sput_fail_unless(
 		assess_deriviate(&solution, points, 1, 2) == 1,
 		""
