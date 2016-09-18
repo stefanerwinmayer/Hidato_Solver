@@ -84,6 +84,33 @@ static void test_find_number_to_swap()
 	);
 }
 
+static void test_swap_numbers()
+{
+	struct Board board;
+	struct Num_Coordinates solution;
+
+	board.grid[0][0] = FIXED; board.grid[0][1] = TAKEN;
+	board.grid[1][0] = TAKEN; board.grid[1][1] = FIXED;
+	board.grid[2][0] = BLOCKED; board.grid[2][1] = BLOCKED;
+	board.rows = 3; board.cols = 2;
+
+	solution.coordinates[0].row = 0; solution.coordinates[0].col = 0;
+	solution.coordinates[1].row = 0; solution.coordinates[1].col = 1;
+	solution.coordinates[2].row = 1; solution.coordinates[2].col = 1;
+	solution.coordinates[3].row = 1; solution.coordinates[3].col = 0;
+	solution.count = 4;
+
+	swap_numbers(&solution, 1, 3);
+
+	sput_fail_unless(
+		solution.coordinates[0].row == 0 && solution.coordinates[0].col == 0 &&
+		solution.coordinates[1].row == 1 && solution.coordinates[1].col == 0 &&
+		solution.coordinates[2].row == 1 && solution.coordinates[2].col == 1 &&
+		solution.coordinates[3].row == 0 && solution.coordinates[3].col == 1,
+		"Number coordinates are swapped correctly, rest is untouched."
+	);
+}
+
 int run_hillclimber_functions_tests(void)
 {
 	sput_start_testing();
@@ -93,6 +120,9 @@ int run_hillclimber_functions_tests(void)
 
 	sput_enter_suite("test_find_number_to_swap()");
 	sput_run_test(test_find_number_to_swap);
+
+	sput_enter_suite("test_swap_numbers()");
+	sput_run_test(test_swap_numbers);
 
 	sput_finish_testing();
 
