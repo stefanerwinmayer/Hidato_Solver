@@ -55,7 +55,7 @@ static void test_initialise_test_puzzle_1()
 	sput_fail_unless(
 		numbers.next_fixed == numbers.coordinates &&
 		numbers.next_fixed->row == 0 && numbers.next_fixed->col == 0,
-		"First initially reavealed number = 1 at (0, 0)"
+		"First initially revealed number = 1 at (0, 0)"
 	);
 }
 
@@ -109,7 +109,7 @@ static void test_initialise_test_puzzle_2()
 	sput_fail_unless(
 		numbers.next_fixed == numbers.coordinates &&
 		numbers.next_fixed->row == 2 && numbers.next_fixed->col == 2,
-		"First initially reavealed number = 1 at (2, 2)"
+		"First initially revealed number = 1 at (2, 2)"
 	);
 }
 
@@ -173,7 +173,7 @@ static void test_initialise_test_puzzle_3()
 	sput_fail_unless(
 		numbers.next_fixed == numbers.coordinates &&
 		numbers.next_fixed->row == 1 && numbers.next_fixed->col == 1,
-		"First initially reavealed number = 1 at (1, 1)"
+		"First initially revealed number = 1 at (1, 1)"
 	);
 }
 
@@ -265,7 +265,7 @@ static void test_initialise_test_ignore_irrelevant_chars_puzzle()
 	sput_fail_unless(
 		numbers.next_fixed == numbers.coordinates &&
 		numbers.next_fixed->row == 0 && numbers.next_fixed->col == 1,
-		"First initially reavealed number = 1 at (0, 1)"
+		"First initially revealed number = 1 at (0, 1)"
 	);
 }
 
@@ -338,7 +338,7 @@ static void test_initialise_test_puzzle_superflous_lines()
 	sput_fail_unless(
 		numbers.next_fixed == numbers.coordinates &&
 		numbers.next_fixed->row == 0 && numbers.next_fixed->col == 0,
-		"First initially reavealed number = 1 at (0, 0)"
+		"First initially revealed number = 1 at (0, 0)"
 	);
 }
 
@@ -391,7 +391,7 @@ static void test_initialise_test_puzzle_variable_cols()
 	sput_fail_unless(
 		numbers.next_fixed == numbers.coordinates &&
 		numbers.next_fixed->row == 0 && numbers.next_fixed->col == 0,
-		"First initially reavealed number = 1 at (0, 0)"
+		"First initially revealed number = 1 at (0, 0)"
 	);
 }
 

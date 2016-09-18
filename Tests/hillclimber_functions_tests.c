@@ -134,6 +134,11 @@ static void test_update_points()
 	);
 }
 
+static void test_assess_derivate()
+{
+
+}
+
 int run_hillclimber_functions_tests(void)
 {
 	sput_start_testing();
@@ -149,6 +154,9 @@ int run_hillclimber_functions_tests(void)
 
 	sput_enter_suite("test_udpate_points()");
 	sput_run_test(test_update_points);
+
+	sput_enter_suite("test_assess_derivate()");
+	sput_run_test(test_assess_derivate);
 
 	sput_finish_testing();
 
