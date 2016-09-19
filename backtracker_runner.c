@@ -13,14 +13,22 @@ void run_backtracker(
 	(smart) ? printf("smart ") : printf("regular ");
 	printf("backtracker...\n\n");
 
-	backtrack(board, numbers, numbers->coordinates, &iterations, smart);
+	if (backtrack(board, numbers, numbers->coordinates, &iterations, smart))
+	{
 
-	print_board(board, numbers);
+		print_board(board, numbers);
 
-	printf("  Hamiltonian Path:\n\n");
-	print_hamiltonian_path(numbers);
+		printf("  Hamiltonian Path:\n\n");
+		print_hamiltonian_path(numbers);
 
-	printf("  Number Of ");
-	(smart) ? printf("Smart ") : printf("Regular ");
-	printf("Backtracker Iterations: %d\n", iterations);
+		printf("  Number Of ");
+		(smart) ? printf("Smart ") : printf("Regular ");
+		printf("Backtracker Iterations: %d\n", iterations);
+	}
+	else
+	{
+		printf("  The input file contains an unsolvable Hidato.\n");
+		printf("  Either some number is impossible to reach or\n");
+		printf("  some number is higher than the number of available nodes.");
+	}
 }
