@@ -1,40 +1,44 @@
-========================================================================
-    CONSOLE APPLICATION : Hidato_Solver Project Overview
-========================================================================
+Algorithms that attempt solving Hidato puzzles.
 
-AppWizard has created this Hidato_Solver application for you.
+Features:
 
-This file contains a summary of what you will find in each of the files that
-make up your Hidato_Solver application.
+* Three different algorithms:
+	- Two backtrackers that guarantee solutions to each valid Hidato puzzle.
+	- One hill-climber that comes rather close in most cases.
+  
+* Flexible file input
+
+Usage:
+
+Hidato_Solver.exe [-algorithm] [“path/filename”]
+
+The input format for each algorithm:
+* Regular Backtracker: -b
+* Smart Backtracker: -sb
+* Hill-climber: -h
+
+Example: To run the regular backtracker on puzzle Beginner 9, type in:
+Hidato_Solver.exe -b “beginner_9.txt”
+
+Access to a full-screen command-line application is advised as some outputs are rather large.
 
 
-Hidato_Solver.vcxproj
-    This is the main project file for VC++ projects generated using an Application Wizard.
-    It contains information about the version of Visual C++ that generated the file, and
-    information about the platforms, configurations, and project features selected with the
-    Application Wizard.
+Adding your own puzzles:
 
-Hidato_Solver.vcxproj.filters
-    This is the filters file for VC++ projects generated using an Application Wizard. 
-    It contains information about the association between the files in your project 
-    and the filters. This association is used in the IDE to show grouping of files with
-    similar extensions under a specific node (for e.g. ".cpp" files are associated with the
-    "Source Files" filter).
+The valid inputs in-file are:
+* ? - for empty nodes
+* X - for blocked nodes
+* Numbers
 
-Hidato_Solver.cpp
-    This is the main application source file.
+Further rules:
+* Number 1 must be present
+* Each item must be separated by any non-valid character
+* Each row must be entered in its own row in-file, i.e. contain a new-line character
 
-/////////////////////////////////////////////////////////////////////////////
-Other standard files:
+Aside from these rules, the input is flexible:
+* Suggested characters for separating items are [ and ]. However, spaces or other non-valid characters will work as well.
+* Numbers, such as 9, can be entered as 09 or 009 to improve the layout for larger puzzles in-file. 
+* The same applies to ? and X which can be entered as ?? or XXX
+* If some rows are shorter than other rows, the remainder of these rows will be filled up with blocked nodes automatically.
 
-StdAfx.h, StdAfx.cpp
-    These files are used to build a precompiled header (PCH) file
-    named Hidato_Solver.pch and a precompiled types file named StdAfx.obj.
 
-/////////////////////////////////////////////////////////////////////////////
-Other notes:
-
-AppWizard uses "TODO:" comments to indicate parts of the source code you
-should add to or customize.
-
-/////////////////////////////////////////////////////////////////////////////
