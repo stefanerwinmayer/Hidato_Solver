@@ -1,4 +1,4 @@
-Algorithms that attempt solving Hidato puzzles.
+Algorithms for solving Hidato puzzles.
 
 Features:
 
